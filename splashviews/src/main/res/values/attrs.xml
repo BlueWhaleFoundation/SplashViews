@@ -1,0 +1,96 @@
+<resources>
+    <declare-styleable name="ShadowView">
+        <attr name="size" format="dimension" />
+        <attr name="direction" format="enum">
+            <enum name="up_down" value="0" />
+            <enum name="down_up" value="1" />
+        </attr>
+        <attr name="brightness" format="enum">
+            <enum name="dark" value="0" />
+            <enum name="mid" value="1" />
+            <enum name="light" value="2" />
+        </attr>
+        <attr name="lightMode" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BWDefaultView">
+        <attr name="layout_width" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="layout_height" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BWTextButton">
+        <attr name="textColor" format="color" />
+        <attr name="textColorDisabled" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="backgroundColorDisabled" format="color" />
+        <attr name="roundRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="BWEditText">
+        <attr name="inputType" format="integer">
+            <enum name="text" value="1" />
+            <enum name="number" value="2" />
+            <enum name="phone" value="3" />
+            <enum name="point" value="4" />
+            <enum name="email" value="32" />
+            <enum name="numberPassword" value="-2" />
+        </attr>
+        <attr name="errorGoneOnCreate" format="boolean" />
+        <attr name="showClearButton" format="boolean" />
+        <attr name="rightButtonDrawable" format="reference" />
+        <attr name="maxLength" format="integer" />
+        <attr name="intputTextColor" format="color" />
+        <attr name="inputTextSize" format="dimension" />
+        <attr name="hintTextColor" format="color" />
+        <attr name="hintTextSize" format="dimension" />
+        <attr name="hintText" format="string" />
+        <attr name="errorTextColor" format="color" />
+        <attr name="errorTextSize" format="dimension" />
+        <attr name="errorText" format="string" />
+        <attr name="underlineColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="BWCashText">
+        <attr name="autoSize" format="boolean" />
+        <attr name="cashTextColor" format="color" />
+        <attr name="cashTextMaxSize" format="dimension" />
+        <attr name="cashTextMinSize" format="dimension" />
+        <attr name="cashTextAutoSizeStep" format="dimension" />
+        <attr name="cashTextSize" format="dimension" />
+        <attr name="cashText" format="string" />
+        <attr name="cashTextFont" format="string" />
+        <attr name="currencyTextColor" format="color" />
+        <attr name="currencyTextSize" format="dimension" />
+        <attr name="currencyText" format="string" />
+        <attr name="currencyTextFont" format="string" />
+        <attr name="intervalSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="BWImageView">
+        <attr name="imageColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="InfoVerticalView">
+        <attr name="title" format="string" />
+        <attr name="titleColor" format="color" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="message" format="string" />
+        <attr name="messageColor" format="color" />
+        <attr name="messageSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="LinearToggleLayout">
+        <attr name="toggleText" format="string" />
+        <attr name="toggleTextColor" format="color" />
+        <attr name="toggleTextSize" format="dimension" />
+    </declare-styleable>
+
+</resources>

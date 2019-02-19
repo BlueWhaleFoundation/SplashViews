@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/v_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+            android:id="@+id/v_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/et_text"
+                android:layout_alignRight="@+id/et_text"
+                android:layout_centerVertical="true"
+                android:includeFontPadding="false"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                app:fontFamily="@font/notosans_cjkkr_regular" />
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/et_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:lines="1"
+                android:minWidth="100dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/charge_amount_text"
+                android:theme="@style/EditTheme"
+                android:textCursorDrawable="@null"
+                app:fontFamily="@font/notosans_cjkkr_regular" />
+        </RelativeLayout>
+        <ImageButton
+            android:id="@+id/ib_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="10dp"
+            android:src="@drawable/icon_edit_clear"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/ib_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="10dp"
+            android:src="@drawable/qr_bk"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_underline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/v_content"
+        android:layout_alignRight="@+id/v_content"
+        android:layout_alignBottom="@+id/v_content"
+        android:background="@color/colorWhite" />
+
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_underline"
+        android:includeFontPadding="false"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorYellow"
+        android:textSize="14dp"
+        app:fontFamily="@font/notosans_cjkkr_regular" />
+</RelativeLayout>
