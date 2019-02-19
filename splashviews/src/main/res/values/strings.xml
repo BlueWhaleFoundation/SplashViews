@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SplashViews</string>
+    <string name="keypad_delete">Delete</string>
+    <string name="password_fp_hint">지문 로그인을 위해\n지문 센서에 손가락을 올려주세요</string>
+    <string name="input_password">비밀번호 6자리를 입력하세요</string>
+    <string name="login_forgot">비밀번호를 잊으셨나요?</string>
+</resources>

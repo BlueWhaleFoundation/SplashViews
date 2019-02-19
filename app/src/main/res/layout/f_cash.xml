@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:text="BWCashText"
+            />
+
+        <foundation.bluewhale.splashviews.BWCashText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cashText="3000"
+            app:cashTextColor="@color/colorWhite"
+            app:cashTextFont="dinregular"
+            app:cashTextSize="35sp"
+            app:currencyText="원"
+            app:currencyTextColor="@color/colorWhite"
+            app:currencyTextFont="notosans_cjkkr_regular"
+            app:currencyTextSize="17sp"/>
+
+    </LinearLayout>
+</ScrollView>

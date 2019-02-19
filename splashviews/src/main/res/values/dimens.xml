@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_radius_small">2dp</dimen>
+    <dimen name="button_radius_large">10dp</dimen>
+
+    <dimen name="paddingSide">20dp</dimen>
+    <dimen name="paddingTop">50dp</dimen>
+
+    <dimen name="header_h">60dp</dimen>
+
+    <!-- font -->
+    <dimen name="f_store_main_1">20sp</dimen>
+    <dimen name="f_store_main_2">16sp</dimen>
+    <dimen name="f_store_sub_1">10sp</dimen>
+    <dimen name="f_store_sub_2">11sp</dimen>
+    <dimen name="f_setting_main">16sp</dimen>
+    <dimen name="f_setting_sub">12sp</dimen>
+    <dimen name="f_payment_info">20sp</dimen>
+    <dimen name="f_payment_info_small">13sp</dimen>
+
+    <dimen name="f_coupon_list_title">14sp</dimen>
+
+    <dimen name="f_lable">18sp</dimen>
+    <dimen name="f_input">16sp</dimen>
+    <dimen name="f_error">14sp</dimen>
+
+    <dimen name="f_normal">14sp</dimen>
+    <dimen name="f_info">15sp</dimen>
+
+    <dimen name="cash_size">35sp</dimen>
+    <dimen name="cash_max_size">35sp</dimen>
+    <dimen name="cash_min_size">15sp</dimen>
+    <dimen name="cash_auto_size_step">2sp</dimen>
+    <dimen name="f_currency">17sp</dimen>
+    <dimen name="f_interval">5dp</dimen>
+
+    <dimen name="f_button_bottom">18dp</dimen>
+
+    <dimen name="statusbar_h">0dp</dimen>
+
+    <dimen name="qr_camera_size">300dp</dimen>
+    <dimen name="qr_camera_stroke">3dp</dimen>
+
+    <dimen name="photowall_small">10dp</dimen>
+    <dimen name="photowall_large">10dp</dimen>
+    <dimen name="round_category">10dp</dimen>
+
+    <dimen name="progress_size">50dp</dimen>
+
+    <dimen name="setting_dept_healf">10sp</dimen>
+
+    <dimen name="shadow_h">3dp</dimen>
+
+    <dimen name="money_line">2dp</dimen>
+
+
+    <dimen name="charge_amount_hint">16sp</dimen>
+    <dimen name="charge_amount_text">20sp</dimen>
+
+    <dimen name="password_gap">10sp</dimen>
+    <dimen name="couponList_gap">3sp</dimen>
+
+    <dimen name="fingerprint_square_dimen">40dp</dimen>
+    <dimen name="fingerprint_square_dimen_viewport" type="float">40.0</dimen>
+
+
+    <dimen name="coupon_user_icon_height">35dp</dimen>
+    <dimen name="coupon_multi_user_box_height">60dp</dimen>
+</resources>

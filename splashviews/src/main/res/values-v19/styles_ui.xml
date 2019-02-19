@@ -1,0 +1,190 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="myinfo_lable">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/f_lable</item>
+    </style>
+
+    <style name="myinfo_input">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="setting_padding">
+        <item name="android:paddingLeft">@dimen/paddingSide</item>
+        <item name="android:paddingRight">@dimen/paddingSide</item>
+        <item name="android:paddingTop">@dimen/paddingSide</item>
+        <item name="android:paddingBottom">@dimen/paddingSide</item>
+    </style>
+
+    <style name="gray_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorGray2</item>
+    </style>
+
+    <style name="light_gray_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/line_coupon</item>
+    </style>
+
+    <style name="setting_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorGray2</item>
+        <item name="android:layout_marginLeft">@dimen/paddingSide</item>
+        <item name="android:layout_marginRight">@dimen/paddingSide</item>
+    </style>
+
+    <style name="blue_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+    <style name="black_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorText</item>
+    </style>
+
+    <style name="white_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+
+    <style name="common_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="tab_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="regPadding">
+        <item name="android:paddingTop">@dimen/paddingTop</item>
+        <item name="android:paddingLeft">@dimen/paddingSide</item>
+        <item name="android:paddingRight">@dimen/paddingSide</item>
+    </style>
+
+    <style name="PasswordEdit">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/yellow_underline</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="PasswordEdit_line">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/money_line</item>
+        <item name="android:background">@color/colorYellow</item>
+    </style>
+
+    <style name="MobileProvider">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:alpha">.5</item>
+        <item name="android:paddingTop">30dp</item>
+        <item name="android:paddingBottom">30dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="KeyPad">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">29sp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="BottomTextButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="settingSectionHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/notosans_cjkkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">#717171</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingTop">30dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_marginLeft">@dimen/paddingSide</item>
+        <item name="android:layout_marginRight">@dimen/paddingSide</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@drawable/background_textline_gray</item>
+    </style>
+
+    <style name="settingSectionItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingRight">@dimen/paddingSide</item>
+        <item name="android:paddingLeft">@dimen/paddingSide</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="ErrorText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="HintText" parent="TextAppearance.Design.Hint">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="TextAppearance.App.TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <!-- reference our hint & error styles -->
+        <item name="colorAccent">@color/colorWhite</item>
+        <item name="hintTextAppearance">@style/HintText</item>
+        <item name="errorTextAppearance">@style/ErrorText</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+    </style>
+
+    <style name="CircleView">
+        <item name="android:layout_width">10dp</item>
+        <item name="android:layout_height">10dp</item>
+        <item name="android:background">@drawable/circle_white</item>
+    </style>
+
+    <style name="BWTextButton_blue_bg">
+        <item name="textColor">@color/colorWhite</item>
+        <item name="textColorDisabled">#bcbcbc</item>
+        <item name="backgroundColor">@color/colorAccent</item>
+        <item name="backgroundColorDisabled">#e6e6e6</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>

@@ -1,0 +1,72 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="LibTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
+    </style>
+
+    <style name="LibTheme.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
+    </style>
+
+    <style name="TransparentTheme" parent="LibTheme.NoActionBar">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
+    </style>
+    <!--adjustResize-->
+    <!--adjustPan-->
+
+    <style name="CameraTheme" parent="LibTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorControlHighlight">@color/colorWhiteClick</item>
+    </style>
+
+    <style name="EditTheme" parent="LibTheme">
+        <item name="colorAccent">@color/colorWhite</item>
+        <item name="colorControlNormal">@color/colorWhite55</item>
+    </style>
+
+    <style name="PasswordEditTheme" parent="LibTheme">
+        <item name="colorAccent">@color/colorYellow</item>
+        <item name="colorControlNormal">@color/colorYellowAlpha</item>
+    </style>
+
+    <style name="ActionDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="colorControlHighlight">@color/colorWhiteClick</item>
+    </style>
+
+    <style name="push_up_down">
+        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
+        <item name="android:windowExitAnimation">@anim/push_down_out</item>
+    </style>
+
+    <style name="zoom_in_out">
+        <item name="android:windowEnterAnimation">@anim/activity_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/activity_scale_out</item>
+    </style>
+
+    <style name="tab_layout_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/notosans_cjkkr_regular</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+</resources>
