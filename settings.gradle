@@ -1,1 +1,1 @@
-include ':app', ':splashviews', ':zxing-core'
+include ':app', ':splashviews'
