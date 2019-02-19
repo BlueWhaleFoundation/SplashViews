@@ -2,15 +2,15 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.BlueWhaleFoundation.splashviews'
+group='com.github.BlueWhaleFoundation.SplashViews'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
-        versionName "1.1.7"
+        versionCode 9
+        versionName "1.1.9"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
