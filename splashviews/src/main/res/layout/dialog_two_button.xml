@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/v_dialog_root"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/background_round_white"
+              android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp">
+
+        <TextView
+            android:id="@+id/text_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingLeft="15dp"
+            android:paddingTop="40dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="40dp"
+            android:textColor="@color/colorText"
+            app:fontFamily="@font/notosans_cjkkr_regular" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_negative"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:background="@color/transparent"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:text="@string/button_cancel"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:fontFamily="@font/notosans_cjkkr_medium" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_positive"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:background="@color/transparent"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:text="@string/button_check"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            app:fontFamily="@font/notosans_cjkkr_medium" />
+    </LinearLayout>
+</LinearLayout>

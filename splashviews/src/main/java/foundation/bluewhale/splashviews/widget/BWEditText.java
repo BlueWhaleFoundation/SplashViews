@@ -1,4 +1,4 @@
-package foundation.bluewhale.splashviews;
+package foundation.bluewhale.splashviews.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import foundation.bluewhale.splashviews.R;
 import foundation.bluewhale.splashviews.util.NumberTool;
 import io.reactivex.disposables.CompositeDisposable;
 

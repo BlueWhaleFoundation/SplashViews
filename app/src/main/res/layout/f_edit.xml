@@ -22,7 +22,7 @@
             android:text="BWEditText"
             />
 
-        <foundation.bluewhale.splashviews.BWEditText
+        <foundation.bluewhale.splashviews.widget.BWEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -32,7 +32,7 @@
             app:inputTextSize="16sp"
             app:inputType="email"/>
 
-        <foundation.bluewhale.splashviews.BWEditText
+        <foundation.bluewhale.splashviews.widget.BWEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:inputType="phone"

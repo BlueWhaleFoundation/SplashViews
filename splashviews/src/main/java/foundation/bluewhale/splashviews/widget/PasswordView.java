@@ -1,4 +1,4 @@
-package foundation.bluewhale.splashviews;
+package foundation.bluewhale.splashviews.widget;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.jakewharton.rxbinding2.view.RxView;
+import foundation.bluewhale.splashviews.R;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;

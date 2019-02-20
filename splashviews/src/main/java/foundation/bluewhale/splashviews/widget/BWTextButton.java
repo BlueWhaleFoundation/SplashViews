@@ -1,4 +1,4 @@
-package foundation.bluewhale.splashviews;
+package foundation.bluewhale.splashviews.widget;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -10,6 +10,7 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import foundation.bluewhale.splashviews.R;
 import foundation.bluewhale.splashviews.util.ColorTool;
 
 /**

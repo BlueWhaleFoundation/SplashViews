@@ -1,4 +1,4 @@
-package foundation.bluewhale.splashviews;
+package foundation.bluewhale.splashviews.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.common.base.Strings;
+import foundation.bluewhale.splashviews.R;
 import foundation.bluewhale.splashviews.util.NumberTool;
 
 import java.math.BigDecimal;

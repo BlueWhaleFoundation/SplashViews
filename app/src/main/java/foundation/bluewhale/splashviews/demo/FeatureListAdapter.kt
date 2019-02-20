@@ -1,11 +1,10 @@
-package foundation.bluewhale.splashviews.demo.ui
+package foundation.bluewhale.splashviews.demo
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import foundation.bluewhale.splashviews.demo.R
 
 
 class FeatureListAdapter(val list: ArrayList<ListData>, var onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<FeatureListAdapter.ViewHolder>() {

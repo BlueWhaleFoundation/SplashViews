@@ -4,4 +4,12 @@
     <string name="password_fp_hint">지문 로그인을 위해\n지문 센서에 손가락을 올려주세요</string>
     <string name="input_password">비밀번호 6자리를 입력하세요</string>
     <string name="login_forgot">비밀번호를 잊으셨나요?</string>
+    <string name="password_fp_success">지문 인증을 완료하였습니다</string>
+    <string name="password_fp_gotoBackUp">암호 직접 입력하기</string>
+    <string name="password_fp_failed">지문을 일치하지 않습니다\n다시 시도해 주세요(%d/5)</string>
+    <string name="password_fp_help">%s(%d/5)</string>
+
+    <string name="button_check">확인</string>
+    <string name="button_cancel">취소</string>
+    <string name="button_next">다음</string>
 </resources>

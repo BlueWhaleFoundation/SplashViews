@@ -9,7 +9,7 @@ import android.os.Message;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
-import foundation.bluewhale.splashviews.QRCameraView;
+import foundation.bluewhale.splashviews.widget.QRCameraView;
 import foundation.bluewhale.splashviews.R;
 
 import java.util.Collection;

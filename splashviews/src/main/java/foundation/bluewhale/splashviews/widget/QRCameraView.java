@@ -1,4 +1,4 @@
-package foundation.bluewhale.splashviews;
+package foundation.bluewhale.splashviews.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
