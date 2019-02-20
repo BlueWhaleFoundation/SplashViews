@@ -15,7 +15,7 @@ Get Started
 ```
 2. Add the dependency inside **android{}** tag on the build.gradle of your app
 ```
-	dependencies {
+    dependencies {
         implementation 'com.github.BlueWhaleFoundation:SplashViews:Tag'
     }
 ```
