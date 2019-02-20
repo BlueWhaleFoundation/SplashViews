@@ -5,7 +5,7 @@ Get Started
 
 1. Add the JitPack repository to your build file
     Add it in your root build.gradle at the end of repositories:
-```json
+```
 	allprojects {
 		repositories {
 			...
@@ -14,13 +14,13 @@ Get Started
 	}
 ```
 2. Add the dependency inside **android{}** tag on the build.gradle of your app
-```json
+```
 	dependencies {
 	        implementation 'com.github.BlueWhaleFoundation:SplashViews:Tag'
 	}
 ```
 3. Add compileOptions inside **android{}** on the build.gradle of your app
-```json
+```
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
