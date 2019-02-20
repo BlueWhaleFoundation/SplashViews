@@ -20,7 +20,7 @@ class BwNumberPicker : FrameLayout {
         initView(context)
     }
 
-    internal val numberObserver: PublishSubject<Int>
+    val numberObserver: PublishSubject<Int>
     init{
         numberObserver = PublishSubject.create()
     }
