@@ -13,7 +13,7 @@ Get Started
         }
     }
 ```
-2. Add the dependency inside **android{}** tag on your app build.gradle. 
+2. Add the dependency on your app build.gradle. 
     
     (Please replace x.y.z with the latest version numbers: [![](https://jitpack.io/v/BlueWhaleFoundation/SplashViews.svg)](https://jitpack.io/#BlueWhaleFoundation/SplashViews) )
 ```
