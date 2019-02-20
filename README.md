@@ -13,13 +13,13 @@ Get Started
         }
     }
 ```
-2. Add the dependency inside **android{}** tag on the build.gradle of your app
+2. Add the dependency inside **android{}** tag on your app build.gradle
 ```
     dependencies {
         implementation 'com.github.BlueWhaleFoundation:SplashViews:Tag'
     }
 ```
-3. Add compileOptions inside **android{}** on the build.gradle of your app
+3. Add compileOptions inside **android{}** on your app build.gradle
 ```
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
