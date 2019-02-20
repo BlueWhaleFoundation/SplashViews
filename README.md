@@ -16,7 +16,7 @@ Get Started
 2. Add the dependency inside **android{}** tag on your app build.gradle
 ```
     dependencies {
-        implementation 'com.github.BlueWhaleFoundation:SplashViews:Tag'
+        implementation 'com.github.BlueWhaleFoundation:SplashViews:x.x.x'
     }
 ```
 3. Add compileOptions inside **android{}** on your app build.gradle
