@@ -1,4 +1,4 @@
-package foundation.bluewhale.splash.widget
+package foundation.bluewhale.splashviews.widget
 
 import android.content.Context
 import android.util.AttributeSet

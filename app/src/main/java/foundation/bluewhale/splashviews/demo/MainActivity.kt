@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.view.inputmethod.InputMethodManager
-import foundation.bluewhale.splashviews.demo.ui.BaseFragment
-import foundation.bluewhale.splashviews.demo.ui.FeatureListFragment
+import foundation.bluewhale.splashviews.demo.feature.BaseFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var rFragmentManager: FragmentManager

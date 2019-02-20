@@ -1,4 +1,4 @@
-package foundation.bluewhale.splashviews.demo.ui
+package foundation.bluewhale.splashviews.demo.feature
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import foundation.bluewhale.splashviews.demo.R
 
-class CashFragment : BaseFragment() {
+class EditFragment:BaseFragment() {
     override fun getTitle(): String {
-        return "BWCashText"
+        return "BWEditText"
     }
 
     override fun getTAG(): String {
-        return CashFragment::class.java.canonicalName
+        return EditFragment::class.java.canonicalName
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_cash, container, false)
+        return inflater.inflate(R.layout.f_edit, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

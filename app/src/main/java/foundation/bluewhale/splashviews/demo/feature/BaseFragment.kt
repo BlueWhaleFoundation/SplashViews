@@ -1,4 +1,4 @@
-package foundation.bluewhale.splashviews.demo.ui
+package foundation.bluewhale.splashviews.demo.feature
 
 import android.support.v4.app.Fragment
 import foundation.bluewhale.splashviews.demo.MainActivity

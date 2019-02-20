@@ -1,2 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="foundation.bluewhale.splashviews"/>
+          package="foundation.bluewhale.splashviews">
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+</manifest>
