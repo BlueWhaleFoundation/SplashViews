@@ -11,7 +11,7 @@ Get Started
             ...
             maven { url 'https://jitpack.io' }
         }
-        }
+    }
 ```
 2. Add the dependency inside **android{}** tag on the build.gradle of your app
 ```
