@@ -2,4 +2,13 @@
           package="foundation.bluewhale.splashviews">
 
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <application>
+        <receiver android:name=".receiver.SmsReciever" android:enabled="true">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+    </application>
 </manifest>

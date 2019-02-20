@@ -59,4 +59,5 @@
     <color name="line_coupon">#e3e3e3</color>
     <color name="coupon_section">#757575</color>
 
+    <color name="hint_color">#42000000</color>
 </resources>
