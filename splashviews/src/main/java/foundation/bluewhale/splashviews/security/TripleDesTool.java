@@ -11,13 +11,11 @@ import java.security.MessageDigest;
 import java.util.Arrays;
 
 public class TripleDesTool {
-    public static native String getSecurityKey();
-
-    public static String encrypt(String message) throws Exception {
+    public static String encrypt(String securityKey, String message) throws Exception {
         long time = System.currentTimeMillis();
 
         final MessageDigest md = MessageDigest.getInstance("md5");
-        final byte[] digestOfPassword = md.digest(getSecurityKey()
+        final byte[] digestOfPassword = md.digest(securityKey
                 .getBytes("utf-8"));
         final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
         for (int j = 0, k = 16; j < 8; ) {
@@ -38,16 +36,16 @@ public class TripleDesTool {
         return encryptedString;
     }
 
-    public static String decrypt(String message) throws Exception {
-        return decrypt(Base64.decode(message, Base64.DEFAULT));
+    public static String decrypt(String securityKey, String message) throws Exception {
+        return decrypt(securityKey, Base64.decode(message, Base64.DEFAULT));
     }
 
-    public static String decrypt(byte[] message) throws Exception {
+    public static String decrypt(String securityKey, byte[] message) throws Exception {
 
         long time = System.currentTimeMillis();
 
         final MessageDigest md = MessageDigest.getInstance("md5");
-        final byte[] digestOfPassword = md.digest(getSecurityKey()
+        final byte[] digestOfPassword = md.digest(securityKey
                 .getBytes("utf-8"));
         final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
         for (int j = 0, k = 16; j < 8; ) {
