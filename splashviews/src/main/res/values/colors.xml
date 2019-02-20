@@ -60,4 +60,5 @@
     <color name="coupon_section">#757575</color>
 
     <color name="hint_color">#42000000</color>
+    <color name="bg_gray">#f4f4f4</color>
 </resources>
