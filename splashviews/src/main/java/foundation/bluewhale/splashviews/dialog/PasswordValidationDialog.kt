@@ -252,6 +252,7 @@ class PasswordValidationDialog() : DialogFragment() {
     fun initFingerPrintUIHelper() {
         mFingerprintUiHelper = FingerprintUiHelper(
             context,
+            passwordViewColors,
             iv_fingerprint,
             fingerprint_status,
             object : FingerprintUiHelper.Callback {

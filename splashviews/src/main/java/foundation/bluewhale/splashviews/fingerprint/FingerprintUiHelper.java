@@ -33,6 +33,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import foundation.bluewhale.splashviews.R;
+import foundation.bluewhale.splashviews.model.PasswordViewColors;
 
 import java.util.Objects;
 
@@ -50,13 +51,14 @@ public class FingerprintUiHelper extends AuthenticationCallback {
     private final Callback mCallback;
     private CancellationSignal mCancellationSignal;
     private Context context;
-
+    PasswordViewColors colors;
     private boolean mSelfCancelled;
     /**
      * Constructor for {@link FingerprintUiHelper}.
      */
-    public FingerprintUiHelper(Context context, ImageView icon, TextView errorTextView, Callback callback) {
+    public FingerprintUiHelper(Context context, PasswordViewColors colors, ImageView icon, TextView errorTextView, Callback callback) {
         mFingerprintManager = FingerprintManagerCompat.from(context);
+        this.colors = colors;
         mIcon = icon;
         mErrorTextView = errorTextView;
         mCallback = callback;
@@ -138,7 +140,7 @@ public class FingerprintUiHelper extends AuthenticationCallback {
     public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
         mErrorTextView.removeCallbacks(mResetErrorTextRunnable);
         //mIcon.setImageResource(drawable.icon_fingerprint_success);
-        mErrorTextView.setTextColor(ContextCompat.getColor(context, R.color.colorWhite));
+        mErrorTextView.setTextColor(colors.getPwTextColor());
         mErrorTextView.setText(context.getString(R.string.password_fp_success));
         mIcon.postDelayed(new Runnable() {
             @Override
@@ -155,7 +157,7 @@ public class FingerprintUiHelper extends AuthenticationCallback {
     public void showError(CharSequence error) {
         //mIcon.setImageResource(drawable.icon_fingerprint_error);
         mErrorTextView.setText(error);
-        mErrorTextView.setTextColor(ContextCompat.getColor(context, R.color.colorYellow));
+        mErrorTextView.setTextColor(colors.getPwErrorTextColor());
         mErrorTextView.removeCallbacks(mResetErrorTextRunnable);
         mErrorTextView.postDelayed(mResetErrorTextRunnable, ERROR_TIMEOUT_MILLIS);
 
@@ -166,7 +168,7 @@ public class FingerprintUiHelper extends AuthenticationCallback {
     private Runnable mResetErrorTextRunnable = new Runnable() {
         @Override
         public void run() {
-            mErrorTextView.setTextColor(ContextCompat.getColor(context, R.color.colorWhite));
+            mErrorTextView.setTextColor(colors.getPwTextColor());
             mErrorTextView.setText(mErrorTextView.getResources().getString(R.string.password_fp_hint));
             //mIcon.setImageResource(drawable.icon_fingerprint);
         }
