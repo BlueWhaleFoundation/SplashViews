@@ -33,11 +33,11 @@
             app:inputType="email"/>
 
         <foundation.bluewhale.splashviews.widget.BWEditText
-            android:layout_width="match_parent"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             app:inputType="phone"
-            app:hintText="Please input 6 digit"
-            app:maxLength="6"
+            app:hintText=""
+            app:maxLength="10"
             app:hintTextSize="16sp"
             app:inputTextSize="16sp"/>
 

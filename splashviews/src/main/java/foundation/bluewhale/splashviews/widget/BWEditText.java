@@ -358,18 +358,12 @@ public class BWEditText extends RelativeLayout {
     }
 
     void setHelperViews(boolean hasText) {
-        if (!showClearButton) ib_clear.setVisibility(View.INVISIBLE);
-        else {
-//            ib_clear.setVisibility(hasText ? View.VISIBLE : View.INVISIBLE);
-//            if (hasText)
-//                ib_clear.setOnClickListener(v -> et_text.setText(""));
-//            else
-//                ib_clear.setOnClickListener(null);
+        if (showClearButton)
+            ib_clear.setVisibility(hasText ? View.VISIBLE : View.INVISIBLE);
+        else
+            ib_clear.setVisibility(View.GONE);
 
-            ib_clear.setVisibility(hasText ? View.VISIBLE : View.GONE);
-        }
-
-        tv_hint.setVisibility(hasText ? View.INVISIBLE : View.VISIBLE);
+        tv_hint.setVisibility(hasText ? View.GONE : View.VISIBLE);
         v_underline.setBackgroundColor(hasText ? underlineColor : underlineColorDiabled);
     }
 

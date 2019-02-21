@@ -36,7 +36,7 @@
                 android:includeFontPadding="false"
                 android:inputType="number"
                 android:lines="1"
-                android:minWidth="100dp"
+                android:minWidth="10dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="@color/colorWhite"
