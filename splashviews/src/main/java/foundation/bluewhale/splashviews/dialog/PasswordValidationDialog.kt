@@ -25,6 +25,7 @@ import foundation.bluewhale.splashviews.widget.IconImageView
 import foundation.bluewhale.splashviews.widget.PasswordView
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.dialog_password_validation.*
 import java.util.concurrent.TimeUnit
 
 class PasswordValidationDialog() : DialogFragment() {
@@ -112,16 +113,16 @@ class PasswordValidationDialog() : DialogFragment() {
         return inflater.inflate(R.layout.dialog_password_validation, container, false)
     }
 
-    lateinit var tv_title: TextView
-    lateinit var passwordView: PasswordView
-    lateinit var tv_gotoBackup: TextView
-    lateinit var iv_close: IconImageButton
-
-    lateinit var fingerprint_status: TextView
-    lateinit var iv_fingerprint: IconImageView
-    lateinit var v_line_gotoBackup: View
-    lateinit var layout_fragment: View
-    lateinit var fingerprintView: View
+//    lateinit var tv_title: TextView
+//    lateinit var passwordView: PasswordView
+//    lateinit var tv_gotoBackup: TextView
+//    lateinit var iv_close: IconImageButton
+//
+//    lateinit var fingerprint_status: TextView
+//    lateinit var iv_fingerprint: IconImageView
+//    lateinit var v_line_gotoBackup: View
+//    lateinit var layout_fragment: View
+//    lateinit var fingerprintView: View
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -139,16 +140,16 @@ class PasswordValidationDialog() : DialogFragment() {
             }
         }
 
-        tv_title = view.findViewById(R.id.tv_title)
-        passwordView = view.findViewById(R.id.passwordView)
-        tv_gotoBackup = view.findViewById(R.id.tv_gotoBackup)
-        iv_close = view.findViewById(R.id.iv_close)
-
-        fingerprint_status = view.findViewById(R.id.fingerprint_status)
-        iv_fingerprint = view.findViewById(R.id.iv_fingerprint)
-        v_line_gotoBackup = view.findViewById(R.id.v_line_gotoBackup)
-        layout_fragment = view.findViewById(R.id.layout_fragment)
-        fingerprintView = view.findViewById(R.id.fingerprintView)
+//        tv_title = view.findViewById(R.id.tv_title)
+//        passwordView = view.findViewById(R.id.passwordView)
+//        tv_gotoBackup = view.findViewById(R.id.tv_gotoBackup)
+//        iv_close = view.findViewById(R.id.iv_close)
+//
+//        fingerprint_status = view.findViewById(R.id.fingerprint_status)
+//        iv_fingerprint = view.findViewById(R.id.iv_fingerprint)
+//        v_line_gotoBackup = view.findViewById(R.id.v_line_gotoBackup)
+//        layout_fragment = view.findViewById(R.id.layout_fragment)
+//        fingerprintView = view.findViewById(R.id.fingerprintView)
     }
 
 
@@ -231,7 +232,7 @@ class PasswordValidationDialog() : DialogFragment() {
             tv_title.setTextColor(it.pwTextColor)
             iv_close.setColorFilter(it.pwTextColor, PorterDuff.Mode.MULTIPLY)
             fingerprint_status.setTextColor(it.pwTextColor)
-            iv_fingerprint.setImageColor(it.pwTextColor)
+            iv_fingerprint.setColorFilter(it.pwTextColor, PorterDuff.Mode.MULTIPLY)
             tv_gotoBackup.setTextColor(it.pwTextColor)
             v_line_gotoBackup.setBackgroundColor(it.pwTextColor)
         }
