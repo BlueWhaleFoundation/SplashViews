@@ -213,15 +213,16 @@ class PasswordValidationDialog() : DialogFragment() {
             )
         }
 
-        passwordViewColors?.also {
-            passwordView.setPasswordViewColors(it)
-            tv_title.setTextColor(it.pwTextColor)
-            iv_close.setColorFilter(it.pwTextColor, PorterDuff.Mode.MULTIPLY)
-            fingerprint_status.setTextColor(it.pwTextColor)
-            iv_fingerprint.setColorFilter(it.pwTextColor, PorterDuff.Mode.MULTIPLY)
-            tv_gotoBackup.setTextColor(it.pwTextColor)
-            v_line_gotoBackup.setBackgroundColor(it.pwTextColor)
+        if(passwordViewColors!=null){
+            passwordView.setPasswordViewColors(passwordViewColors)
+            tv_title.setTextColor(passwordViewColors!!.pwTextColor)
+            iv_close.setColorFilter(passwordViewColors!!.pwTextColor, PorterDuff.Mode.MULTIPLY)
+            fingerprint_status.setTextColor(passwordViewColors!!.pwTextColor)
+            iv_fingerprint.setColorFilter(passwordViewColors!!.pwTextColor, PorterDuff.Mode.MULTIPLY)
+            tv_gotoBackup.setTextColor(passwordViewColors!!.pwTextColor)
+            v_line_gotoBackup.setBackgroundColor(passwordViewColors!!.pwTextColor)
         }
+
     }
 
     var pwBackgroundColor: Int? = null
