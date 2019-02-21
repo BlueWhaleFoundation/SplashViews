@@ -65,12 +65,7 @@ class PasswordValidationDialog() : DialogFragment() {
         mStage = stage
     }
 
-    private var passwordViewColors: PasswordViewColors = PasswordViewColors(
-        ContextCompat.getColor(context!!, R.color.pwTextColor)
-        , ContextCompat.getColor(context!!, R.color.pwErrorTextColor)
-        , ContextCompat.getColor(context!!, R.color.pwCircleColor)
-        , ContextCompat.getColor(context!!, R.color.pwUnderlineColor)
-    )
+    private var passwordViewColors: PasswordViewColors? = null
 
     fun setPasswordViewColors(passwordViewColors: PasswordViewColors) {
         this.passwordViewColors = passwordViewColors
@@ -209,6 +204,15 @@ class PasswordValidationDialog() : DialogFragment() {
     }
 
     fun updateViewColors() {
+        if(passwordViewColors==null){
+            passwordViewColors = PasswordViewColors(
+                ContextCompat.getColor(context!!, R.color.pwTextColor)
+                , ContextCompat.getColor(context!!, R.color.pwErrorTextColor)
+                , ContextCompat.getColor(context!!, R.color.pwCircleColor)
+                , ContextCompat.getColor(context!!, R.color.pwUnderlineColor)
+            )
+        }
+
         passwordViewColors?.also {
             passwordView.setPasswordViewColors(it)
             tv_title.setTextColor(it.pwTextColor)
