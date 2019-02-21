@@ -13,16 +13,18 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.jakewharton.rxbinding2.view.RxView
 import foundation.bluewhale.splashviews.R
 import foundation.bluewhale.splashviews.fingerprint.FingerPrintSaver
 import foundation.bluewhale.splashviews.fingerprint.FingerprintUiHelper
 import foundation.bluewhale.splashviews.model.PasswordViewColors
 import foundation.bluewhale.splashviews.security.FingerPrintTool
+import foundation.bluewhale.splashviews.widget.IconImageButton
+import foundation.bluewhale.splashviews.widget.IconImageView
 import foundation.bluewhale.splashviews.widget.PasswordView
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.dialog_password_validation.*
 import java.util.concurrent.TimeUnit
 
 class PasswordValidationDialog() : DialogFragment() {
@@ -67,9 +69,6 @@ class PasswordValidationDialog() : DialogFragment() {
     private var passwordViewColors: PasswordViewColors? = null
     fun setPasswordViewColors(passwordViewColors: PasswordViewColors) {
         this.passwordViewColors = passwordViewColors
-        passwordView?.also {
-            updateViewColors()
-        }
     }
 
     private var fingerprintFailed = 0
@@ -113,6 +112,18 @@ class PasswordValidationDialog() : DialogFragment() {
         return inflater.inflate(R.layout.dialog_password_validation, container, false)
     }
 
+    lateinit var tv_title: TextView
+    lateinit var passwordView: PasswordView
+    lateinit var tv_gotoBackup: TextView
+    lateinit var iv_close: IconImageButton
+
+    lateinit var fingerprint_status: TextView
+    lateinit var iv_fingerprint: IconImageView
+    lateinit var v_line_gotoBackup: View
+    lateinit var layout_fragment: View
+    lateinit var fingerprintView: View
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         dialog.window?.also {
             it.attributes.windowAnimations = R.style.push_up_down
@@ -128,7 +139,18 @@ class PasswordValidationDialog() : DialogFragment() {
             }
         }
 
+        tv_title = view.findViewById(R.id.tv_title)
+        passwordView = view.findViewById(R.id.passwordView)
+        tv_gotoBackup = view.findViewById(R.id.tv_gotoBackup)
+        iv_close = view.findViewById(R.id.iv_close)
+
+        fingerprint_status = view.findViewById(R.id.fingerprint_status)
+        iv_fingerprint = view.findViewById(R.id.iv_fingerprint)
+        v_line_gotoBackup = view.findViewById(R.id.v_line_gotoBackup)
+        layout_fragment = view.findViewById(R.id.layout_fragment)
+        fingerprintView = view.findViewById(R.id.fingerprintView)
     }
+
 
     override fun onActivityCreated(arg0: Bundle?) {
         super.onActivityCreated(arg0)
@@ -219,14 +241,12 @@ class PasswordValidationDialog() : DialogFragment() {
     fun setPwBackgroundColor(pwBackgroundColor: Int) {
         this.pwBackgroundColor = pwBackgroundColor
         pwBackgroundResource = null
-        updateBackground()
     }
 
     var pwBackgroundResource: Int? = null
     fun setPwBackgroundResource(pwBackgroundResource: Int) {
         this.pwBackgroundResource = pwBackgroundResource
         pwBackgroundColor = null
-        updateBackground()
     }
 
     fun updateBackground() {
