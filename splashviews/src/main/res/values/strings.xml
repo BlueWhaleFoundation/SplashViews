@@ -8,6 +8,7 @@
     <string name="password_fp_gotoBackUp">암호 직접 입력하기</string>
     <string name="password_fp_failed">지문을 일치하지 않습니다\n다시 시도해 주세요(%d/5)</string>
     <string name="password_fp_help">%s(%d/5)</string>
+    <string name="password_not_matched">암호가 일치하지 않습니다</string>
 
     <string name="button_check">확인</string>
     <string name="button_cancel">취소</string>

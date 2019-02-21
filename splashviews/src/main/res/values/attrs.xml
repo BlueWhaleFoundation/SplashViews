@@ -93,4 +93,10 @@
         <attr name="toggleTextSize" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="PasswordView">
+        <attr name="pwTextColor" format="color" />
+        <attr name="pwErrorTextColor" format="color" />
+        <attr name="pwCircleColor" format="color" />
+        <attr name="pwUnderlineColor" format="color" />
+    </declare-styleable>
 </resources>

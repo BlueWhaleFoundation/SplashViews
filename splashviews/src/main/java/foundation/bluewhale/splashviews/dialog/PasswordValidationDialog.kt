@@ -16,6 +16,7 @@ import com.jakewharton.rxbinding2.view.RxView
 import foundation.bluewhale.splashviews.R
 import foundation.bluewhale.splashviews.fingerprint.FingerPrintSaver
 import foundation.bluewhale.splashviews.fingerprint.FingerprintUiHelper
+import foundation.bluewhale.splashviews.model.PasswordViewColors
 import foundation.bluewhale.splashviews.security.FingerPrintTool
 import foundation.bluewhale.splashviews.widget.PasswordView
 import io.reactivex.Single
@@ -58,9 +59,16 @@ class PasswordValidationDialog() : DialogFragment() {
 
     private var mFingerprintUiHelper: FingerprintUiHelper? = null
     private var mStage = FingerprintDialogStage.FINGERPRINT
-
-    fun setStage(stage : FingerprintDialogStage){
+    fun setStage(stage: FingerprintDialogStage) {
         mStage = stage
+    }
+
+    private var passwordViewColors: PasswordViewColors? = null
+    fun setPasswordViewColors(passwordViewColors: PasswordViewColors) {
+        this.passwordViewColors = passwordViewColors
+        passwordView?.also {
+            it.setPasswordViewColors(passwordViewColors)
+        }
     }
 
     private var fingerprintFailed = 0
@@ -147,6 +155,10 @@ class PasswordValidationDialog() : DialogFragment() {
             tv_title.text = it.getString("title")
         }
 
+
+        passwordViewColors?.also {
+            passwordView.setPasswordViewColors(it)
+        }
 
         passwordView.setPasswordListener(object : PasswordView.PasswordListener {
             override fun onPasswordForgotClicked() {
