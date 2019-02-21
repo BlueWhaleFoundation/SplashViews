@@ -94,6 +94,7 @@ public class PasswordView extends ConstraintLayout {
     View keypad_delete_one;
     IconImageView iv_delete_one;
     TextView button_forgot;
+    View v_line_forgot;
     View v_line_1, v_line_2, v_line_3, v_line_4, v_line_5, v_line_6;
     ArrayList<Integer> keyArray = new ArrayList<>();
 
@@ -136,6 +137,7 @@ public class PasswordView extends ConstraintLayout {
         keypad_delete_one = view.findViewById(R.id.keypad_delete_one);
         iv_delete_one = view.findViewById(R.id.iv_delete_one);
         button_forgot = view.findViewById(R.id.button_forgot);
+        v_line_forgot = view.findViewById(R.id.v_line_forgot);
 
         refreshColors();
 
@@ -252,6 +254,7 @@ public class PasswordView extends ConstraintLayout {
     void refreshColors() {
         tv_title.setTextColor(pwTextColor);
         button_forgot.setTextColor(pwTextColor);
+        v_line_forgot.setBackgroundColor(pwTextColor);
 
         keypad_1.setTextColor(pwTextColor);
         keypad_2.setTextColor(pwTextColor);
@@ -286,6 +289,7 @@ public class PasswordView extends ConstraintLayout {
 
     public void setVisibilityOfForgotButton(boolean show) {
         button_forgot.setVisibility(show ? View.VISIBLE : View.GONE);
+        v_line_forgot.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     List<Integer> list;
