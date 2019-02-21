@@ -1,7 +1,12 @@
 package foundation.bluewhale.splashviews.widget;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.ColorUtils;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -9,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.jakewharton.rxbinding2.view.RxView;
 import foundation.bluewhale.splashviews.R;
+import foundation.bluewhale.splashviews.model.PasswordViewColors;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
@@ -30,10 +36,29 @@ public class PasswordView extends ConstraintLayout {
         initView(context);
     }
 
+    int pwTextColor;
+    int pwErrorTextColor;
+    int pwCircleColor;
+    int pwUnderlineColor;
+
     public PasswordView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.PasswordView);
+        if (ta != null) {
+            pwTextColor = ta.getColor(R.styleable.PasswordView_pwTextColor, ContextCompat.getColor(context, R.color.colorWhite));
+            pwErrorTextColor = ta.getColor(R.styleable.PasswordView_pwErrorTextColor, ContextCompat.getColor(context, R.color.colorWithdrawal));
+            pwCircleColor = ta.getColor(R.styleable.PasswordView_pwCircleColor, ContextCompat.getColor(context, R.color.colorWhite));
+            pwUnderlineColor = ta.getColor(R.styleable.PasswordView_pwUnderlineColor, ContextCompat.getColor(context, R.color.colorYellow));
+        }
         initView(context);
+    }
+
+    public void setPasswordViewColors(PasswordViewColors colors){
+        pwTextColor = colors.getPwTextColor();
+        pwErrorTextColor = colors.getPwErrorTextColor();
+        pwCircleColor = colors.getPwCircleColor();
+        pwUnderlineColor = colors.getPwUnderlineColor();
+        refreshColors();
     }
 
     @Override
@@ -65,8 +90,11 @@ public class PasswordView extends ConstraintLayout {
     TextWatcher mTextWatcher1, mTextWatcher2, mTextWatcher3, mTextWatcher4, mTextWatcher5, mTextWatcher6;
     TextView keypad_1, keypad_2, keypad_3, keypad_4, keypad_5, keypad_6, keypad_7, keypad_8, keypad_9, keypad_0;
     TextView tv_error;
-    View keypad_delete_all, keypad_delete_one;
-    View button_forgot;
+    TextView keypad_delete_all;
+    View keypad_delete_one;
+    IconImageView iv_delete_one;
+    TextView button_forgot;
+    View v_line_1, v_line_2, v_line_3, v_line_4, v_line_5, v_line_6;
     ArrayList<Integer> keyArray = new ArrayList<>();
 
     void initView(Context context) {
@@ -86,6 +114,14 @@ public class PasswordView extends ConstraintLayout {
         tv_pwd_5 = view.findViewById(R.id.tv_pwd_5);
         tv_pwd_6 = view.findViewById(R.id.tv_pwd_6);
 
+        v_line_1 = view.findViewById(R.id.v_line_1);
+        v_line_2 = view.findViewById(R.id.v_line_2);
+        v_line_3 = view.findViewById(R.id.v_line_3);
+        v_line_4 = view.findViewById(R.id.v_line_4);
+        v_line_5 = view.findViewById(R.id.v_line_5);
+        v_line_6 = view.findViewById(R.id.v_line_6);
+
+
         keypad_1 = view.findViewById(R.id.keypad_1);
         keypad_2 = view.findViewById(R.id.keypad_2);
         keypad_3 = view.findViewById(R.id.keypad_3);
@@ -98,6 +134,10 @@ public class PasswordView extends ConstraintLayout {
         keypad_0 = view.findViewById(R.id.keypad_0);
         keypad_delete_all = view.findViewById(R.id.keypad_delete_all);
         keypad_delete_one = view.findViewById(R.id.keypad_delete_one);
+        iv_delete_one = view.findViewById(R.id.iv_delete_one);
+        button_forgot = view.findViewById(R.id.button_forgot);
+
+        refreshColors();
 
         callback_completed = PublishSubject.create();
         _disposables.add(callback_completed
@@ -185,8 +225,6 @@ public class PasswordView extends ConstraintLayout {
         keypad_delete_all.setOnClickListener(clickListener);
         keypad_delete_one.setOnClickListener(clickListener);
 
-
-        button_forgot = view.findViewById(R.id.button_forgot);
         _disposables.add(RxView.clicks(button_forgot)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(empty -> {
@@ -207,6 +245,41 @@ public class PasswordView extends ConstraintLayout {
         keypad_7.setText("" + keyArray.get(7));
         keypad_8.setText("" + keyArray.get(8));
         keypad_9.setText("" + keyArray.get(9));
+    }
+
+    void refreshColors(){
+        tv_title.setTextColor(pwTextColor);
+        button_forgot.setTextColor(pwTextColor);
+
+        keypad_1.setTextColor(pwTextColor);
+        keypad_2.setTextColor(pwTextColor);
+        keypad_3.setTextColor(pwTextColor);
+        keypad_4.setTextColor(pwTextColor);
+        keypad_5.setTextColor(pwTextColor);
+        keypad_6.setTextColor(pwTextColor);
+        keypad_7.setTextColor(pwTextColor);
+        keypad_8.setTextColor(pwTextColor);
+        keypad_9.setTextColor(pwTextColor);
+        keypad_0.setTextColor(pwTextColor);
+
+        keypad_delete_all.setTextColor(pwTextColor);
+        iv_delete_one.setImageColor(pwTextColor);
+
+        tv_error.setTextColor(pwErrorTextColor);
+
+        tv_pwd_1.setTextColor(pwCircleColor);
+        tv_pwd_2.setTextColor(pwCircleColor);
+        tv_pwd_3.setTextColor(pwCircleColor);
+        tv_pwd_4.setTextColor(pwCircleColor);
+        tv_pwd_5.setTextColor(pwCircleColor);
+        tv_pwd_6.setTextColor(pwCircleColor);
+
+        v_line_1.setBackgroundColor(pwUnderlineColor);
+        v_line_2.setBackgroundColor(pwUnderlineColor);
+        v_line_3.setBackgroundColor(pwUnderlineColor);
+        v_line_4.setBackgroundColor(pwUnderlineColor);
+        v_line_5.setBackgroundColor(pwUnderlineColor);
+        v_line_6.setBackgroundColor(pwUnderlineColor);
     }
 
     public void setVisibilityOfForgotButton(boolean show) {
@@ -298,8 +371,8 @@ public class PasswordView extends ConstraintLayout {
         tv_title.setText(title);
     }
 
-    public void setErrorMessage(int errorMessageRes){
-        if(errorMessageRes==0)
+    public void setErrorMessage(int errorMessageRes) {
+        if (errorMessageRes == 0)
             tv_error.setText("");
         else
             tv_error.setText(getContext().getString(errorMessageRes));

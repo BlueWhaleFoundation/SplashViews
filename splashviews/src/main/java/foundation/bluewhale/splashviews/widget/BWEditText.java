@@ -96,7 +96,7 @@ public class BWEditText extends RelativeLayout {
             errorGoneOnCreate = ta.getBoolean(R.styleable.BWEditText_errorGoneOnCreate, false);
             showClearButton = ta.getBoolean(R.styleable.BWEditText_showClearButton, false);
             rightButtonDrawable = ta.getResourceId(R.styleable.BWEditText_rightButtonDrawable, 0);
-            inputType = ta.getColor(R.styleable.BWEditText_inputType, InputType.TYPE_CLASS_NUMBER);
+            inputType = ta.getInt(R.styleable.BWEditText_inputType, InputType.TYPE_CLASS_NUMBER);
 
             underlineColor = ta.getColor(R.styleable.BWEditText_underlineColor, ContextCompat.getColor(context, R.color.colorWhite));
             underlineColorDiabled = ColorUtils.setAlphaComponent(underlineColor, 128);

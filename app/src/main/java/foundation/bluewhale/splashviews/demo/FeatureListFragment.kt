@@ -15,6 +15,7 @@ import foundation.bluewhale.splashviews.demo.feature.CashFragment
 import foundation.bluewhale.splashviews.demo.feature.EditFragment
 import foundation.bluewhale.splashviews.dialog.DoubleButtonDialog
 import foundation.bluewhale.splashviews.dialog.PasswordValidationDialog
+import foundation.bluewhale.splashviews.model.PasswordViewColors
 import kotlinx.android.synthetic.main.f_list.*
 
 class FeatureListFragment : BaseFragment() {
@@ -75,24 +76,36 @@ class FeatureListFragment : BaseFragment() {
                 indexEdit -> addFragment(EditFragment())
                 indexDoubleBtnDialog -> DoubleButtonDialog.make(context, "hihihi")
                 indexPasswordDialog -> {
-                    val d = PasswordValidationDialog.make(context!!, "비밀번호", false, object:PasswordValidationDialog.StatusChangeListener{
-                        override fun onPasswordForgotClicked() {
-                            makeToast("onPasswordForgotClicked()")
-                        }
+                    val d = PasswordValidationDialog.make(
+                        context!!,
+                        "비밀번호",
+                        false,
+                        object : PasswordValidationDialog.StatusChangeListener {
+                            override fun onPasswordForgotClicked() {
+                                makeToast("onPasswordForgotClicked()")
+                            }
 
-                        override fun onPasswordCompleted(password: String) {
-                            makeToast("onPasswordCompleted(): " + password)
-                        }
+                            override fun onPasswordCompleted(password: String) {
+                                makeToast("onPasswordCompleted(): " + password)
+                            }
 
-                        override fun onKeyPressed(dialog: DialogInterface, keyCode: Int, event: KeyEvent) {
+                            override fun onKeyPressed(dialog: DialogInterface, keyCode: Int, event: KeyEvent) {
 
-                        }
+                            }
 
-                        fun makeToast(text:String){
-                            Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-                        }
-                    })
+                            fun makeToast(text: String) {
+                                Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+                            }
+                        })
                     d.show(childFragmentManager, "비밀번호")
+                    d.setPasswordViewColors(
+                        PasswordViewColors(
+                            ContextCompat.getColor(context!!, R.color.colorBlueGreen)
+                            , ContextCompat.getColor(context!!, R.color.colorBlueGreen)
+                            , ContextCompat.getColor(context!!, R.color.colorBlueGreen)
+                            , ContextCompat.getColor(context!!, R.color.colorBlueGreen)
+                        )
+                    )
                 }
             }
         }

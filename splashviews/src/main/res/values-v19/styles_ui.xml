@@ -83,19 +83,16 @@
     <style name="PasswordEdit">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/yellow_underline</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:maxLength">1</item>
         <item name="android:gravity">center</item>
         <item name="android:inputType">numberPassword</item>
-        <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">24sp</item>
     </style>
 
     <style name="PasswordEdit_line">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">@dimen/money_line</item>
-        <item name="android:background">@color/colorYellow</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">2dp</item>
     </style>
 
     <style name="MobileProvider">
