@@ -201,7 +201,7 @@ class PasswordValidationDialog() : DialogFragment() {
         initFingerPrintUIHelper()
     }
 
-    fun updateViewColors(){
+    fun updateViewColors() {
         passwordViewColors?.also {
             passwordView.setPasswordViewColors(it)
             tv_title.setTextColor(it.pwTextColor)
@@ -213,27 +213,29 @@ class PasswordValidationDialog() : DialogFragment() {
         }
     }
 
-    var pwBackgroundColor:Int? = null
-    fun setPwBackgroundColor(pwBackgroundColor:Int){
+    var pwBackgroundColor: Int? = null
+    fun setPwBackgroundColor(pwBackgroundColor: Int) {
         this.pwBackgroundColor = pwBackgroundColor
         pwBackgroundResource = null
         updateBackground()
     }
 
-    var pwBackgroundResource:Int? = null
-    fun setPwBackgroundResource(pwBackgroundResource:Int){
+    var pwBackgroundResource: Int? = null
+    fun setPwBackgroundResource(pwBackgroundResource: Int) {
         this.pwBackgroundResource = pwBackgroundResource
         pwBackgroundColor = null
         updateBackground()
     }
 
-    fun updateBackground(){
-        pwBackgroundResource?.also{
-            layout_fragment.setBackgroundResource(it)
+    fun updateBackground() {
+        pwBackgroundResource?.also {
+            if (layout_fragment != null)
+                layout_fragment.setBackgroundResource(it)
         }
 
-        pwBackgroundColor?.also{
-            layout_fragment.setBackgroundColor(it)
+        pwBackgroundColor?.also {
+            if (layout_fragment != null)
+                layout_fragment.setBackgroundColor(it)
         }
     }
 
