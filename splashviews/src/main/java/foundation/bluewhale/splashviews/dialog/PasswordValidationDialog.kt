@@ -67,7 +67,7 @@ class PasswordValidationDialog() : DialogFragment() {
     fun setPasswordViewColors(passwordViewColors: PasswordViewColors) {
         this.passwordViewColors = passwordViewColors
         passwordView?.also {
-            updateColors(passwordViewColors)
+            updateViewColors()
         }
     }
 
@@ -156,9 +156,8 @@ class PasswordValidationDialog() : DialogFragment() {
         }
 
 
-        passwordViewColors?.also {
-            updateColors(it)
-        }
+        updateViewColors()
+        updateBackground()
 
         passwordView.setPasswordListener(object : PasswordView.PasswordListener {
             override fun onPasswordForgotClicked() {
@@ -202,9 +201,8 @@ class PasswordValidationDialog() : DialogFragment() {
         initFingerPrintUIHelper()
     }
 
-    fun updateColors(colors:PasswordViewColors){
-        colors.also {
-            layout_fragment.setBackgroundColor(it.backgroundColor)
+    fun updateViewColors(){
+        passwordViewColors?.also {
             passwordView.setPasswordViewColors(it)
             tv_title.setTextColor(it.pwTextColor)
             iv_close.setImageColor(it.pwTextColor)
@@ -213,7 +211,30 @@ class PasswordValidationDialog() : DialogFragment() {
             tv_gotoBackup.setTextColor(it.pwTextColor)
             v_line_gotoBackup.setBackgroundColor(it.pwTextColor)
         }
+    }
 
+    var pwBackgroundColor:Int? = null
+    fun setPwBackgroundColor(pwBackgroundColor:Int){
+        this.pwBackgroundColor = pwBackgroundColor
+        pwBackgroundResource = null
+        updateBackground()
+    }
+
+    var pwBackgroundResource:Int? = null
+    fun setPwBackgroundResource(pwBackgroundResource:Int){
+        this.pwBackgroundResource = pwBackgroundResource
+        pwBackgroundColor = null
+        updateBackground()
+    }
+
+    fun updateBackground(){
+        pwBackgroundResource?.also{
+            layout_fragment.setBackgroundResource(it)
+        }
+
+        pwBackgroundColor?.also{
+            layout_fragment.setBackgroundColor(it)
+        }
     }
 
     fun initFingerPrintUIHelper() {
