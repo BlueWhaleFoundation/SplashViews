@@ -53,7 +53,7 @@ public class PasswordView extends ConstraintLayout {
         initView(context);
     }
 
-    public void setPasswordViewColors(PasswordViewColors colors){
+    public void setPasswordViewColors(PasswordViewColors colors) {
         pwTextColor = colors.getPwTextColor();
         pwErrorTextColor = colors.getPwErrorTextColor();
         pwCircleColor = colors.getPwCircleColor();
@@ -245,9 +245,11 @@ public class PasswordView extends ConstraintLayout {
         keypad_7.setText("" + keyArray.get(7));
         keypad_8.setText("" + keyArray.get(8));
         keypad_9.setText("" + keyArray.get(9));
+
+        refreshUnderlineUI();
     }
 
-    void refreshColors(){
+    void refreshColors() {
         tv_title.setTextColor(pwTextColor);
         button_forgot.setTextColor(pwTextColor);
 
@@ -365,6 +367,22 @@ public class PasswordView extends ConstraintLayout {
             tv_pwd_6.setText("●");
         else
             tv_pwd_6.setText("");
+
+        refreshUnderlineUI();
+    }
+
+    public void refreshUnderlineUI() {
+        int size = 0;
+        if (list != null)
+            size = list.size();
+
+        v_line_1.setAlpha(size >= 1 ? 1 : .3f);
+        v_line_2.setAlpha(size >= 2 ? 1 : .3f);
+        v_line_3.setAlpha(size >= 3 ? 1 : .3f);
+        v_line_4.setAlpha(size >= 4 ? 1 : .3f);
+        v_line_5.setAlpha(size >= 5 ? 1 : .3f);
+        v_line_6.setAlpha(size >= 6 ? 1 : .3f);
+
     }
 
     public void setTitle(String title) {
