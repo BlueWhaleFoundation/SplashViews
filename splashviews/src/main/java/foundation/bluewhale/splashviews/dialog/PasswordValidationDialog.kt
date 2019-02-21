@@ -3,6 +3,7 @@ package foundation.bluewhale.splashviews.dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
@@ -175,11 +176,7 @@ class PasswordValidationDialog() : DialogFragment() {
             }
         })
 
-        iv_close.visibility =
-            if (localCancelable)
-                View.VISIBLE
-            else
-                View.GONE
+        iv_close.visibility = if (localCancelable) View.VISIBLE else View.GONE
 
         _disposables!!.add(
             RxView.clicks(iv_close)
@@ -210,7 +207,7 @@ class PasswordValidationDialog() : DialogFragment() {
         passwordViewColors?.also {
             passwordView.setPasswordViewColors(it)
             tv_title.setTextColor(it.pwTextColor)
-            iv_close.setImageColor(it.pwTextColor)
+            iv_close.setColorFilter(it.pwTextColor, PorterDuff.Mode.MULTIPLY)
             fingerprint_status.setTextColor(it.pwTextColor)
             iv_fingerprint.setImageColor(it.pwTextColor)
             tv_gotoBackup.setTextColor(it.pwTextColor)
