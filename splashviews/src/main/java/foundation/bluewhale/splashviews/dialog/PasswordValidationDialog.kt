@@ -175,7 +175,11 @@ class PasswordValidationDialog() : DialogFragment() {
             }
         })
 
-        iib_close.visibility = if (localCancelable) View.VISIBLE else View.GONE
+        if (localCancelable)
+            iib_close.visibility = View.VISIBLE
+        else
+            iib_close.visibility = View.GONE
+
         _disposables!!.add(
             RxView.clicks(iib_close)
                 .throttleFirst(1, TimeUnit.SECONDS)
