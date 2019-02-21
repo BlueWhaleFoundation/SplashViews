@@ -45,10 +45,10 @@ public class PasswordView extends ConstraintLayout {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.PasswordView);
         if (ta != null) {
-            pwTextColor = ta.getColor(R.styleable.PasswordView_pwTextColor, ContextCompat.getColor(context, R.color.colorWhite));
-            pwErrorTextColor = ta.getColor(R.styleable.PasswordView_pwErrorTextColor, ContextCompat.getColor(context, R.color.colorWithdrawal));
-            pwCircleColor = ta.getColor(R.styleable.PasswordView_pwCircleColor, ContextCompat.getColor(context, R.color.colorWhite));
-            pwUnderlineColor = ta.getColor(R.styleable.PasswordView_pwUnderlineColor, ContextCompat.getColor(context, R.color.colorYellow));
+            pwTextColor = ta.getColor(R.styleable.PasswordView_pwTextColor, ContextCompat.getColor(context, R.color.pwTextColor));
+            pwErrorTextColor = ta.getColor(R.styleable.PasswordView_pwErrorTextColor, ContextCompat.getColor(context, R.color.pwErrorTextColor));
+            pwCircleColor = ta.getColor(R.styleable.PasswordView_pwCircleColor, ContextCompat.getColor(context, R.color.pwCircleColor));
+            pwUnderlineColor = ta.getColor(R.styleable.PasswordView_pwUnderlineColor, ContextCompat.getColor(context, R.color.pwUnderlineColor));
         }
         initView(context);
     }

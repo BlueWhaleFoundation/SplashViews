@@ -64,4 +64,8 @@
     <color name="hint_color">#42000000</color>
     <color name="bg_gray">#f4f4f4</color>
 
+    <color name="pwTextColor">@color/colorWhite</color>
+    <color name="pwErrorTextColor">@color/colorWithdrawal</color>
+    <color name="pwCircleColor">@color/colorWhite</color>
+    <color name="pwUnderlineColor">@color/colorYellow</color>
 </resources>
