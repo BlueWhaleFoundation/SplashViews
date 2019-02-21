@@ -175,9 +175,9 @@ class PasswordValidationDialog() : DialogFragment() {
             }
         })
 
-        iv_close.visibility = if (localCancelable) View.VISIBLE else View.GONE
+        iib_close.visibility = if (localCancelable) View.VISIBLE else View.GONE
         _disposables!!.add(
-            RxView.clicks(iv_close)
+            RxView.clicks(iib_close)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe { empty -> dismiss() })
 
@@ -205,7 +205,7 @@ class PasswordValidationDialog() : DialogFragment() {
         passwordViewColors?.also {
             passwordView.setPasswordViewColors(it)
             tv_title.setTextColor(it.pwTextColor)
-            iv_close.setImageColor(it.pwTextColor)
+            iib_close.setImageColor(it.pwTextColor)
             fingerprint_status.setTextColor(it.pwTextColor)
             iv_fingerprint.setImageColor(it.pwTextColor)
             tv_gotoBackup.setTextColor(it.pwTextColor)
