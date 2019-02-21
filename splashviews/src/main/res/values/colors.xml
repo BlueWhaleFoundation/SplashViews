@@ -27,6 +27,7 @@
 
     <!-- additional color -->
     <color name="colorText">#3a3a3a</color>
+    <color name="colorTextHint">#883A3A3A</color>
     <color name="colorText80">#803a3a3a</color>
     <color name="colorTextDisabled">#bcbcbc</color>
     <color name="colorTextBrand">#717171</color>
@@ -61,4 +62,5 @@
 
     <color name="hint_color">#42000000</color>
     <color name="bg_gray">#f4f4f4</color>
+
 </resources>
