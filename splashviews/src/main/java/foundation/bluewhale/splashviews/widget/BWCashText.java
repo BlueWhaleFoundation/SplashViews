@@ -165,4 +165,21 @@ public class BWCashText extends RelativeLayout {
     public void setCashText(BigDecimal cashAmount) {
         setCashText(NumberTool.convert(cashAmount));
     }
+
+    public void setCashTextColor(int cashTextColor) {
+        this.cashTextColor = cashTextColor;
+        tv_cash.setTextColor(cashTextColor);
+    }
+
+    public void setCurrencyTextColor(int currencyTextColor) {
+        this.currencyTextColor = currencyTextColor;
+        tv_currency.setTextColor(currencyTextColor);
+    }
+
+    public void setTextColor(int color) {
+        this.currencyTextColor = color;
+        this.cashTextColor = color;
+        tv_currency.setTextColor(color);
+        tv_cash.setTextColor(color);
+    }
 }
