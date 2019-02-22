@@ -243,7 +243,7 @@ class PasswordValidationDialog() : DialogFragment() {
         }
 
         if (passwordViewColors != null) {
-            passwordView.setPasswordViewColors(passwordViewColors)
+            passwordView.setPasswordViewColors(passwordViewColors!!)
             tv_title.setTextColor(passwordViewColors!!.pwTextColor)
             iv_close.setColorFilter(passwordViewColors!!.pwTextColor, PorterDuff.Mode.MULTIPLY)
             fingerprint_status.setTextColor(passwordViewColors!!.pwTextColor)
