@@ -30,7 +30,7 @@ class PasswordValidationDialog() : DialogFragment() {
     companion object {
         fun make(
             context: Context,
-            isLightStatusBarIcon:Boolean,
+            isLightStatusBarIcon: Boolean,
             title: String,
             cancelable: Boolean,
             statusChangeListener: StatusChangeListener
@@ -46,6 +46,21 @@ class PasswordValidationDialog() : DialogFragment() {
             d.arguments = bundle
 
             return d
+        }
+
+        fun make(
+            context: Context,
+            title: String,
+            cancelable: Boolean,
+            statusChangeListener: StatusChangeListener
+        ): PasswordValidationDialog {
+            return make(
+                context
+                , false
+                , title
+                , cancelable
+                , statusChangeListener
+            )
         }
     }
 
@@ -119,16 +134,16 @@ class PasswordValidationDialog() : DialogFragment() {
 
         val argument = getArguments()
         var isLightStatusBarIcon = false
-        if(argument!=null && argument.getBoolean("argument"))
+        if (argument != null && argument.getBoolean("argument"))
             isLightStatusBarIcon = true
         dialog.window?.also {
             it.attributes.windowAnimations = R.style.push_up_down
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if(isLightStatusBarIcon){
+                if (isLightStatusBarIcon) {
                     it.decorView.systemUiVisibility =
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                }else{
+                } else {
                     it.decorView.systemUiVisibility =
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
                 }
@@ -218,7 +233,7 @@ class PasswordValidationDialog() : DialogFragment() {
     }
 
     fun updateViewColors() {
-        if(passwordViewColors==null){
+        if (passwordViewColors == null) {
             passwordViewColors = PasswordViewColors(
                 ContextCompat.getColor(context!!, R.color.pwTextColor)
                 , ContextCompat.getColor(context!!, R.color.pwErrorTextColor)
@@ -227,7 +242,7 @@ class PasswordValidationDialog() : DialogFragment() {
             )
         }
 
-        if(passwordViewColors!=null){
+        if (passwordViewColors != null) {
             passwordView.setPasswordViewColors(passwordViewColors)
             tv_title.setTextColor(passwordViewColors!!.pwTextColor)
             iv_close.setColorFilter(passwordViewColors!!.pwTextColor, PorterDuff.Mode.MULTIPLY)
