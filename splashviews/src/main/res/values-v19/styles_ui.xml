@@ -81,13 +81,10 @@
     </style>
 
     <style name="PasswordEdit">
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:maxLength">1</item>
-        <item name="android:gravity">center</item>
-        <item name="android:inputType">numberPassword</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:layout_width">13dp</item>
+        <item name="android:layout_height">13dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
     </style>
 
     <style name="PasswordEdit_line">
