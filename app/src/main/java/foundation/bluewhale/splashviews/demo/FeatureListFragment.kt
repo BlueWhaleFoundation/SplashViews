@@ -78,6 +78,7 @@ class FeatureListFragment : BaseFragment() {
                 indexPasswordDialog -> {
                     val d = PasswordValidationDialog.make(
                         context!!,
+                        true,
                         "비밀번호",
                         false,
                         object : PasswordValidationDialog.StatusChangeListener {
