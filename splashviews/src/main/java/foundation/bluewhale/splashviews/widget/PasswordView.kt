@@ -297,7 +297,6 @@ class PasswordView : ConstraintLayout {
         v_line_4.alpha = if (size >= 4) 1f else .3f
         v_line_5.alpha = if (size >= 5) 1f else .3f
         v_line_6.alpha = if (size >= 6) 1f else .3f
-
     }
 
     fun setTitle(title: String) {
