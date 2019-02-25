@@ -25,8 +25,11 @@
         <foundation.bluewhale.splashviews.widget.BWEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:leftIconDrawable="@drawable/search_wh"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
+            app:underlineType="1"
+            app:underlineColor="@color/colorYellow"
             app:hintText="Please input email"
             app:hintTextSize="16sp"
             app:inputTextSize="16sp"
