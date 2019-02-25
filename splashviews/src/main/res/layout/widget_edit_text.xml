@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/v_root"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/v_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
-
+        <foundation.bluewhale.splashviews.widget.IconImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
         <RelativeLayout
             android:id="@+id/v_input"
             android:layout_width="wrap_content"
@@ -71,7 +78,7 @@
         android:layout_alignLeft="@+id/v_content"
         android:layout_alignRight="@+id/v_content"
         android:layout_alignBottom="@+id/v_content"
-        android:background="@color/colorWhite" />
+        tools:background="@color/colorWhite" />
 
     <TextView
         android:id="@+id/tv_error"
