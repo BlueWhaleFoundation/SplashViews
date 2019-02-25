@@ -52,14 +52,20 @@
                 android:textCursorDrawable="@null"
                 app:fontFamily="@font/notosans_cjkkr_regular" />
         </RelativeLayout>
-        <ImageButton
-            android:id="@+id/ib_clear"
+        <RelativeLayout
+            android:id="@+id/button_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:visibility="gone"
             android:padding="10dp"
-            android:src="@drawable/icon_edit_clear"
-            android:visibility="gone" />
+            android:background="?attr/selectableItemBackgroundBorderless">
+            <foundation.bluewhale.splashviews.widget.IconImageView
+                android:id="@+id/iiv_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/close_btn" />
+        </RelativeLayout>
 
         <ImageButton
             android:id="@+id/ib_button"

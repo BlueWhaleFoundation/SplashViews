@@ -51,7 +51,7 @@ public class BWEditText extends RelativeLayout {
     boolean errorGoneOnCreate;
     int leftIconDrawable;
     int underlineType;
-
+    int clearButtonColor;
     class UnderlineType{
         public static final int underline = 0;
         public static final int stroke = 1;
@@ -106,6 +106,9 @@ public class BWEditText extends RelativeLayout {
             leftIconDrawable = ta.getResourceId(R.styleable.BWEditText_leftIconDrawable, 0);
             errorGoneOnCreate = ta.getBoolean(R.styleable.BWEditText_errorGoneOnCreate, false);
             showClearButton = ta.getBoolean(R.styleable.BWEditText_showClearButton, false);
+
+            int color = ColorUtils.setAlphaComponent(ContextCompat.getColor(context, R.color.colorWhite), 128);
+            clearButtonColor = ta.getColor(R.styleable.BWEditText_clearButtonColor, color);
             rightButtonDrawable = ta.getResourceId(R.styleable.BWEditText_rightButtonDrawable, 0);
             inputType = ta.getInt(R.styleable.BWEditText_inputType, InputType.TYPE_CLASS_NUMBER);
 
@@ -152,7 +155,8 @@ public class BWEditText extends RelativeLayout {
     protected CompositeDisposable _disposables;
 
     TextInputEditText et_text;
-    View ib_clear;
+    IconImageView iiv_clear;
+    View button_clear;
     ImageButton ib_button;
     TextView tv_hint, tv_error;
     View v_underline;
@@ -217,9 +221,11 @@ public class BWEditText extends RelativeLayout {
 
         ib_button.setVisibility(rightButtonDrawable != 0 ? View.VISIBLE : View.GONE);
 
-        ib_clear = view.findViewById(R.id.ib_clear);
+        button_clear = view.findViewById(R.id.button_clear);
+        iiv_clear = view.findViewById(R.id.iiv_clear);
+        iiv_clear.setBackground(new ColorCircleDrawable(clearButtonColor));
 
-        ib_clear.setOnClickListener(v -> et_text.setText(""));
+        button_clear.setOnClickListener(v -> et_text.setText(""));
 
         tv_hint = view.findViewById(R.id.tv_hint);
         if (!TextUtils.isEmpty(hintText))
@@ -377,9 +383,9 @@ public class BWEditText extends RelativeLayout {
 
     void setHelperViews(boolean hasText) {
         if (showClearButton)
-            ib_clear.setVisibility(hasText ? View.VISIBLE : View.INVISIBLE);
+            button_clear.setVisibility(hasText ? View.VISIBLE : View.INVISIBLE);
         else
-            ib_clear.setVisibility(View.GONE);
+            button_clear.setVisibility(View.GONE);
 
         tv_hint.setVisibility(hasText ? View.GONE : View.VISIBLE);
 
