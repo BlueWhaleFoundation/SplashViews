@@ -57,7 +57,7 @@ class PasswordValidationDialog() : DialogFragment() {
         ): PasswordValidationDialog {
             return make(
                 context
-                , false
+                , true
                 , title
                 , cancelable
                 , statusChangeListener
