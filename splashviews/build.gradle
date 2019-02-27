@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 65
-        versionName "1.6.5"
+        versionCode 66
+        versionName "1.6.6"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
