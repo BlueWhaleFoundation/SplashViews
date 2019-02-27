@@ -102,6 +102,10 @@ public class BaseNetErrorHandler {
 
             case "TOKEN.NOT_ENOUGH_MONEY":
                 return R.string.ERROR_TOKEN_NOT_ENOUGH_MONEY;
+
+            case "TOKEN.NOT_ENOUGH_TOKEN":
+                return R.string.ERROR_TOKEN_NOT_ENOUGH_TOKEN;
+
             case "EXCHANGE.NOT_SUPPORTED":
                 return R.string.ERROR_EXCHANGE_NOT_SUPPORTED;
 
