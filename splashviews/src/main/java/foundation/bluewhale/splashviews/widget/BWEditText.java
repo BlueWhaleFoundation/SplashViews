@@ -299,7 +299,7 @@ public class BWEditText extends RelativeLayout {
         setHelperViews(false);
     }
 
-    void setRightButtonClickListener(OnClickListener l){
+    public void setRightButtonClickListener(OnClickListener l){
         ib_button.setOnClickListener(l);
     }
 
