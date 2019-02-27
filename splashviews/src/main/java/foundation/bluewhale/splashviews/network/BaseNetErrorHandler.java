@@ -30,9 +30,6 @@ public class BaseNetErrorHandler {
             case "REGISTER.EXIST_EMAIL":
                 return R.string.ERROR_REGISTER_EXIST_EMAIL;
 
-            case "child \"code\" fails because [\"code\" length must be 24 characters long]":
-                return R.string.ERROR_NO_QR_CODE;
-
             case "PAYMENT.NO_MATCHING_BUSINESS":
                 return R.string.ERROR_PAYMENT_NO_MATCHING_BUSINESS;
             case "PAYMENT.NO_BUYER":
