@@ -1,0 +1,107 @@
+<resources>
+    <string name="ERROR_USER_NO_USER">유저가 존재하지 않습니다.</string>
+    <string name="ERROR_USER_EXIST_TEL">전화번호가 일치하지 않습니다.</string>
+    <string name="ERROR_INVALID_PASSWORD">비밀번호가 일치하지 않습니다.</string>
+    <string name="ERROR_PAYMENT_NOT_ENOUGH_MONEY">잔액이 부족합니다.</string>
+    <string name="ERROR_REGISTER_EXIST_TEL">이미 다른 유저가 사용중인 전화번호 입니다.</string>
+    <string name="ERROR_REGISTER_EXIST_EMAIL">이미 다른 유저가 사용중인 이메일 주소 입니다.</string>
+    <string name="ERROR_PAYMENT_NO_MATCHING_BUSINESS">해당업체가 존재하지 않습니다.</string>
+
+    <string name="ERROR_PAYMENT_NO_BUYER">해당 유저가(구매자) 존재하지 않습니다</string>
+    <string name="ERROR_PAYMENT_INVALID_BUYER">유효하지 않은 구매자 입니다</string>
+    <string name="ERROR_PAYMENT_NO_PAYMENT">결제 정보가 존재하지 않습니다</string>
+    <string name="ERROR_PAYMENT_NO_BUSINESS">해당 업체가 존재하지 않습니다</string>
+    <string name="ERROR_PAYMENT_NO_SELLER">해당 판매자가 존재하지 않습니다</string>
+    <string name="ERROR_PAYMENT_NO_RATING">보너스가 소진되었습니다</string>
+
+    <string name="ERROR_TRANSFER_NO_SENDER">송금자가 존재하지 않습니다</string>
+    <string name="ERROR_TRANSFER_NO_TO_USE">수신자가 존재하지 않습니다</string>
+    <string name="ERROR_TRANSFER_NO_PAYMENT_AMOUNT">보너스가 존재하지 않습니다</string>
+    <string name="ERROR_TRANSFER_NO_CURRENCY">Currency 정보가 없습니다</string>
+    <string name="ERROR_TRANSFER_NO_FROM_USER">송금자가 존재하지 않습니다</string>
+    <string name="ERROR_TRANSFER_NOT_REGISTERED_SENDER">등록된 송금자가 아닙니다</string>
+    <string name="ERROR_TRANSFER_NOT_REGISTERED_RECEIVER">등록 수신자가 아닙니다</string>
+    <string name="ERROR_TRANSFER_FAIL">송금이 실패했습니다</string>
+    <string name="ERROR_TRANSFER_ALREADY_REGISTERED">이미 가입된 사용자입니다\n수신자를 다시 선택하세요</string>
+    <string name="ERROR_TRANSFER_TRANSACTION_MAX_FAIL">TRANSFER.TRANSACTION_MAX_FAIL</string>
+
+    <string name="ERROR_USER_NOT_ENOUGH_MONEY">원화지갑에 잔액이 부족합니다</string>
+    <string name="ERROR_USER_UPDATE_USER_FAIL">수정에 실패했습니다</string>
+
+    <string name="ERROR_TICKET_NOT_ENOUGH_TICKETS">해당 상품 재고가 부족합니다</string>
+    <string name="ERROR_TICKET_ALREADY_BOUGHT">이미 구매했습니다</string>
+    <string name="ERROR_TICKET_ALREADY_REFUNDED_OR_UESD">이미 환불처리가 완료 되었거나 사용한 상품입니다</string>
+
+    <string name="ERROR_TRANSACTION_COMMIT_RETRY_MAXED">TRANSACTION.COMMIT_RETRY_MAXED</string>
+    <string name="ERROR_TRANSACTION_COMMIT_FAILED">TRANSACTION.COMMIT_FAILED</string>
+    <string name="ERROR_TRANSACTION_INVALID_INPUT">잘못된 입력값입니다</string>
+    <string name="ERROR_TRANSACTION_SAME_FROM_TO">TRANSACTION.SAME_FROM_TO</string>
+    <string name="ERROR_TRANSACTION_ALREADY_REFUNDED">이미 환불 되었습니다</string>
+    <string name="ERROR_TRANSACTION_ZERO_AMOUNT">금액이 없습니다</string>
+
+    <string name="ERROR_BUSINESS_NO_BUSINESS">해당 업체가 존재하지 않습니다</string>
+    <string name="ERROR_TRANSFER_NO_PAYMET_AMOUNT">해당 업체에 제공할 포인트가 부족합니다</string>
+    <string name="ERROR_RATING_UNEXPECTED_RATING_VALUE">입력값이 허용범위를 넘었습니다</string>
+    <string name="ERROR_ERROR_RATING_ALREADY_RATED">이미 참여한 이벤트입니다\n해당 이벤트에는 한번만 참여가 가능합니다</string>
+
+    <string name="ERROR_ORDER_EXPIRED_ORDER">만료된 결제입니다</string>
+    <string name="ERROR_ORDER_WRONG_DISCOUNT_RATIO">잘못된 입력값 입니다</string>
+
+    <string name="ERROR_USER_SAME_PASSWORD">기존 비밀번호와 같은 비번을 입력했습니다</string>
+    <string name="ERROR_TOKEN_NOT_ENOUGH_MONEY">BWX 지갑에 잔액이 부족합니다</string>
+    <string name="ERROR_EXCHANGE_NOT_SUPPORTED">지원하지 않는 화폐입니다</string>
+    <string name="ERROR_BEP_NO_WALLET">원화 지갑이 존재하지 않습니다</string>
+    <string name="ERROR_JWT_EXPIRED_TOKEN">시간 초과하였습니다. 확인후 다시 시도해주세요.</string>
+    <string name="ERROR_TRANSFER_NOT_REGISTERED_WALLET">BWX 지갑이 존재하지 않습니다</string>
+    <string name="ERROR_EXCHANGE_LIMIT_EXCEED">환전 한도액 초과 (10만원)</string>
+    <string name="ERROR_EXCHANGE_BWX_NOT_MULTIPLE_OF_1000">BWX는 1000의 배수로 입력되어야 합니다</string>
+
+    <string name="ERROR_NO_QR_CODE">사용할 수 없는 QR 코드 입니다</string>
+
+    <string name="ERROR_NICE_AUTH_FAILED">본인인증에 실패했습니다. 입력한 정보를 확인해 주세요.</string>
+    <string name="ERROR_NICE_USED_TOKEN">본인인증에 실패했습니다. 다시 시도해 주세요.</string>
+    <string name="ERROR_NICE_INVALID_TOKEN">본인인증에 실패했습니다. 다시 시도해 주세요.</string>
+
+
+
+    <string name="error_invalid_password_locked">비밀번호 %1$d회 실패로 계정이 잠겼습니다\n%2$s후에 사용가능합니다</string>
+    <string name="error_invalid_password_normal">비밀번호가 %1$d회 틀렸습니다\n(%2$d/5)</string>
+
+    <string name="error_no_connection">네트워크 연결을 확인하시기 바랍니다</string>
+    <string name="error_json_parsing">서버 장애가 생겼습니다. 관리자에게 문의해주세요.</string>
+    <string name="error_unhandled_message">예기치 못한 에러가 발생했습니다.</string>
+
+    <string name="ERROR_NICE_0000">인증 성공</string>
+    <string name="ERROR_NICE_0001">인증 불일치(통신사선택오류, 생년월일/성명/휴대폰번호 불일치, 휴대폰일시정지, 선불폰가입자, SMS발송실패, 인증문자불일치 등)</string>
+    <string name="ERROR_NICE_0003">기타인증오류</string>
+    <string name="ERROR_NICE_0010">인증번호 불일치(소켓)</string>
+    <string name="ERROR_NICE_0012">요청정보오류(입력값오류)</string>
+    <string name="ERROR_NICE_0013">암호화 시스템 오류</string>
+    <string name="ERROR_NICE_0014">암호화 처리 오류</string>
+    <string name="ERROR_NICE_0015">암호화 데이터 오류</string>
+    <string name="ERROR_NICE_0016">복호화 처리 오류</string>
+    <string name="ERROR_NICE_0017">복호화 데이터 오류</string>
+    <string name="ERROR_NICE_0018">통신오류</string>
+    <string name="ERROR_NICE_0019">데이터베이스 오류</string>
+    <string name="ERROR_NICE_0020">유효하지않은 CP코드</string>
+    <string name="ERROR_NICE_0021">중단된 CP코드</string>
+    <string name="ERROR_NICE_0022">휴대전화본인확인 사용불가 CP코드</string>
+    <string name="ERROR_NICE_0023">미등록 CP코드</string>
+    <string name="ERROR_NICE_0031">유효한 인증이력 없음</string>
+    <string name="ERROR_NICE_0035">기인증완료건(소켓)</string>
+    <string name="ERROR_NICE_0040">본인확인차단고객(통신사)</string>
+    <string name="ERROR_NICE_0041">인증문자발송차단고객(통신사)</string>
+    <string name="ERROR_NICE_0050">NICE 명의보호서비스 이용고객 차단</string>
+    <string name="ERROR_NICE_0052">부정사용차단</string>
+    <string name="ERROR_NICE_0070">간편인증앱 미설치</string>
+    <string name="ERROR_NICE_0071">앱인증 미완료</string>
+    <string name="ERROR_NICE_0072">간편인증 처리중 오류</string>
+    <string name="ERROR_NICE_0073">간편인증앱 미설치(LG U+ Only)</string>
+    <string name="ERROR_NICE_0074">간편인증앱 재설치필요</string>
+    <string name="ERROR_NICE_0075">간편인증사용불가-스마트폰아님</string>
+    <string name="ERROR_NICE_0076">간편인증앱 미설치</string>
+    <string name="ERROR_NICE_0078">14세 미만 인증 오류</string>
+    <string name="ERROR_NICE_0079">간편인증 시스템 오류</string>
+    <string name="ERROR_NICE_9097">인증번호 3회 불일치</string>
+    <string name="ERROR_NICE_else">NICE 기타오류</string>
+</resources>
