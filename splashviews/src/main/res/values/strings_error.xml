@@ -48,7 +48,8 @@
     <string name="ERROR_ORDER_WRONG_DISCOUNT_RATIO">잘못된 입력값 입니다</string>
 
     <string name="ERROR_USER_SAME_PASSWORD">기존 비밀번호와 같은 비번을 입력했습니다</string>
-    <string name="ERROR_TOKEN_NOT_ENOUGH_MONEY">BWX 지갑에 잔액이 부족합니다</string>
+    <string name="ERROR_TOKEN_NOT_ENOUGH_MONEY">원화 지갑에 잔액이 부족합니다</string>
+    <string name="ERROR_TOKEN_NOT_ENOUGH_TOKEN">BWX 지갑에 잔액이 부족합니다</string>
     <string name="ERROR_EXCHANGE_NOT_SUPPORTED">지원하지 않는 화폐입니다</string>
     <string name="ERROR_BEP_NO_WALLET">원화 지갑이 존재하지 않습니다</string>
     <string name="ERROR_JWT_EXPIRED_TOKEN">시간 초과하였습니다. 확인후 다시 시도해주세요.</string>
