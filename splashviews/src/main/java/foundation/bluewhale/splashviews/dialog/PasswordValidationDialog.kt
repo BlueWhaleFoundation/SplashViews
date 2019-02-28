@@ -22,6 +22,7 @@ import foundation.bluewhale.splashviews.model.PasswordViewColors
 import foundation.bluewhale.splashviews.security.FingerPrintTool
 import foundation.bluewhale.splashviews.widget.PasswordView
 import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.dialog_password_validation.*
 import java.util.concurrent.TimeUnit
@@ -56,7 +57,7 @@ class PasswordValidationDialog() : DialogFragment() {
         ): PasswordValidationDialog {
             return make(
                 context
-                , false
+                , true
                 , title
                 , cancelable
                 , statusChangeListener
@@ -98,6 +99,16 @@ class PasswordValidationDialog() : DialogFragment() {
 
         fun onKeyPressed(dialog: DialogInterface, keyCode: Int, event: KeyEvent)
     }
+
+    interface CancelListener {
+        fun onCancel()
+    }
+
+    private var cancelListener: CancelListener? = null
+    fun setCancelListener(cancelListener: CancelListener) {
+        this.cancelListener = cancelListener
+    }
+
 
     fun setKeepOpenWhenDone(keepOpenWhenDone: Boolean) {
         this.keepOpenWhenDone = keepOpenWhenDone
@@ -142,10 +153,10 @@ class PasswordValidationDialog() : DialogFragment() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (isLightStatusBarIcon) {
                     it.decorView.systemUiVisibility =
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
                 } else {
                     it.decorView.systemUiVisibility =
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 }
 
                 it.statusBarColor = Color.TRANSPARENT
@@ -170,9 +181,13 @@ class PasswordValidationDialog() : DialogFragment() {
                     Single.just(true)
                         .delay(500, TimeUnit.MILLISECONDS)
                         //.throttleFirst(1, TimeUnit.SECONDS)
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { empty ->
                             if (statusChangeListener != null)
                                 statusChangeListener!!.onKeyPressed(dialog, keyCode, event)
+                            cancelListener?.also {
+                                it.onCancel()
+                            }
                             dismiss()
                         })
             }
@@ -210,7 +225,12 @@ class PasswordValidationDialog() : DialogFragment() {
         _disposables!!.add(
             RxView.clicks(iv_close)
                 .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe { empty -> dismiss() })
+                .subscribe { empty ->
+                    cancelListener?.also {
+                        it.onCancel()
+                    }
+                    dismiss()
+                })
 
         _disposables!!.add(
             RxView.clicks(tv_gotoBackup)
@@ -243,7 +263,7 @@ class PasswordValidationDialog() : DialogFragment() {
         }
 
         if (passwordViewColors != null) {
-            passwordView.setPasswordViewColors(passwordViewColors)
+            passwordView.setPasswordViewColors(passwordViewColors!!)
             tv_title.setTextColor(passwordViewColors!!.pwTextColor)
             iv_close.setColorFilter(passwordViewColors!!.pwTextColor, PorterDuff.Mode.MULTIPLY)
             fingerprint_status.setTextColor(passwordViewColors!!.pwTextColor)
@@ -383,6 +403,12 @@ class PasswordValidationDialog() : DialogFragment() {
                 fingerprintView?.visibility = View.GONE
                 passwordView?.visibility = View.VISIBLE
             }
+        }
+    }
+
+    override fun onCancel(dialog: DialogInterface?) {
+        cancelListener?.also {
+            it.onCancel()
         }
     }
 }

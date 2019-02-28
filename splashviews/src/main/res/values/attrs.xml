@@ -43,8 +43,10 @@
             <enum name="email" value="32" />
             <enum name="numberPassword" value="-2" />
         </attr>
+        <attr name="leftIconDrawable" format="reference" />
         <attr name="errorGoneOnCreate" format="boolean" />
         <attr name="showClearButton" format="boolean" />
+        <attr name="clearButtonColor" format="color" />
         <attr name="rightButtonDrawable" format="reference" />
         <attr name="maxLength" format="integer" />
         <attr name="intputTextColor" format="color" />
@@ -56,6 +58,10 @@
         <attr name="errorTextSize" format="dimension" />
         <attr name="errorText" format="string" />
         <attr name="underlineColor" format="color" />
+        <attr name="underlineType" format="integer">
+            <enum name="underline" value="0" />
+            <enum name="stroke" value="1" />
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="BWCashText">
