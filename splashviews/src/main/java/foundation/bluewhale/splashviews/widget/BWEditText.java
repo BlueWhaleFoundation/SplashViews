@@ -3,7 +3,9 @@ package foundation.bluewhale.splashviews.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
@@ -20,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import foundation.bluewhale.splashviews.R;
 import foundation.bluewhale.splashviews.util.NumberTool;
+import foundation.bluewhale.splashviews.util.ViewTool;
 import io.reactivex.disposables.CompositeDisposable;
 
 import java.math.BigDecimal;
@@ -46,6 +49,13 @@ public class BWEditText extends RelativeLayout {
     int rightButtonDrawable;
     boolean showClearButton;
     boolean errorGoneOnCreate;
+    int leftIconDrawable;
+    int underlineType;
+    int clearButtonColor;
+    class UnderlineType{
+        public static final int underline = 0;
+        public static final int stroke = 1;
+    }
 
     private static final int TEXT = 1;
     private static final int NUMBER = 2;
@@ -93,11 +103,16 @@ public class BWEditText extends RelativeLayout {
         ta = context.obtainStyledAttributes(attrs, R.styleable.BWEditText);
         if (ta != null) {
             Resources resources = getResources();
+            leftIconDrawable = ta.getResourceId(R.styleable.BWEditText_leftIconDrawable, 0);
             errorGoneOnCreate = ta.getBoolean(R.styleable.BWEditText_errorGoneOnCreate, false);
             showClearButton = ta.getBoolean(R.styleable.BWEditText_showClearButton, false);
+
+            int color = ColorUtils.setAlphaComponent(ContextCompat.getColor(context, R.color.colorWhite), 128);
+            clearButtonColor = ta.getColor(R.styleable.BWEditText_clearButtonColor, color);
             rightButtonDrawable = ta.getResourceId(R.styleable.BWEditText_rightButtonDrawable, 0);
             inputType = ta.getInt(R.styleable.BWEditText_inputType, InputType.TYPE_CLASS_NUMBER);
 
+            underlineType = ta.getInt(R.styleable.BWEditText_underlineType, UnderlineType.underline);
             underlineColor = ta.getColor(R.styleable.BWEditText_underlineColor, ContextCompat.getColor(context, R.color.colorWhite));
             underlineColorDiabled = ColorUtils.setAlphaComponent(underlineColor, 128);
 
@@ -140,10 +155,14 @@ public class BWEditText extends RelativeLayout {
     protected CompositeDisposable _disposables;
 
     TextInputEditText et_text;
-    View ib_clear;
+    IconImageView iiv_clear;
+    View button_clear;
     ImageButton ib_button;
     TextView tv_hint, tv_error;
     View v_underline;
+    View v_content;
+    IconImageView iv_left;
+
     String result = "";
     String original = "";
 
@@ -153,7 +172,8 @@ public class BWEditText extends RelativeLayout {
         LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = li.inflate(R.layout.widget_edit_text, this, false);
         addView(view);
-
+        v_content = view.findViewById(R.id.v_content);
+        iv_left = view.findViewById(R.id.iv_left);
         v_underline = view.findViewById(R.id.v_underline);
         et_text = view.findViewById(R.id.et_text);
         //et_text.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -181,11 +201,6 @@ public class BWEditText extends RelativeLayout {
                 break;
         }
 
-//        if (underlineColor != 0)
-//            v_underline.setBackgroundColor(underlineColor);
-//        else
-        v_underline.setBackgroundColor(underlineColorDiabled);
-
         if (textColor != 0)
             et_text.setTextColor(textColor);
 
@@ -199,11 +214,18 @@ public class BWEditText extends RelativeLayout {
         if (rightButtonDrawable != 0)
             ib_button.setImageResource(rightButtonDrawable);
 
+        if (leftIconDrawable != 0) {
+            iv_left.setVisibility(View.VISIBLE);
+            iv_left.setImageResource(leftIconDrawable);
+        }
+
         ib_button.setVisibility(rightButtonDrawable != 0 ? View.VISIBLE : View.GONE);
 
-        ib_clear = view.findViewById(R.id.ib_clear);
+        button_clear = view.findViewById(R.id.button_clear);
+        iiv_clear = view.findViewById(R.id.iiv_clear);
+        iiv_clear.setBackground(new ColorCircleDrawable(clearButtonColor));
 
-        ib_clear.setOnClickListener(v -> et_text.setText(""));
+        button_clear.setOnClickListener(v -> et_text.setText(""));
 
         tv_hint = view.findViewById(R.id.tv_hint);
         if (!TextUtils.isEmpty(hintText))
@@ -273,9 +295,11 @@ public class BWEditText extends RelativeLayout {
         et_text.addTextChangedListener(getTextWatcher());
 
         Log.e("RegisterInfo", "Widget.view.name: " + et_text.getText().toString());
+
+        setHelperViews(false);
     }
 
-    void setRightButtonClickListener(OnClickListener l){
+    public void setRightButtonClickListener(OnClickListener l){
         ib_button.setOnClickListener(l);
     }
 
@@ -359,12 +383,24 @@ public class BWEditText extends RelativeLayout {
 
     void setHelperViews(boolean hasText) {
         if (showClearButton)
-            ib_clear.setVisibility(hasText ? View.VISIBLE : View.INVISIBLE);
+            button_clear.setVisibility(hasText ? View.VISIBLE : View.INVISIBLE);
         else
-            ib_clear.setVisibility(View.GONE);
+            button_clear.setVisibility(View.GONE);
 
         tv_hint.setVisibility(hasText ? View.GONE : View.VISIBLE);
-        v_underline.setBackgroundColor(hasText ? underlineColor : underlineColorDiabled);
+
+        if(underlineType==UnderlineType.underline) {
+            v_underline.setBackgroundColor(hasText ? underlineColor : underlineColorDiabled);
+            v_content.setBackground(null);
+        }else{
+            v_underline.setBackgroundColor(0);
+            GradientDrawable gd = new GradientDrawable();
+            gd.setColor(Color.TRANSPARENT);
+            //gd.setCornerRadius(10);
+            gd.setStroke(ViewTool.Companion.getPixel(getContext(), 1), hasText ? underlineColor : underlineColorDiabled);
+            v_content.setBackground(gd);
+            //gd.setShape(GradientDrawable.OVAL);
+        }
     }
 
     public void setTextView(String text) {

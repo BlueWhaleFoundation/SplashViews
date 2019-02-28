@@ -94,10 +94,14 @@ class FeatureListFragment : BaseFragment() {
 
                             }
 
-                            fun makeToast(text: String) {
-                                Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-                            }
+
                         })
+                    d.setCancelListener(object:PasswordValidationDialog.CancelListener{
+                        override fun onCancel() {
+                            makeToast("onCancel(): ")
+                        }
+
+                    })
                     d.show(childFragmentManager, "비밀번호")
                     d.setPasswordViewColors(
                         PasswordViewColors(
@@ -110,5 +114,9 @@ class FeatureListFragment : BaseFragment() {
                 }
             }
         }
+    }
+
+    fun makeToast(text: String) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 }
