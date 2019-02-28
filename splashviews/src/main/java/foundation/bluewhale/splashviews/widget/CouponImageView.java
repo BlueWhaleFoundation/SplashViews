@@ -80,8 +80,7 @@ public class CouponImageView extends AppCompatImageView {
 
     public void setImageColor(int imageColor) {
         this.imageColor = imageColor;
-
-        paint.setColor(ContextCompat.getColor(mContext, imageColor));
+        paint.setColor(imageColor);
         //paint.setColor(ContextCompat.getColor(mContext, foundation.bluewhale.splash.R.color.colorBlueGreen));
         mCanvas.drawPath(path,paint);
     }
