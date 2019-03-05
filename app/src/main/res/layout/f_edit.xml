@@ -25,7 +25,6 @@
         <foundation.bluewhale.splashviews.widget.BWEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:leftIconDrawable="@drawable/search_wh"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             app:underlineType="1"
@@ -52,9 +51,18 @@
             app:inputType="email"/>
 
         <foundation.bluewhale.splashviews.widget.BWEditText
-            android:layout_width="70dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:inputType="phone"
+            app:hintText=""
+            app:maxLength="10"
+            app:hintTextSize="16sp"
+            app:inputTextSize="16sp"/>
+
+        <foundation.bluewhale.splashviews.widget.BWEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:inputType="point"
             app:hintText=""
             app:maxLength="10"
             app:hintTextSize="16sp"
