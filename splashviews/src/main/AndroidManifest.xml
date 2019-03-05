@@ -2,7 +2,7 @@
           package="foundation.bluewhale.splashviews">
 
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-    <!--<uses-permission android:name="android.permission.RECEIVE_SMS" />-->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application>
         <receiver android:name=".receiver.SmsReciever" android:enabled="true">
