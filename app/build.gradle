@@ -43,7 +43,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
+    //debugImplementation 'androidx.fragment:fragment:1.0.0'
     debugImplementation 'androidx.fragment:fragment-testing:1.1.0-alpha04'
-    debugImplementation 'androidx.fragment:fragment:1.0.0'
 
 }

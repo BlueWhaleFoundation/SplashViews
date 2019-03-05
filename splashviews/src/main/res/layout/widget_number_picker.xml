@@ -92,7 +92,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/v_down"
         app:layout_constraintRight_toRightOf="@+id/v_down"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:foreground="?attr/selectableItemBackgroundBorderless"/>
+        android:foreground="?android:attr/selectableItemBackground"/>
 
     <View
         android:id="@+id/btn_up"
@@ -102,7 +102,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/v_up"
         app:layout_constraintRight_toRightOf="@+id/v_up"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:foreground="?attr/selectableItemBackgroundBorderless" />
+        android:foreground="?android:attr/selectableItemBackground" />
     <!--android:background="#6e000000"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
