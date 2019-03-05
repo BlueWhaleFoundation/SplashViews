@@ -39,7 +39,7 @@
                 android:textSize="16sp"
                 app:fontFamily="@font/notosans_cjkkr_regular"/>
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

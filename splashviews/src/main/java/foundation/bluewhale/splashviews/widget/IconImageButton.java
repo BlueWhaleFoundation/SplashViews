@@ -3,8 +3,8 @@ package foundation.bluewhale.splashviews.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatImageButton;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 import foundation.bluewhale.splashviews.R;
 

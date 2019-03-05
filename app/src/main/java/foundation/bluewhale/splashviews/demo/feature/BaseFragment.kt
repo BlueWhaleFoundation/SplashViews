@@ -1,9 +1,9 @@
 package foundation.bluewhale.splashviews.demo.feature
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import foundation.bluewhale.splashviews.demo.MainActivity
 
-abstract class BaseFragment:Fragment() {
+abstract class BaseFragment: androidx.fragment.app.Fragment() {
     abstract fun getTAG():String
 
     abstract fun getTitle():String
