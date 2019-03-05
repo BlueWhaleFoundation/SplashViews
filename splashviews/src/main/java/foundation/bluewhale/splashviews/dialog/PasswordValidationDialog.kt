@@ -6,9 +6,9 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.content.ContextCompat
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat
+import androidx.fragment.app.DialogFragment
+import androidx.core.content.ContextCompat
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -27,7 +27,7 @@ import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.dialog_password_validation.*
 import java.util.concurrent.TimeUnit
 
-class PasswordValidationDialog() : DialogFragment() {
+class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
     companion object {
         fun make(
             context: Context,
@@ -127,7 +127,7 @@ class PasswordValidationDialog() : DialogFragment() {
         super.onCreate(savedInstanceState)
 
         retainInstance = true
-        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.LibTheme_NoActionBar)
+        setStyle(androidx.fragment.app.DialogFragment.STYLE_NO_TITLE, R.style.LibTheme_NoActionBar)
 
         if (FingerprintUiHelper.isSecureAuthAvailable(context)
             && FingerPrintSaver.isUseFingerPrint(context)

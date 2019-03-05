@@ -2,9 +2,9 @@ package foundation.bluewhale.splashviews.demo
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -38,10 +38,13 @@ class FeatureListFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val layoutManager = LinearLayoutManager(context)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
 
-        var deco = DividerItemDecoration(activity, LinearLayoutManager.VERTICAL)
+        var deco = androidx.recyclerview.widget.DividerItemDecoration(
+            activity,
+            androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+        )
         deco.setDrawable(ContextCompat.getDrawable(context!!, R.drawable.divider)!!)
         recyclerView.addItemDecoration(deco)
 

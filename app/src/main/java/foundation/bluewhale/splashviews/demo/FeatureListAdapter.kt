@@ -1,13 +1,13 @@
 package foundation.bluewhale.splashviews.demo
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
 
-class FeatureListAdapter(val list: ArrayList<ListData>, var onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<FeatureListAdapter.ViewHolder>() {
+class FeatureListAdapter(val list: ArrayList<ListData>, var onItemClickListener: OnItemClickListener) : androidx.recyclerview.widget.RecyclerView.Adapter<FeatureListAdapter.ViewHolder>() {
     companion object {
         data class ListData(val index: Int, val text: String)
     }
@@ -30,7 +30,7 @@ class FeatureListAdapter(val list: ArrayList<ListData>, var onItemClickListener:
         vh.tv.text = list[p1].text
     }
 
-    inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView),
+    inner class ViewHolder internal constructor(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
         internal var tv: TextView
 

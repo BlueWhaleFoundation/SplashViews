@@ -1,7 +1,7 @@
 package foundation.bluewhale.splashviews.util
 
 import android.content.Context
-import android.support.v4.content.res.ResourcesCompat
+import androidx.core.content.res.ResourcesCompat
 import android.widget.TextView
 import foundation.bluewhale.splashviews.R
 
