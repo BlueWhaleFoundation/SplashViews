@@ -1,15 +1,15 @@
 package foundation.bluewhale.splashviews.demo
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import android.view.inputmethod.InputMethodManager
 import foundation.bluewhale.splashviews.demo.feature.BaseFragment
 
 class MainActivity : AppCompatActivity() {
-    lateinit var rFragmentManager: FragmentManager
+    lateinit var rFragmentManager: androidx.fragment.app.FragmentManager
     private var rFragment: BaseFragment? = null
 
     override fun onDestroy() {
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(FeatureListFragment())
     }
 
-    private val mOnBackStackChangedListener = FragmentManager.OnBackStackChangedListener {
+    private val mOnBackStackChangedListener = androidx.fragment.app.FragmentManager.OnBackStackChangedListener {
         try {
             val fragmentCount = rFragmentManager.backStackEntryCount
             if (fragmentCount > 0) {
@@ -82,11 +82,11 @@ class MainActivity : AppCompatActivity() {
 
             val ft = rFragmentManager.beginTransaction()
             val backStackCount = rFragmentManager.backStackEntryCount
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            ft.setTransition(androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
             if (removingChildFragments
                 && backStackCount > 0) {
-                rFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                rFragmentManager.popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
             }
 
             if (backStackCount > 0) {
