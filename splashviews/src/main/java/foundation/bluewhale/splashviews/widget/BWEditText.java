@@ -52,7 +52,8 @@ public class BWEditText extends RelativeLayout {
     int leftIconDrawable;
     int underlineType;
     int clearButtonColor;
-    class UnderlineType{
+
+    class UnderlineType {
         public static final int underline = 0;
         public static final int stroke = 1;
     }
@@ -154,6 +155,7 @@ public class BWEditText extends RelativeLayout {
 
     protected CompositeDisposable _disposables;
 
+    RelativeLayout v_input;
     TextInputEditText et_text;
     IconImageView iiv_clear;
     View button_clear;
@@ -172,6 +174,7 @@ public class BWEditText extends RelativeLayout {
         LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = li.inflate(R.layout.widget_edit_text, this, false);
         addView(view);
+        v_input = view.findViewById(R.id.v_input);
         v_content = view.findViewById(R.id.v_content);
         iv_left = view.findViewById(R.id.iv_left);
         v_underline = view.findViewById(R.id.v_underline);
@@ -299,7 +302,7 @@ public class BWEditText extends RelativeLayout {
         setHelperViews(false);
     }
 
-    public void setRightButtonClickListener(OnClickListener l){
+    public void setRightButtonClickListener(OnClickListener l) {
         ib_button.setOnClickListener(l);
     }
 
@@ -336,6 +339,8 @@ public class BWEditText extends RelativeLayout {
                             case POINT:
                                 original = s.toString().replaceAll(",", "").replaceAll("-", "");
                                 if (s.toString().equals("0") || s.toString().equals(""))
+                                    result = "";
+                                else if (Double.parseDouble(original) == 0)
                                     result = "";
                                 else
                                     result = NumberTool.convert(BigDecimal.valueOf(Double.parseDouble(original)));
@@ -389,11 +394,13 @@ public class BWEditText extends RelativeLayout {
 
         tv_hint.setVisibility(hasText ? View.GONE : View.VISIBLE);
 
-        if(underlineType==UnderlineType.underline) {
+        if (underlineType == UnderlineType.underline) {
             v_underline.setBackgroundColor(hasText ? underlineColor : underlineColorDiabled);
+            v_input.setPadding(0, 0, 0, 0);
             v_content.setBackground(null);
-        }else{
+        } else {
             v_underline.setBackgroundColor(0);
+            v_input.setPadding(ViewTool.Companion.getPixel(getContext(), 10), 0, ViewTool.Companion.getPixel(getContext(), 10), 0);
             GradientDrawable gd = new GradientDrawable();
             gd.setColor(Color.TRANSPARENT);
             //gd.setCornerRadius(10);
