@@ -16,18 +16,15 @@
 
 package foundation.bluewhale.splashviews.fingerprint;
 
-import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat.AuthenticationCallback;
-import android.support.v4.os.CancellationSignal;
+import androidx.core.content.ContextCompat;
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat.AuthenticationCallback;
+import androidx.core.os.CancellationSignal;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
