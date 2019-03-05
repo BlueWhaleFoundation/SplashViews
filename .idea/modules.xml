@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SplashViews.iml" filepath="$PROJECT_DIR$/.idea/SplashViews.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SplashViewsDemo.iml" filepath="$PROJECT_DIR$/SplashViewsDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/splashviews/splashviews.iml" filepath="$PROJECT_DIR$/splashviews/splashviews.iml" />
     </modules>

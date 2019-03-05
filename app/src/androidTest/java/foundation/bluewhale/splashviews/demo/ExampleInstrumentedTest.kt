@@ -9,6 +9,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.runner.AndroidJUnit4
 import foundation.bluewhale.splashviews.demo.feature.CashFragment
+import foundation.bluewhale.splashviews.demo.feature.EditFragment
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -28,7 +29,7 @@ class ExampleInstrumentedTest {
         val factory = object : FragmentFactory() {
             override fun instantiate(classLoader: ClassLoader, className: String,
                                      args: Bundle?): Fragment {
-                return CashFragment()
+                return EditFragment()
             }
         }
         val f = object:FragmentFactory(){}
@@ -38,11 +39,11 @@ class ExampleInstrumentedTest {
             putInt("selectedListItem", 0)
         }
         //val factory = RegisterInformationFragment.getInstanceForSignUp(true)
-        val scenario = launchFragmentInContainer<CashFragment>()
+        val scenario = launchFragmentInContainer<EditFragment>()
             //fragmentArgs, factory)
         Thread.sleep(2000)
         //scenario.moveToState(Lifecycle.State.CREATED)
-        Espresso.onView(ViewMatchers.withId(R.id.tvn_ame))
-            .check(ViewAssertions.matches(ViewMatchers.withText("BWCashText")))
+        Espresso.onView(ViewMatchers.withId(R.id.tv_name))
+            .check(ViewAssertions.matches(ViewMatchers.withText("BWEditText")))
     }
 }
