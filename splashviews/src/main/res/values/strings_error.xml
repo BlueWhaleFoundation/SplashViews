@@ -105,4 +105,7 @@
     <string name="ERROR_NICE_0079">간편인증 시스템 오류</string>
     <string name="ERROR_NICE_9097">인증번호 3회 불일치</string>
     <string name="ERROR_NICE_else">NICE 기타오류</string>
+
+    <string name="EXTERNAL_SERVER_ERROR">외부 서버 오류</string>
+
 </resources>
