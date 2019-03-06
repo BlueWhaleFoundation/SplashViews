@@ -28,11 +28,16 @@ public class ServerErrorState {
         return "DEPRECATED_VERSION".equals(errorMessage);
     }
 
-    public boolean isNotAuthorizedUser(){
+    //Depreacated
+    /*public boolean isNotAuthorizedUser(){
         return "AUTH.NOT_AUTHORIZED".equals(errorMessage)
                 || "AUTH.VALIDATION_OUTDATED".equals(errorMessage)
                 || "USER.INVALID_USER".equals(errorMessage);
+    }*/
+    public boolean isNotAuthorizedUser(){
+        return "AUTHENTICATION_FAILED".equals(errorMessage);
     }
+
     public boolean isInvalidPassword(){
         return "AUTH.INVALID_PASSWORD".equals(errorMessage);
     }
