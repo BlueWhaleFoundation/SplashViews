@@ -131,6 +131,9 @@ public class BaseNetErrorHandler {
             case "INTERNAL_SERVER_ERROR":
                 return R.string.error_unhandled_message;
 
+            case "EXTERNAL_SERVER_ERROR":
+                return R.string.EXTERNAL_SERVER_ERROR;
+
 
             default: {
                 if (!com.google.common.base.Strings.isNullOrEmpty(message) && message.contains("NICE.")) {
