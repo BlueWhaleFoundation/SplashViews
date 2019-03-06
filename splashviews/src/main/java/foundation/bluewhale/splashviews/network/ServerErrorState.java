@@ -48,6 +48,11 @@ public class ServerErrorState {
         return "USER.NO_USER".equals(errorMessage);
     }
 
+    public boolean cannotAccessToBusiness(){
+        return "UNAUTHORIZED_JWT_ROLE".equals(errorMessage);
+    }
+
+
     public boolean cannotPurchase(){
         return "TICKET.NOT_ENOUGH_TICKETS".equals(errorMessage)
                 || "TICKET.ALREADY_BOUGHT".equals(errorMessage)
