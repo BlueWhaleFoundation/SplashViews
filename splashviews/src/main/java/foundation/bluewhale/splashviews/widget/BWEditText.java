@@ -410,6 +410,11 @@ public class BWEditText extends RelativeLayout {
         }
     }
 
+    public void setShowClearButton(boolean showClearButton){
+        this.showClearButton = showClearButton;
+        setHelperViews(result.length() > 0);
+    }
+
     public void setTextView(String text) {
         result = text;
         if (result != null)
