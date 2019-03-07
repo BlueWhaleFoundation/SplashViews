@@ -38,6 +38,11 @@ public class ServerErrorState {
         return "AUTHENTICATION_FAILED".equals(errorMessage);
     }
 
+    public boolean hasNoRole(){
+        return "UNAUTHORIZED_ROUTE".equals(errorMessage);
+    }
+
+
     public boolean isInvalidPassword(){
         return "AUTH.INVALID_PASSWORD".equals(errorMessage);
     }
