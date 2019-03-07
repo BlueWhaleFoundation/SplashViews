@@ -134,6 +134,7 @@ public class BaseNetErrorHandler {
             case "EXTERNAL_SERVER_ERROR":
                 return R.string.EXTERNAL_SERVER_ERROR;
 
+            //Ignore "UNAUTHORIZED_RESOURCE_ACCESS" so that the universial error message will show up
 
             default: {
                 if (!com.google.common.base.Strings.isNullOrEmpty(message) && message.contains("NICE.")) {
