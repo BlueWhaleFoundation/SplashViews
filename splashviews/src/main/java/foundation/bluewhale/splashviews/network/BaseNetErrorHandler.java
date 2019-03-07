@@ -30,6 +30,9 @@ public class BaseNetErrorHandler {
             case "REGISTER.EXIST_EMAIL":
                 return R.string.ERROR_REGISTER_EXIST_EMAIL;
 
+            case "QRCODE.PRICE_IS_REQUIRED":
+                return R.string.ERROR_QRCODE_PRICE_IS_REQUIRED;
+
             case "PAYMENT.NO_MATCHING_BUSINESS":
                 return R.string.ERROR_PAYMENT_NO_MATCHING_BUSINESS;
             case "PAYMENT.NO_BUYER":

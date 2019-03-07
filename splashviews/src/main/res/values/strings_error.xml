@@ -7,6 +7,7 @@
     <string name="ERROR_REGISTER_EXIST_EMAIL">이미 다른 유저가 사용중인 이메일 주소 입니다.</string>
     <string name="ERROR_PAYMENT_NO_MATCHING_BUSINESS">해당업체가 존재하지 않습니다.</string>
 
+    <string name="ERROR_QRCODE_PRICE_IS_REQUIRED">결제금액이 입력되지 않았습니다</string>
     <string name="ERROR_PAYMENT_NO_BUYER">해당 유저가(구매자) 존재하지 않습니다</string>
     <string name="ERROR_PAYMENT_INVALID_BUYER">유효하지 않은 구매자 입니다</string>
     <string name="ERROR_PAYMENT_NO_PAYMENT">결제 정보가 존재하지 않습니다</string>
