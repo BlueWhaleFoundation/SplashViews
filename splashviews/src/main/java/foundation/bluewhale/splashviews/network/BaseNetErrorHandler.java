@@ -48,8 +48,8 @@ public class BaseNetErrorHandler {
 
             case "TRANSFER.NO_SENDER":
                 return R.string.ERROR_TRANSFER_NO_SENDER;
-            case "TRANSFER.NO_TO_USE":
-                return R.string.ERROR_TRANSFER_NO_TO_USE;
+            case "TRANSFER.NO_TO_USER":
+                return R.string.ERROR_TRANSFER_NO_TO_USER;
             case "TRANSFER.NO_PAYMENT_AMOUNT":
                 return R.string.ERROR_TRANSFER_NO_PAYMENT_AMOUNT;
             case "TRANSFER.NO_CURRENCY":
@@ -66,6 +66,8 @@ public class BaseNetErrorHandler {
                 return R.string.ERROR_TRANSFER_ALREADY_REGISTERED;
             case "TRANSFER.TRANSACTION_MAX_FAIL":
                 return R.string.ERROR_TRANSFER_TRANSACTION_MAX_FAIL;
+            case "TRANSFER.TRANSFER_TO_SELF":
+                return R.string.ERROR_TRANSFER_TRANSFER_TO_SELF;
 
             case "USER.NOT_ENOUGH_MONEY":
                 return R.string.ERROR_USER_NOT_ENOUGH_MONEY;
