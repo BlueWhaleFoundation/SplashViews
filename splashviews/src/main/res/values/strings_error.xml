@@ -1,11 +1,13 @@
 <resources>
-    <string name="ERROR_USER_NO_USER">유저가 존재하지 않습니다.</string>
-    <string name="ERROR_USER_EXIST_TEL">전화번호가 일치하지 않습니다.</string>
-    <string name="ERROR_INVALID_PASSWORD">비밀번호가 일치하지 않습니다.</string>
-    <string name="ERROR_PAYMENT_NOT_ENOUGH_MONEY">잔액이 부족합니다.</string>
-    <string name="ERROR_REGISTER_EXIST_TEL">이미 다른 유저가 사용중인 전화번호 입니다.</string>
-    <string name="ERROR_REGISTER_EXIST_EMAIL">이미 다른 유저가 사용중인 이메일 주소 입니다.</string>
-    <string name="ERROR_PAYMENT_NO_MATCHING_BUSINESS">해당업체가 존재하지 않습니다.</string>
+    <string name="ERROR_VERSION_DEPRECATED_VERSION">앱 업데이트가 필요합니다</string>
+
+    <string name="ERROR_USER_NO_USER">유저가 존재하지 않습니다</string>
+    <string name="ERROR_USER_EXIST_TEL">전화번호가 일치하지 않습니다</string>
+    <string name="ERROR_INVALID_PASSWORD">비밀번호가 일치하지 않습니다</string>
+    <string name="ERROR_PAYMENT_NOT_ENOUGH_MONEY">잔액이 부족합니다</string>
+    <string name="ERROR_REGISTER_EXIST_TEL">이미 다른 유저가 사용중인 전화번호 입니다</string>
+    <string name="ERROR_REGISTER_EXIST_EMAIL">이미 다른 유저가 사용중인 이메일 주소 입니다</string>
+    <string name="ERROR_PAYMENT_NO_MATCHING_BUSINESS">해당업체가 존재하지 않습니다</string>
 
     <string name="ERROR_QRCODE_PRICE_IS_REQUIRED">결제금액이 입력되지 않았습니다</string>
     <string name="ERROR_PAYMENT_NO_BUYER">해당 구매자가 존재하지 않습니다</string>
@@ -54,16 +56,16 @@
     <string name="ERROR_TOKEN_NOT_ENOUGH_TOKEN">BWX 지갑에 잔액이 부족합니다</string>
     <string name="ERROR_EXCHANGE_NOT_SUPPORTED">지원하지 않는 화폐입니다</string>
     <string name="ERROR_BEP_NO_WALLET">원화 지갑이 존재하지 않습니다</string>
-    <string name="ERROR_JWT_EXPIRED_TOKEN">시간 초과하였습니다. 확인후 다시 시도해주세요.</string>
+    <string name="ERROR_JWT_EXPIRED_TOKEN">시간 초과하였습니다\n 확인후 다시 시도해주세요</string>
     <string name="ERROR_TRANSFER_NOT_REGISTERED_WALLET">BWX 지갑이 존재하지 않습니다</string>
     <string name="ERROR_EXCHANGE_LIMIT_EXCEED">환전 한도액 초과 (10만원)</string>
     <string name="ERROR_EXCHANGE_BWX_NOT_MULTIPLE_OF_1000">BWX는 1000의 배수로 입력되어야 합니다</string>
 
     <string name="ERROR_NO_QR_CODE">사용할 수 없는 QR 코드 입니다</string>
 
-    <string name="ERROR_NICE_AUTH_FAILED">본인인증에 실패했습니다. 입력한 정보를 확인해 주세요.</string>
-    <string name="ERROR_NICE_USED_TOKEN">본인인증에 실패했습니다. 다시 시도해 주세요.</string>
-    <string name="ERROR_NICE_INVALID_TOKEN">본인인증에 실패했습니다. 다시 시도해 주세요.</string>
+    <string name="ERROR_NICE_AUTH_FAILED">본인인증에 실패했습니다 입력한 정보를 확인해 주세요</string>
+    <string name="ERROR_NICE_USED_TOKEN">본인인증에 실패했습니다 다시 시도해 주세요</string>
+    <string name="ERROR_NICE_INVALID_TOKEN">본인인증에 실패했습니다 다시 시도해 주세요</string>
 
 
 
@@ -71,8 +73,8 @@
     <string name="error_invalid_password_normal">비밀번호가 %1$d회 틀렸습니다\n(%2$d/5)</string>
 
     <string name="error_no_connection">네트워크 연결을 확인하시기 바랍니다</string>
-    <string name="error_json_parsing">서버 장애가 생겼습니다. 관리자에게 문의해주세요.</string>
-    <string name="error_unhandled_message">예기치 못한 에러가 발생했습니다.</string>
+    <string name="error_json_parsing">서버 장애가 생겼습니다 관리자에게 문의해주세요</string>
+    <string name="error_unhandled_message">예기치 못한 에러가 발생했습니다</string>
 
     <string name="ERROR_NICE_0000">인증 성공</string>
     <string name="ERROR_NICE_0001">인증 불일치(통신사선택오류, 생년월일/성명/휴대폰번호 불일치, 휴대폰일시정지, 선불폰가입자, SMS발송실패, 인증문자불일치 등)</string>

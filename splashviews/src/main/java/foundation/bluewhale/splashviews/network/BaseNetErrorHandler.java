@@ -5,6 +5,9 @@ import foundation.bluewhale.splashviews.R;
 public class BaseNetErrorHandler {
     public static int makeErrorMessage(boolean isProductionVersion, String message) {
         switch (message) {
+            case "VERSION.DEPRECATED_VERSION":
+                return R.string.ERROR_VERSION_DEPRECATED_VERSION;
+
             case "USER.NO_USER":
                 return R.string.ERROR_USER_NO_USER;
             case "AUTH.INVALID_PASSWORD":

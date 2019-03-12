@@ -25,7 +25,7 @@ public class ServerErrorState {
     }
 
     public boolean isObsoleteVersion(){
-        return "DEPRECATED_VERSION".equals(errorMessage);
+        return "VERSION.DEPRECATED_VERSION".equals(errorMessage);
     }
 
     //Depreacated
