@@ -110,7 +110,8 @@ public final class CameraManager {
         if (!initialized) {
             initialized = true;
             configManager.initFromCameraParameters(theCamera);
-            configManager.setCameraPreview(new Point(holder.getSurfaceFrame().width(), holder.getSurfaceFrame().height()), theCamera.getCamera().getParameters());
+            Point bestPreviewSize = configManager.setCameraPreview(new Point(holder.getSurfaceFrame().width(), holder.getSurfaceFrame().height()), theCamera.getCamera().getParameters());
+            holder.setFixedSize(bestPreviewSize.x, bestPreviewSize.y);
 //            requestedFramingRectWidth =  holder.getSurfaceFrame().width();
 //            requestedFramingRectHeight =  holder.getSurfaceFrame().height();
             if (requestedFramingRectWidth > 0 && requestedFramingRectHeight > 0) {
