@@ -119,7 +119,12 @@ final class CameraConfigurationManager {
 
     Point theScreenResolution = new Point();
     display.getSize(theScreenResolution);
-    screenResolution = theScreenResolution;
+
+    setCameraPreview(theScreenResolution, parameters);
+  }
+
+  void setCameraPreview(Point viewPoint, Camera.Parameters parameters){
+    screenResolution = viewPoint;
     Log.i(TAG, "Screen resolution in current orientation: " + screenResolution);
     cameraResolution = CameraConfigurationUtils.findBestPreviewSizeValue(parameters, screenResolution);
     Log.i(TAG, "Camera resolution: " + cameraResolution);
@@ -135,6 +140,7 @@ final class CameraConfigurationManager {
       previewSizeOnScreen = new Point(bestPreviewSize.y, bestPreviewSize.x);
     }
     Log.i(TAG, "Preview size on screen: " + previewSizeOnScreen);
+
   }
 
   void setDesiredCameraParameters(OpenCamera camera, boolean safeMode) {
