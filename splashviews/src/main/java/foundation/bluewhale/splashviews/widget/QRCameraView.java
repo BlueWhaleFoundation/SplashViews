@@ -2,17 +2,9 @@ package foundation.bluewhale.splashviews.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import androidx.core.content.ContextCompat;
+import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.View;
-
 import com.google.zxing.ResultPoint;
 import foundation.bluewhale.splashviews.zxing.CameraManager;
 
@@ -43,7 +35,7 @@ public class QRCameraView extends View {
     int strokeSize;
 
     // This constructor is used when the class is built from an XML resource.
-    public QRCameraView(Context context){
+    public QRCameraView(Context context) {
         super(context);
         init();
     }
@@ -53,7 +45,7 @@ public class QRCameraView extends View {
         init();
     }
 
-    void init(){
+    void init() {
         setWillNotDraw(false);
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 

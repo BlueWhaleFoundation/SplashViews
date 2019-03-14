@@ -63,7 +63,8 @@ public final class CameraManager {
      * clear the handler so it will only receive one message.
      */
     private final PreviewCallback previewCallback;
-    private int yOffest;
+    private int yOffest = -1;
+    private int xOffest = -1;
 
     public CameraManager(Context context, int cameraSize, int yOffest) {
         this.context = context;
@@ -74,9 +75,19 @@ public final class CameraManager {
         this.yOffest = yOffest;
     }
 
+    public CameraManager(Context context, int cameraWidth, int cameraHeight, int xOffest, int yOffest) {
+        this.context = context;
+        MIN_FRAME_WIDTH = cameraWidth;
+        MIN_FRAME_HEIGHT = cameraHeight;
+        this.configManager = new CameraConfigurationManager(context);
+        previewCallback = new PreviewCallback(configManager);
+        this.yOffest = yOffest;
+    }
+
     public void updateScreenInfo(int cameraSize, int yOffest) {
         MIN_FRAME_WIDTH = cameraSize;
         MIN_FRAME_HEIGHT = cameraSize;
+        this.xOffest = xOffest;
         this.yOffest = yOffest;
     }
 
@@ -99,6 +110,9 @@ public final class CameraManager {
         if (!initialized) {
             initialized = true;
             configManager.initFromCameraParameters(theCamera);
+            configManager.setCameraPreview(new Point(holder.getSurfaceFrame().width(), holder.getSurfaceFrame().height()), theCamera.getCamera().getParameters());
+//            requestedFramingRectWidth =  holder.getSurfaceFrame().width();
+//            requestedFramingRectHeight =  holder.getSurfaceFrame().height();
             if (requestedFramingRectWidth > 0 && requestedFramingRectHeight > 0) {
                 setManualFramingRect(requestedFramingRectWidth, requestedFramingRectHeight);
                 requestedFramingRectWidth = 0;
@@ -128,6 +142,7 @@ public final class CameraManager {
                 }
             }
         }
+
         cameraObject.setPreviewDisplay(holder);
 
     }
@@ -234,9 +249,10 @@ public final class CameraManager {
 
             Log.e("CameraManager", "=======width: " + width + ", height: " + height);
 
-            int leftOffset = (screenResolution.x - width) / 2;
+
+            int leftOffset = xOffest < 0 ? (screenResolution.x - width) / 2 : xOffest;
             //int topOffset = (screenResolution.y - height) / 2;
-            int topOffset = yOffest;
+            int topOffset = yOffest < 0 ? (screenResolution.y - height) / 2 : yOffest;
             Log.e("CameraManager", "=======l: " + leftOffset + ", t: " + topOffset + ", t:" + (leftOffset + width) + ", b:" + (topOffset + height));
             framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
             Log.d(TAG, "Calculated framing rect: " + framingRect);
