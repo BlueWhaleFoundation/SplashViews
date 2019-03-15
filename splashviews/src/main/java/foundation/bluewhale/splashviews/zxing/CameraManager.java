@@ -63,40 +63,33 @@ public final class CameraManager {
      * clear the handler so it will only receive one message.
      */
     private final PreviewCallback previewCallback;
-    private int yOffest = -1;
-    private int xOffest = -1;
 
-    public CameraManager(Context context, int cameraSize, int yOffest) {
+    public CameraManager(Context context, int guideSize) {
         this.context = context;
-        MIN_FRAME_WIDTH = cameraSize;
-        MIN_FRAME_HEIGHT = cameraSize;
+        MIN_FRAME_WIDTH = guideSize;
+        MIN_FRAME_HEIGHT = guideSize;
         this.configManager = new CameraConfigurationManager(context);
         previewCallback = new PreviewCallback(configManager);
-        this.yOffest = yOffest;
     }
 
-    public CameraManager(Context context, int cameraWidth, int cameraHeight, int xOffest, int yOffest) {
+    public CameraManager(Context context, int guideWidth, int guideHeight) {
         this.context = context;
-        MIN_FRAME_WIDTH = cameraWidth;
-        MIN_FRAME_HEIGHT = cameraHeight;
+        MIN_FRAME_WIDTH = guideWidth;
+        MIN_FRAME_HEIGHT = guideHeight;
         this.configManager = new CameraConfigurationManager(context);
         previewCallback = new PreviewCallback(configManager);
-        this.xOffest = xOffest;
-        this.yOffest = yOffest;
     }
 
-    public void updateScreenInfo(int cameraSize, int yOffest) {
-        MIN_FRAME_WIDTH = cameraSize;
-        MIN_FRAME_HEIGHT = cameraSize;
-        this.yOffest = yOffest;
+    public void updateScreenInfo(int guideSize) {
+        MIN_FRAME_WIDTH = guideSize;
+        MIN_FRAME_HEIGHT = guideSize;
     }
 
-    public void updateScreenInfo(int cameraWidth, int cameraHeight, int xOffest, int yOffest) {
-        MIN_FRAME_WIDTH = cameraWidth;
-        MIN_FRAME_HEIGHT = cameraHeight;
-        this.xOffest = xOffest;
-        this.yOffest = yOffest;
+    public void updateScreenInfo(int guideWidth, int guideHeight) {
+        MIN_FRAME_WIDTH = guideWidth;
+        MIN_FRAME_HEIGHT = guideHeight;
     }
+
     /**
      * Opens the camera driver and initializes the hardware parameters.
      *
@@ -257,9 +250,8 @@ public final class CameraManager {
             Log.e("CameraManager", "=======width: " + width + ", height: " + height);
 
 
-            int leftOffset = xOffest < 0 ? (screenResolution.x - width) / 2 : xOffest;
-            //int topOffset = (screenResolution.y - height) / 2;
-            int topOffset = yOffest < 0 ? (screenResolution.y - height) / 2 : yOffest;
+            int leftOffset = (screenResolution.x - width) / 2;
+            int topOffset = (screenResolution.y - height) / 2;
             Log.e("CameraManager", "=======l: " + leftOffset + ", t: " + topOffset + ", t:" + (leftOffset + width) + ", b:" + (topOffset + height));
             framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
             Log.d(TAG, "Calculated framing rect: " + framingRect);
@@ -314,7 +306,7 @@ public final class CameraManager {
                 return null;
             }
 
-            Log.e("CameraManager", "=== cam.w:" + cameraResolution.x + ", cam.h: " + cameraResolution.y + ", scr.w: " + screenResolution.x + ", scr.y: " + screenResolution.y);
+            Log.e("CameraManager", "=== cam.w:" + cameraResolution.x + ", cam.h: " + cameraResolution.y + ", scr.w: " + screenResolution.x + ", scr.h: " + screenResolution.y);
 
             if (cameraPositionListener != null) {
 
@@ -359,18 +351,32 @@ public final class CameraManager {
 //            rect.top = rect.top * camHeight / screenHeight;
 //            rect.bottom = rect.bottom * camHeight / screenHeight;
 
-            rect.left = 0;
-            rect.right = cameraResolution.x;
-            rect.top = 0;
-            rect.bottom = cameraResolution.y;
-
+//            rect.left = 0;
+//            rect.right = cameraResolution.x;
+//            rect.top = 0;
+//            rect.bottom = cameraResolution.y;
 
 //            rect.left = rect.left * cameraResolution.x / screenWidth;
 //            rect.right = rect.right * cameraResolution.x / screenWidth;
 //            rect.top = rect.top * cameraResolution.y / screenHeight;
 //            rect.bottom = rect.bottom * cameraResolution.y / screenHeight;
 
-            Log.e("CameraManager", "=== later left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
+            float screenRate = (float) screenWidth / (float) screenHeight;
+            float camRate = (float) camWidth / (float) camHeight;
+
+            if (camRate > screenRate) {
+                rect.left = (int) ((float) camWidth - ((float) camHeight * screenRate)) / 2;
+                rect.right = rect.left + camWidth;
+                rect.top = 0;
+                rect.bottom = rect.top + camHeight;
+            }else if(camRate < screenRate){
+                rect.left = (int) ((float) camHeight - ((float) camWidth / screenRate)) / 2;
+                rect.right = rect.left + camHeight;
+                rect.top = 0;
+                rect.bottom = rect.top + camHeight;
+            }
+
+                Log.e("CameraManager", "=== later left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
             framingRectInPreview = rect;
         }
         return framingRectInPreview;
