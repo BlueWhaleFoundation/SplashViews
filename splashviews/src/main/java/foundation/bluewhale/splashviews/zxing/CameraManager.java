@@ -81,16 +81,22 @@ public final class CameraManager {
         MIN_FRAME_HEIGHT = cameraHeight;
         this.configManager = new CameraConfigurationManager(context);
         previewCallback = new PreviewCallback(configManager);
+        this.xOffest = xOffest;
         this.yOffest = yOffest;
     }
 
     public void updateScreenInfo(int cameraSize, int yOffest) {
         MIN_FRAME_WIDTH = cameraSize;
         MIN_FRAME_HEIGHT = cameraSize;
-        this.xOffest = xOffest;
         this.yOffest = yOffest;
     }
 
+    public void updateScreenInfo(int cameraWidth, int cameraHeight, int xOffest, int yOffest) {
+        MIN_FRAME_WIDTH = cameraWidth;
+        MIN_FRAME_HEIGHT = cameraHeight;
+        this.xOffest = xOffest;
+        this.yOffest = yOffest;
+    }
     /**
      * Opens the camera driver and initializes the hardware parameters.
      *
