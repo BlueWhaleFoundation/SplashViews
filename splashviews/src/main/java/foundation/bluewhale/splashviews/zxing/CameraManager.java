@@ -364,12 +364,12 @@ public final class CameraManager {
             float screenRate = (float) screenWidth / (float) screenHeight;
             float camRate = (float) camWidth / (float) camHeight;
 
-            if (camRate > screenRate) {
+            if (camRate < screenRate) {
                 rect.left = (int) ((float) camWidth - ((float) camHeight * screenRate)) / 2;
                 rect.right = rect.left + camWidth;
                 rect.top = 0;
                 rect.bottom = camHeight;
-            }else if(camRate < screenRate){
+            }else if(camRate > screenRate){
                 rect.left = 0;
                 rect.right = camWidth;
                 rect.top = (int) ((float) camHeight - ((float) camWidth / screenRate)) / 2;
