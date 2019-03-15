@@ -2,14 +2,13 @@ package foundation.bluewhale.splashviews.demo
 
 import android.content.DialogInterface
 import android.os.Bundle
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import foundation.bluewhale.splashviews.demo.feature.BaseFragment
 import foundation.bluewhale.splashviews.demo.feature.CashFragment
 import foundation.bluewhale.splashviews.demo.feature.EditFragment
@@ -63,12 +62,14 @@ class FeatureListFragment : BaseFragment() {
     val indexEdit = 1
     val indexDoubleBtnDialog = 2
     val indexPasswordDialog = 3
+    val qrscanner = 3
     fun makeList(): ArrayList<FeatureListAdapter.Companion.ListData> {
         val list = ArrayList<FeatureListAdapter.Companion.ListData>()
         list.add(FeatureListAdapter.Companion.ListData(indexCash, "CashFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexEdit, "EditFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexDoubleBtnDialog, "DoubleBtnDialog"))
         list.add(FeatureListAdapter.Companion.ListData(indexPasswordDialog, "PasswordDialog"))
+        list.add(FeatureListAdapter.Companion.ListData(qrscanner, "QRScannerActivity"))
         return list
     }
 
