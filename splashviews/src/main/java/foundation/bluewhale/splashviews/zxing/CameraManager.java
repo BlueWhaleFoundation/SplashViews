@@ -361,10 +361,26 @@ public final class CameraManager {
 //            rect.top = rect.top * cameraResolution.y / screenHeight;
 //            rect.bottom = rect.bottom * cameraResolution.y / screenHeight;
 
-            rect.left = camWidth - screenWidth / 2;
-            rect.right = rect.left + screenWidth;
-            rect.top = camHeight - screenHeight / 2;
-            rect.bottom = rect.bottom + screenHeight;
+
+            float camRate = ((float) camWidth) / ((float) camHeight);
+            float screenRate = ((float) screenWidth) / ((float) screenHeight);
+
+            if (camRate > screenRate) {
+                rect.left = (int) ((float) camWidth - ((float) screenHeight) * screenRate) / 2;
+                rect.right = (int) (rect.left + (float) screenHeight * screenRate);
+                rect.top = 0;
+                rect.bottom = camHeight;
+            } else if(camRate < screenRate){
+                rect.left = 0;
+                rect.right = camWidth;
+                rect.top = (int) ((float) camHeight - ((float) screenWidth) / screenRate) / 2;
+                rect.bottom = (int) (rect.top + (float) screenWidth * screenRate);
+            } else{
+                rect.left = 0;
+                rect.right = camWidth;
+                rect.top = 0;
+                rect.bottom = camHeight;
+            }
 
 
             Log.e("CameraManager", "=== later left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
