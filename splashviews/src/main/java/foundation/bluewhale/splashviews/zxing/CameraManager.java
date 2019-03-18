@@ -362,28 +362,28 @@ public final class CameraManager {
 //            rect.bottom = rect.bottom * cameraResolution.y / screenHeight;
 
 
-//            float camRate = ((float) camWidth) / ((float) camHeight);
-//            float screenRate = ((float) screenWidth) / ((float) screenHeight);
-//
-//            if (camRate > screenRate) {
-//                rect.left = (int) ((float) camWidth - ((float) screenHeight) * screenRate) / 2;
-//                rect.right = (int) (rect.left + (float) screenHeight * screenRate);
-//                rect.top = 0;
-//                rect.bottom = camHeight;
-//            } else if(camRate < screenRate){
-//                rect.left = 0;
-//                rect.right = camWidth;
-//                rect.top = (int) ((float) camHeight - ((float) screenWidth) / screenRate) / 2;
-//                rect.bottom = (int) (rect.top + (float) screenWidth * screenRate);
-//            } else{
-//                rect.left = 0;
-//                rect.right = camWidth;
-//                rect.top = 0;
-//                rect.bottom = camHeight;
-//            }
+            float widthRate = ((float) camWidth) / ((float) screenWidth);
+            float heightRate = ((float) camHeight) / ((float) screenHeight);
+
+            if (widthRate > heightRate) {
+                rect.left = 0;
+                rect.right = camWidth;
+                rect.top = 0;
+                rect.bottom = (int) ((float)screenHeight * widthRate);
+            } else if (widthRate < heightRate) {
+                rect.left = 0;
+                rect.right = (int) ((float)screenWidth * heightRate);
+                rect.top = 0;
+                rect.bottom = camHeight;
+            } else{
+                rect.left = 0;
+                rect.right = camWidth;
+                rect.top = 0;
+                rect.bottom = camHeight;
+            }
 
 
-            Log.e("CameraManager", "=== later left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
+                Log.e("CameraManager", "=== later left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
             framingRectInPreview = rect;
         }
         return framingRectInPreview;
