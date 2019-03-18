@@ -325,26 +325,26 @@ public final class CameraManager {
             }
 
             Log.e("CameraManager", "=== before left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
-            boolean portrait = false;
-            int camWidth = 0;
-            int camHeight = 0;
-            int screenWidth = 0;
-            int screenHeight = 0;
-
-            if (screenWidth < screenHeight)
-                portrait = true;
-
-            if (portrait) {
-                camWidth = Math.min(cameraResolution.x, cameraResolution.y);
-                camHeight = Math.max(cameraResolution.x, cameraResolution.y);
-                screenWidth = Math.min(screenResolution.x, screenResolution.y);
-                screenHeight = Math.max(screenResolution.x, screenResolution.y);
-            } else {
-                camWidth = Math.max(cameraResolution.x, cameraResolution.y);
-                camHeight = Math.min(cameraResolution.x, cameraResolution.y);
-                screenWidth = Math.max(screenResolution.x, screenResolution.y);
-                screenHeight = Math.min(screenResolution.x, screenResolution.y);
-            }
+//            boolean portrait = false;
+//            int camWidth = 0;
+//            int camHeight = 0;
+//            int screenWidth = 0;
+//            int screenHeight = 0;
+//
+//            if (screenWidth < screenHeight)
+//                portrait = true;
+//
+//            if (portrait) {
+//                camWidth = Math.min(cameraResolution.x, cameraResolution.y);
+//                camHeight = Math.max(cameraResolution.x, cameraResolution.y);
+//                screenWidth = Math.min(screenResolution.x, screenResolution.y);
+//                screenHeight = Math.max(screenResolution.x, screenResolution.y);
+//            } else {
+//                camWidth = Math.max(cameraResolution.x, cameraResolution.y);
+//                camHeight = Math.min(cameraResolution.x, cameraResolution.y);
+//                screenWidth = Math.max(screenResolution.x, screenResolution.y);
+//                screenHeight = Math.min(screenResolution.x, screenResolution.y);
+//            }
 
 //            rect.left = rect.left * camWidth / screenWidth;
 //            rect.right = rect.right * camWidth / screenWidth;
@@ -356,34 +356,12 @@ public final class CameraManager {
 //            rect.top = 0;
 //            rect.bottom = cameraResolution.y;
 
-//            rect.left = rect.left * cameraResolution.x / screenWidth;
-//            rect.right = rect.right * cameraResolution.x / screenWidth;
-//            rect.top = rect.top * cameraResolution.y / screenHeight;
-//            rect.bottom = rect.bottom * cameraResolution.y / screenHeight;
+            rect.left = rect.left * cameraResolution.x / screenResolution.x;
+            rect.right = rect.right * cameraResolution.x / screenResolution.x;
+            rect.top = rect.top * cameraResolution.y / screenResolution.y;
+            rect.bottom = rect.bottom * cameraResolution.y / screenResolution.y;
 
-
-            float widthRate = ((float) camWidth) / ((float) screenWidth);
-            float heightRate = ((float) camHeight) / ((float) screenHeight);
-
-            if (widthRate > heightRate) {
-                rect.left = 0;
-                rect.right = camWidth;
-                rect.top = 0;
-                rect.bottom = (int) ((float)screenHeight * widthRate);
-            } else if (widthRate < heightRate) {
-                rect.left = 0;
-                rect.right = (int) ((float)screenWidth * heightRate);
-                rect.top = 0;
-                rect.bottom = camHeight;
-            } else{
-                rect.left = 0;
-                rect.right = camWidth;
-                rect.top = 0;
-                rect.bottom = camHeight;
-            }
-
-
-                Log.e("CameraManager", "=== later left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
+            Log.e("CameraManager", "=== later left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
             framingRectInPreview = rect;
         }
         return framingRectInPreview;
