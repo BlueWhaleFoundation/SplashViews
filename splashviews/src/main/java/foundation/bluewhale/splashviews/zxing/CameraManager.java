@@ -66,31 +66,25 @@ public final class CameraManager {
     private int yOffest = -1;
     private int xOffest = -1;
 
-    public CameraManager(Context context, int cameraSize, int offest) {
+    public CameraManager(Context context, int cameraSize) {
         this.context = context;
         MIN_FRAME_WIDTH = cameraSize;
         MIN_FRAME_HEIGHT = cameraSize;
         this.configManager = new CameraConfigurationManager(context);
         previewCallback = new PreviewCallback(configManager);
-        this.xOffest = offest;
-        this.yOffest = offest;
     }
 
-    public CameraManager(Context context, int cameraWidth, int cameraHeight, int xOffest, int yOffest) {
+    public CameraManager(Context context, int cameraWidth, int cameraHeight) {
         this.context = context;
         MIN_FRAME_WIDTH = cameraWidth;
         MIN_FRAME_HEIGHT = cameraHeight;
         this.configManager = new CameraConfigurationManager(context);
         previewCallback = new PreviewCallback(configManager);
-        this.xOffest = xOffest;
-        this.yOffest = yOffest;
     }
 
-    public void updateScreenInfo(int cameraSize, int offest) {
+    public void updateScreenInfo(int cameraSize) {
         MIN_FRAME_WIDTH = cameraSize;
         MIN_FRAME_HEIGHT = cameraSize;
-        this.xOffest = offest;
-        this.yOffest = offest;
     }
 
     /**
@@ -252,9 +246,8 @@ public final class CameraManager {
             Log.e("CameraManager", "=======width: " + width + ", height: " + height);
 
 
-            int leftOffset = xOffest < 0 ? (screenResolution.x - width) / 2 : xOffest;
-            //int topOffset = (screenResolution.y - height) / 2;
-            int topOffset = yOffest < 0 ? (screenResolution.y - height) / 2 : yOffest;
+            int leftOffset = (screenResolution.x - width) / 2;
+            int topOffset = (screenResolution.y - height) / 2;
             Log.e("CameraManager", "=======l: " + leftOffset + ", t: " + topOffset + ", t:" + (leftOffset + width) + ", b:" + (topOffset + height));
             framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
             Log.d(TAG, "Calculated framing rect: " + framingRect);
@@ -309,7 +302,7 @@ public final class CameraManager {
                 return null;
             }
 
-            Log.e("CameraManager", "=== cam.w:" + cameraResolution.x + ", cam.h: " + cameraResolution.y + ", scr.w: " + screenResolution.x + ", scr.y: " + screenResolution.y);
+            Log.e("CameraManager", "=== cam.w:" + cameraResolution.x + ", cam.h: " + cameraResolution.y + ", scr.w: " + screenResolution.x + ", scr.h: " + screenResolution.y);
 
             if (cameraPositionListener != null) {
 
