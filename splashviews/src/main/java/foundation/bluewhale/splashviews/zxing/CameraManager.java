@@ -63,9 +63,6 @@ public final class CameraManager {
      * clear the handler so it will only receive one message.
      */
     private final PreviewCallback previewCallback;
-    private int yOffest = -1;
-    private int xOffest = -1;
-
     public CameraManager(Context context, int cameraSize) {
         this.context = context;
         MIN_FRAME_WIDTH = cameraSize;
