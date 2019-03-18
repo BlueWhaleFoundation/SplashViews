@@ -63,25 +63,34 @@ public final class CameraManager {
      * clear the handler so it will only receive one message.
      */
     private final PreviewCallback previewCallback;
-    public CameraManager(Context context, int cameraSize) {
+    private int yOffest = -1;
+    private int xOffest = -1;
+
+    public CameraManager(Context context, int cameraSize, int offest) {
         this.context = context;
         MIN_FRAME_WIDTH = cameraSize;
         MIN_FRAME_HEIGHT = cameraSize;
         this.configManager = new CameraConfigurationManager(context);
         previewCallback = new PreviewCallback(configManager);
+        this.xOffest = offest;
+        this.yOffest = offest;
     }
 
-    public CameraManager(Context context, int cameraWidth, int cameraHeight) {
+    public CameraManager(Context context, int cameraWidth, int cameraHeight, int xOffest, int yOffest) {
         this.context = context;
         MIN_FRAME_WIDTH = cameraWidth;
         MIN_FRAME_HEIGHT = cameraHeight;
         this.configManager = new CameraConfigurationManager(context);
         previewCallback = new PreviewCallback(configManager);
+        this.xOffest = xOffest;
+        this.yOffest = yOffest;
     }
 
-    public void updateScreenInfo(int cameraSize) {
+    public void updateScreenInfo(int cameraSize, int offest) {
         MIN_FRAME_WIDTH = cameraSize;
         MIN_FRAME_HEIGHT = cameraSize;
+        this.xOffest = offest;
+        this.yOffest = offest;
     }
 
     /**
@@ -243,8 +252,9 @@ public final class CameraManager {
             Log.e("CameraManager", "=======width: " + width + ", height: " + height);
 
 
-            int leftOffset = (screenResolution.x - width) / 2;
-            int topOffset = (screenResolution.y - height) / 2;
+            int leftOffset = xOffest < 0 ? (screenResolution.x - width) / 2 : xOffest;
+            //int topOffset = (screenResolution.y - height) / 2;
+            int topOffset = yOffest < 0 ? (screenResolution.y - height) / 2 : yOffest;
             Log.e("CameraManager", "=======l: " + leftOffset + ", t: " + topOffset + ", t:" + (leftOffset + width) + ", b:" + (topOffset + height));
             framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
             Log.d(TAG, "Calculated framing rect: " + framingRect);
@@ -299,7 +309,7 @@ public final class CameraManager {
                 return null;
             }
 
-            Log.e("CameraManager", "=== cam.w:" + cameraResolution.x + ", cam.h: " + cameraResolution.y + ", scr.w: " + screenResolution.x + ", scr.h: " + screenResolution.y);
+            Log.e("CameraManager", "=== cam.w:" + cameraResolution.x + ", cam.h: " + cameraResolution.y + ", scr.w: " + screenResolution.x + ", scr.y: " + screenResolution.y);
 
             if (cameraPositionListener != null) {
 
@@ -344,20 +354,20 @@ public final class CameraManager {
 //            rect.top = rect.top * camHeight / screenHeight;
 //            rect.bottom = rect.bottom * camHeight / screenHeight;
 
-//            rect.left = 0;
-//            rect.right = cameraResolution.x;
-//            rect.top = 0;
-//            rect.bottom = cameraResolution.y;
+            rect.left = 0;
+            rect.right = cameraResolution.x;
+            rect.top = 0;
+            rect.bottom = cameraResolution.y;
 
 //            rect.left = rect.left * cameraResolution.x / screenWidth;
 //            rect.right = rect.right * cameraResolution.x / screenWidth;
 //            rect.top = rect.top * cameraResolution.y / screenHeight;
 //            rect.bottom = rect.bottom * cameraResolution.y / screenHeight;
 
-            rect.left = rect.left * cameraResolution.x / screenResolution.x;
-            rect.right = rect.right * cameraResolution.x / screenResolution.x;
-            rect.top = rect.top * cameraResolution.y / screenResolution.y;
-            rect.bottom = rect.bottom * cameraResolution.y / screenResolution.y;
+//            rect.left = rect.left * cameraResolution.x / screenResolution.x;
+//            rect.right = rect.right * cameraResolution.x / screenResolution.x;
+//            rect.top = rect.top * cameraResolution.y / screenResolution.y;
+//            rect.bottom = rect.bottom * cameraResolution.y / screenResolution.y;
 
             Log.e("CameraManager", "=== later left:" + rect.left + ", top: " + rect.top + ", right: " + rect.right + ", bottom: " + rect.bottom);
             framingRectInPreview = rect;
