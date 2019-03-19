@@ -57,7 +57,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
         ): PasswordValidationDialog {
             return make(
                 context
-                , true
+                , false
                 , title
                 , cancelable
                 , statusChangeListener
@@ -145,7 +145,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
 
         val argument = getArguments()
         var isLightStatusBarIcon = false
-        if (argument != null && argument.getBoolean("argument"))
+        if (argument != null && argument.getBoolean("isLightStatusBarIcon"))
             isLightStatusBarIcon = true
         dialog.window?.also {
             it.attributes.windowAnimations = R.style.push_up_down
