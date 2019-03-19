@@ -46,4 +46,10 @@ dependencies {
     //debugImplementation 'androidx.fragment:fragment:1.0.0'
     debugImplementation 'androidx.fragment:fragment-testing:1.1.0-alpha04'
 
+    /**
+     * Rx
+     */
+    implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.ext.rxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:' + rootProject.ext.rxAndroid
+    implementation 'io.reactivex.rxjava2:rxkotlin:' + rootProject.ext.rxkotlin
 }

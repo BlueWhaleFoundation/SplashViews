@@ -354,10 +354,16 @@ public final class CameraManager {
 //            rect.top = rect.top * camHeight / screenHeight;
 //            rect.bottom = rect.bottom * camHeight / screenHeight;
 
-            rect.left = 0;
+            rect.left = rect.left * cameraResolution.y / screenResolution.x;
+            rect.right = rect.right * cameraResolution.y / screenResolution.x;
+            rect.top = rect.top * cameraResolution.x / screenResolution.y;
+            rect.bottom = rect.bottom * cameraResolution.x / screenResolution.y;
+
+            /*rect.left = 0;
             rect.right = cameraResolution.x;
             rect.top = 0;
-            rect.bottom = cameraResolution.y;
+            rect.bottom = cameraResolution.y;*/
+
 
 //            rect.left = rect.left * cameraResolution.x / screenWidth;
 //            rect.right = rect.right * cameraResolution.x / screenWidth;
