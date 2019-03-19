@@ -62,14 +62,12 @@ class FeatureListFragment : BaseFragment() {
     val indexEdit = 1
     val indexDoubleBtnDialog = 2
     val indexPasswordDialog = 3
-    val qrscanner = 3
     fun makeList(): ArrayList<FeatureListAdapter.Companion.ListData> {
         val list = ArrayList<FeatureListAdapter.Companion.ListData>()
         list.add(FeatureListAdapter.Companion.ListData(indexCash, "CashFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexEdit, "EditFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexDoubleBtnDialog, "DoubleBtnDialog"))
         list.add(FeatureListAdapter.Companion.ListData(indexPasswordDialog, "PasswordDialog"))
-        list.add(FeatureListAdapter.Companion.ListData(qrscanner, "QRScannerActivity"))
         return list
     }
 
