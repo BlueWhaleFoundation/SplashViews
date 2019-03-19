@@ -6,14 +6,13 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.DialogFragment
-import androidx.core.content.ContextCompat
-import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import com.jakewharton.rxbinding2.view.RxView
 import foundation.bluewhale.splashviews.R
 import foundation.bluewhale.splashviews.fingerprint.FingerPrintSaver
@@ -129,12 +128,10 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
         retainInstance = true
         setStyle(androidx.fragment.app.DialogFragment.STYLE_NO_TITLE, R.style.LibTheme_NoActionBar)
 
-        if (FingerprintUiHelper.isSecureAuthAvailable(context)
-            && FingerPrintSaver.isUseFingerPrint(context)
-        )
-            mStage = FingerprintDialogStage.FINGERPRINT
+        mStage = if (FingerprintUiHelper.isSecureAuthAvailable(context) && FingerPrintSaver.isUseFingerPrint(context))
+            FingerprintDialogStage.FINGERPRINT
         else
-            mStage = FingerprintDialogStage.PASSWORD
+            FingerprintDialogStage.PASSWORD
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
