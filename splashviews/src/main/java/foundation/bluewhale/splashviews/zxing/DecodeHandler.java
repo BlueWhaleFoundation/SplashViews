@@ -71,7 +71,18 @@ final class DecodeHandler extends Handler {
     private void decode(byte[] data, int width, int height) {
         long start = System.currentTimeMillis();
         Result rawResult = null;
-        PlanarYUVLuminanceSource source = mCameraManager.buildLuminanceSource(data, width, height);
+        //Log.e("DecodeHandler", "width: " + width + ", height: " + height);
+
+        byte[] rotatedData = new byte[data.length];
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++)
+                rotatedData[x * height + height - y - 1] = data[x + y * width];
+        }
+        int tmp = width;
+        width = height;
+        height = tmp;
+
+        PlanarYUVLuminanceSource source = mCameraManager.buildLuminanceSource(rotatedData, width, height);
         if (source != null) {
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
             try {

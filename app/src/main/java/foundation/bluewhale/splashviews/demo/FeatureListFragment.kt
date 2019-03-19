@@ -1,6 +1,7 @@
 package foundation.bluewhale.splashviews.demo
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -61,15 +62,15 @@ class FeatureListFragment : BaseFragment() {
     val indexCash = 0
     val indexEdit = 1
     val indexDoubleBtnDialog = 2
-    val indexPasswordDialog = 3
     val qrscanner = 3
+    val indexPasswordDialog = 4
     fun makeList(): ArrayList<FeatureListAdapter.Companion.ListData> {
         val list = ArrayList<FeatureListAdapter.Companion.ListData>()
         list.add(FeatureListAdapter.Companion.ListData(indexCash, "CashFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexEdit, "EditFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexDoubleBtnDialog, "DoubleBtnDialog"))
-        list.add(FeatureListAdapter.Companion.ListData(indexPasswordDialog, "PasswordDialog"))
         list.add(FeatureListAdapter.Companion.ListData(qrscanner, "QRScannerActivity"))
+        list.add(FeatureListAdapter.Companion.ListData(indexPasswordDialog, "PasswordDialog"))
         return list
     }
 
@@ -79,6 +80,10 @@ class FeatureListFragment : BaseFragment() {
                 indexCash -> addFragment(CashFragment())
                 indexEdit -> addFragment(EditFragment())
                 indexDoubleBtnDialog -> DoubleButtonDialog.make(context, "hihihi")
+                qrscanner-> {
+                    val i = Intent(activity, QRActivity::class.java)
+                    activity?.startActivity(i)
+                }
                 indexPasswordDialog -> {
                     val d = PasswordValidationDialog.make(
                         context!!,
