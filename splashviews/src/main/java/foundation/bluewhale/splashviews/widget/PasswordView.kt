@@ -294,7 +294,7 @@ class PasswordView : ConstraintLayout {
         this.passwordListener = passwordListener
     }
 
-    private fun shuffleArray() {
+    fun shuffleArray() {
         val tmpList = ArrayList<Int>()
         val rnd = Random()
         val rndInt = rnd.nextInt(362880)
