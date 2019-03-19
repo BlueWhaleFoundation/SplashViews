@@ -250,6 +250,13 @@ class PasswordView : ConstraintLayout {
         print(if (list != null) list!!.size else 0)
     }
 
+    fun removePassword() {
+        if (list != null) {
+            list!!.clear()
+            print(if (list != null) list!!.size else 0)
+        }
+    }
+
     private fun print(size: Int) {
         for (i in 0..5) {
             pwdList[i].alpha = if (size >= i + 1) 1f else 0f
