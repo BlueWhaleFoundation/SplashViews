@@ -17,6 +17,7 @@ class TransactionManager {
         val REWARD = "REWARD"
         val WITHDRAW = "WITHDRAW"
         val EXCHANGE = "EXCHANGE"
+        val EXCHANGE_AND_PAY = "EXCHANGE_AND_PAY"
 
         val WALLET_TRANSFER = "WALLET_TRANSFER"
         val USER_TRANSFER = "USER_TRANSFER"
@@ -125,6 +126,15 @@ class TransactionManager {
                         R.string.history_exchange_complete,
                         adapterItem.toInfo!!.name!!
                     )
+                else if (EXCHANGE_AND_PAY == adapterItem.type)
+                    return Item(
+                        R.string.history_pay_from_bep_tobp,
+                        amount,
+                        remain,
+                        R.string.history_pay_complete,
+                        adapterItem.toInfo!!.name!!
+                    )
+
                 //DEFAULT
             } catch (e: Exception) {
             }
