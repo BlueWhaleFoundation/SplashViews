@@ -174,6 +174,13 @@ class QRActivity: AppCompatActivity(){
         cameraManager!!.setCameraPositionListener(object : CameraManager.CameraPositionListener {
             private fun relocateGuideViews(pair: Pair<Int, Int>) {
                 Log.e(activityName, "first:" + pair.first + ", second: " + pair.second)
+                run {
+                    val params = imageview.layoutParams as RelativeLayout.LayoutParams
+                    //params.width = width
+                    params.height = pair.second - pair.first
+                    imageview.layoutParams = params
+                }
+
                 /*val amountTop = pair.first - (pair.first - v_title.bottom) / 2 - v_amount.measuredHeight / 2
 
                 v_amount.translationY = amountTop.toFloat()
@@ -210,7 +217,7 @@ class QRActivity: AppCompatActivity(){
         })
 
         if (!hasInited) {
-            val params = FrameLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
+            val params = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
             v_root.removeView(qr_camera_view)
             qr_camera_view?.layoutParams = params
             v_root.addView(qr_camera_view, 0)
@@ -269,10 +276,14 @@ class QRActivity: AppCompatActivity(){
             }
 
             override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-                val params = FrameLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
-                params.gravity = Gravity.CENTER
-                surface_view?.layoutParams = params
+                run {
+                    val params = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
+                    params.addRule(Gravity.CENTER)
+                    surface_view?.layoutParams = params
+                }
                 Log.e(activityName, "###### surfaceChanged ###### h:$holder, format: $format,w: $width, h:$height")
+                //
+
             }
 
             override fun surfaceDestroyed(holder: SurfaceHolder) {
