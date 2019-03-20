@@ -345,6 +345,11 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
         )
     }
 
+    fun shuffleKeyArray(){
+        if(passwordView!= null)
+            passwordView.shuffleArray()
+    }
+
     override fun dismiss() {
         //isResume = false;
         mFingerprintUiHelper?.stopListening()

@@ -121,6 +121,10 @@ class PasswordView : ConstraintLayout {
         lineList.add(v_line_4)
         lineList.add(v_line_5)
 
+        for (i in 0..9) {
+            keyArray.add(i)
+        }
+
         refreshColors()
 
         callback_completed = PublishSubject.create()
@@ -176,7 +180,7 @@ class PasswordView : ConstraintLayout {
         setBackspace();*/
 
         shuffleArray()
-        refreshUnderlineUI(if (list != null) list!!.size else 0)
+        refreshUnderlineUI(if (list != null) list!!.lastIndex else -1)
     }
 
     private fun refreshColors() {
@@ -198,7 +202,7 @@ class PasswordView : ConstraintLayout {
             lineList[i].setBackgroundColor(pwUnderlineColor)
         }
 
-        print(if (list != null) list!!.size else 0)
+        print(if (list != null) list!!.lastIndex else  -1)
     }
 
     fun setVisibilityOfForgotButton(show: Boolean) {
@@ -216,21 +220,13 @@ class PasswordView : ConstraintLayout {
 
         if (list!!.size > 0) {
             print(list!!.size)
-            pwdList[list!!.size - 1].startAnimation(pwdAnim[list!!.size - 1])
-            lineList[list!!.size - 1].startAnimation(pwdLineAnim[list!!.size - 1])
-//            pwdList[list!!.size - 1].alpha = 1f
-//            lineList[list!!.size - 1].alpha = 1f
+            pwdList[list!!.lastIndex].startAnimation(pwdAnim[list!!.lastIndex])
+            lineList[list!!.lastIndex].startAnimation(pwdLineAnim[list!!.lastIndex])
         }
 
         if (list!!.size == 6) {
             if (callback_completed != null)
                 callback_completed!!.onNext(0)
-            /*StringBuilder sb = new StringBuilder();
-            for (int i : list) {
-                sb.append(i);
-            }
-            if (passwordListener != null)
-                passwordListener.onCompleted(sb.toString());*/
         }
     }
 
@@ -239,35 +235,35 @@ class PasswordView : ConstraintLayout {
             list!!.clear()
         }
 
-        print(if (list != null) list!!.size else 0)
+        print(if (list != null) list!!.lastIndex else  -1)
     }
 
     private fun deleteOne() {
         if (list != null && list!!.size > 0) {
-            list!!.removeAt(list!!.size - 1)
+            list!!.removeAt(list!!.lastIndex)
         }
 
-        print(if (list != null) list!!.size else 0)
+        print(if (list != null) list!!.lastIndex else  -1)
     }
 
     fun removePassword() {
         if (list != null) {
             list!!.clear()
-            print(if (list != null) list!!.size else 0)
+            print(if (list != null) list!!.lastIndex else -1)
         }
     }
 
-    private fun print(size: Int) {
+    private fun print(lastIndex: Int) {
         for (i in 0..5) {
-            pwdList[i].alpha = if (size >= i + 1) 1f else 0f
+            pwdList[i].alpha = if (lastIndex >= i) 1f else 0f
         }
 
-        refreshUnderlineUI(size)
+        refreshUnderlineUI(lastIndex)
     }
 
-    private fun refreshUnderlineUI(size: Int) {
+    private fun refreshUnderlineUI(lastIndex: Int) {
         for (i in 0..5) {
-            lineList[i].alpha = if (size >= i + 1) 1f else 0f
+            lineList[i].alpha = if (lastIndex >= i) 1f else .3f
         }
     }
 
@@ -305,7 +301,8 @@ class PasswordView : ConstraintLayout {
 
         for (i in 0..9) {
             val tmpPosition = rndInt % tmpList.size
-            keyArray.add(tmpList[tmpPosition])
+            keyArray[i] = tmpList[tmpPosition]
+//            keyArray.add(tmpList[tmpPosition])
             tmpList.removeAt(tmpPosition)
         }
 
