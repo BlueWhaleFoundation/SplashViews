@@ -23,6 +23,7 @@
     <string name="history_transfer_to">받음 </string>
     <string name="history_transfer_from">보냄 </string>
     <string name="history_exchange">환전 </string>
+    <string name="history_pay_from_bep_tobp">BWX로 결제 </string>
     <string name="history_payment">결제 </string>
     <string name="history_refunded">환불 </string>
     <string name="history_pay_complete">결제 완료 </string>
