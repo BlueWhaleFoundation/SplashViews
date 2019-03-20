@@ -132,7 +132,7 @@ class TransactionManager {
                         amount,
                         remain,
                         R.string.history_pay_complete,
-                        adapterItem.toInfo!!.name!!
+                        adapterItem.fromInfo!!.name!!
                     )
 
                 //DEFAULT
