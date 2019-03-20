@@ -219,7 +219,7 @@ class PasswordView : ConstraintLayout {
             list!!.add(num)
 
         if (list!!.size > 0) {
-            print(list!!.size)
+            print(list!!.lastIndex)
             pwdList[list!!.lastIndex].startAnimation(pwdAnim[list!!.lastIndex])
             lineList[list!!.lastIndex].startAnimation(pwdLineAnim[list!!.lastIndex])
         }
