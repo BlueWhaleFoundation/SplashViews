@@ -126,7 +126,7 @@ class PasswordView : ConstraintLayout {
         callback_completed = PublishSubject.create()
         _disposables!!.add(
             callback_completed!!
-                .throttleLast(200, TimeUnit.MILLISECONDS)
+                .debounce(300, TimeUnit.MILLISECONDS)
                 //.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
