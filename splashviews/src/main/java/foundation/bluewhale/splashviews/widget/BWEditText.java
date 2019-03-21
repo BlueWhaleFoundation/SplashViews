@@ -338,11 +338,13 @@ public class BWEditText extends RelativeLayout {
                         switch (inputType) {
                             case POINT:
                                 original = s.toString().replaceAll(",", "").replaceAll("-", "");
-                                if (s.toString().equals("0") || s.toString().equals(""))
+                                if (s.toString().equals("0") || s.toString().equals("")) {
                                     result = "";
-                                else if (Double.parseDouble(original) == 0)
+                                    original = "";
+                                }else if (Double.parseDouble(original) == 0) {
                                     result = "";
-                                else
+                                    original = "";
+                                }else
                                     result = NumberTool.convert(BigDecimal.valueOf(Double.parseDouble(original)));
 
                                 if (before < count)
