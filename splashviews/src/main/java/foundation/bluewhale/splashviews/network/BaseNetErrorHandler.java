@@ -99,6 +99,8 @@ public class BaseNetErrorHandler {
             case "ORDER.ALREADY_BOUGHT_OR_REFUNDED":
             case "ORDER.EXPIRED_ORDER":
                 return R.string.ERROR_ORDER_EXPIRED_ORDER;
+            case "QRCODE.EXPIRED":
+                return R.string.ERROR_QRCODE_EXPIRED;
             case "ORDER.WRONG_DISCOUNT_RATIO":
                 return R.string.ERROR_ORDER_WRONG_DISCOUNT_RATIO;
 

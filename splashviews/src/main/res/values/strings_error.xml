@@ -49,6 +49,8 @@
     <string name="ERROR_ERROR_RATING_ALREADY_RATED">이미 참여한 이벤트입니다\n해당 이벤트에는 한번만 참여가 가능합니다</string>
 
     <string name="ERROR_ORDER_EXPIRED_ORDER">만료된 결제입니다</string>
+    <string name="ERROR_QRCODE_EXPIRED">만료된 결제입니다</string>
+
     <string name="ERROR_ORDER_WRONG_DISCOUNT_RATIO">잘못된 입력값 입니다</string>
 
     <string name="ERROR_USER_SAME_PASSWORD">기존 비밀번호와 같은 비번을 입력했습니다</string>
