@@ -230,12 +230,9 @@ public class BWEditText extends RelativeLayout {
 
         //button_clear.setOnClickListener(v -> et_text.setText(""));
 
-        button_clear.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (et_text.getText().length() > 0){
-                    et_text.setText("");
-                }
+        button_clear.setOnClickListener(v -> {
+            if (et_text.getText().toString().length() > 0){
+                et_text.setText("");
             }
         });
 
