@@ -231,8 +231,8 @@ public class BWEditText extends RelativeLayout {
         button_clear.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et_text != null && et_text.getText() != null && et_text.getText().toString().length() > 0)
-                    et_text.setText("");
+//                if (et_text != null && et_text.getText() != null && et_text.getText().toString().length() > 0)
+//                    et_text.setText("");
             }
         });
         //button_clear.setOnClickListener(v -> et_text.setText(""));
