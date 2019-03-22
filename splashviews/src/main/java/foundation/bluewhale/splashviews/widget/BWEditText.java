@@ -228,13 +228,13 @@ public class BWEditText extends RelativeLayout {
         iiv_clear = view.findViewById(R.id.iiv_clear);
         iiv_clear.setBackground(new ColorCircleDrawable(clearButtonColor));
 
-        button_clear.setOnClickListener(new OnClickListener() {
+        /*button_clear.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (et_text != null && et_text.getText() != null && et_text.getText().toString().length() > 0)
-//                    et_text.setText("");
+                if (et_text != null && et_text.getText() != null && et_text.getText().toString().length() > 0)
+                    et_text.setText("");
             }
-        });
+        });*/
         //button_clear.setOnClickListener(v -> et_text.setText(""));
 
 
