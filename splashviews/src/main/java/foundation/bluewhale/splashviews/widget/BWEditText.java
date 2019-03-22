@@ -302,6 +302,11 @@ public class BWEditText extends RelativeLayout {
         setHelperViews(false);
     }
 
+    void clearInput(){
+        if (et_text != null && et_text.getText() != null && et_text.getText().toString().length() > 0)
+            et_text.setText("");
+    }
+
     public void setRightButtonClickListener(OnClickListener l) {
         ib_button.setOnClickListener(l);
     }
