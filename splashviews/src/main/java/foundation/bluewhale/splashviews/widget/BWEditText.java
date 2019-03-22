@@ -235,7 +235,7 @@ public class BWEditText extends RelativeLayout {
                     et_text.setText("");
             }
         });*/
-        button_clear.setOnClickListener(v -> clearInput());
+        button_clear.setOnClickListener(v -> et_text.setText(""));
 
 
         tv_hint = view.findViewById(R.id.tv_hint);
