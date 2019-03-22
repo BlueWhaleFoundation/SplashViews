@@ -228,7 +228,11 @@ public class BWEditText extends RelativeLayout {
         iiv_clear = view.findViewById(R.id.iiv_clear);
         iiv_clear.setBackground(new ColorCircleDrawable(clearButtonColor));
 
-        button_clear.setOnClickListener(v -> et_text.setText(""));
+        button_clear.setOnClickListener(v -> {
+            if (et_text.getText().length() > 0)
+                et_text.setText("");
+
+        });
 
         tv_hint = view.findViewById(R.id.tv_hint);
         if (!TextUtils.isEmpty(hintText))
@@ -341,10 +345,10 @@ public class BWEditText extends RelativeLayout {
                                 if (s.toString().equals("0") || s.toString().equals("")) {
                                     result = "";
                                     original = "";
-                                }else if (Double.parseDouble(original) == 0) {
+                                } else if (Double.parseDouble(original) == 0) {
                                     result = "";
                                     original = "";
-                                }else
+                                } else
                                     result = NumberTool.convert(BigDecimal.valueOf(Double.parseDouble(original)));
 
                                 if (before < count)
@@ -412,7 +416,7 @@ public class BWEditText extends RelativeLayout {
         }
     }
 
-    public void setShowClearButton(boolean showClearButton){
+    public void setShowClearButton(boolean showClearButton) {
         this.showClearButton = showClearButton;
         setHelperViews(result.length() > 0);
     }
