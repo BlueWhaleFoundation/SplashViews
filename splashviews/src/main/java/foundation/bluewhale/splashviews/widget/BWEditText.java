@@ -228,7 +228,7 @@ public class BWEditText extends RelativeLayout {
         iiv_clear = view.findViewById(R.id.iiv_clear);
         iiv_clear.setBackground(new ColorCircleDrawable(clearButtonColor));
 
-        button_clear.setOnClickListener(v -> et_text.setText(""));
+        button_clear.setOnClickListener(v -> clearInput());
 
         tv_hint = view.findViewById(R.id.tv_hint);
         if (!TextUtils.isEmpty(hintText))
