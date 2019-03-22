@@ -235,7 +235,7 @@ public class BWEditText extends RelativeLayout {
                     et_text.setText("");
             }
         });*/
-        //button_clear.setOnClickListener(v -> et_text.setText(""));
+        button_clear.setOnClickListener(v -> clearInput());
 
 
         tv_hint = view.findViewById(R.id.tv_hint);
@@ -308,6 +308,11 @@ public class BWEditText extends RelativeLayout {
         Log.e("RegisterInfo", "Widget.view.name: " + et_text.getText().toString());
 
         setHelperViews(false);
+    }
+
+    void clearInput(){
+        if (et_text != null && et_text.getText() != null && et_text.getText().toString().length() > 0)
+            et_text.setText("");
     }
 
     public void setRightButtonClickListener(OnClickListener l) {
