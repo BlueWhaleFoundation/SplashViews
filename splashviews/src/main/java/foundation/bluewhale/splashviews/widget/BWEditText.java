@@ -234,7 +234,7 @@ public class BWEditText extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 //if (et_text.getText().length() > 0){
-                    et_text.setText("");
+                    //et_text.setText("");
                 //}
             }
         });
