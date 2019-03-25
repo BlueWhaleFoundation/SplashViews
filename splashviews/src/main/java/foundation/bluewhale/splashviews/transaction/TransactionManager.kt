@@ -25,12 +25,45 @@ class TransactionManager {
 
         val DEFAULT = "DEFAULT"
 
+        const val txNone = 0
+        const val txMinus = 1
+        const val txPlus = 2
+
+        fun getTxType(userId: String, adapterItem: DTransaction): Int {
+            return if (userId == adapterItem.from)
+                txMinus
+            else if (userId == adapterItem.to)
+                txPlus
+            else
+                txNone
+        }
+
+        fun getTxType(userId: String, adapterItem: DBEPTransaction): Int {
+            return if (userId == adapterItem.from)
+                txMinus
+            else if (userId == adapterItem.to)
+                txPlus
+            else
+                txNone
+        }
+
         fun getItem(userId: String, adapterItem: DTransaction): Item {
             try {
-                val isReceiver = userId == adapterItem.to!!
-                val amount = (if (isReceiver) "+" else "-") + NumberTool.convert(adapterItem.amount)
+                val txType = getTxType(userId, adapterItem)
+                val amount = when (txType) {
+                    txPlus -> "+" + NumberTool.convert(adapterItem.amount)
+                    txMinus -> "-" + NumberTool.convert(adapterItem.amount)
+                    else -> ""
+                }
                 val remain =
-                    NumberTool.convert(if (isReceiver) adapterItem.toInfo?.leftBp else adapterItem.fromInfo?.leftBp)
+                //NumberTool.convert(if (isReceiver) adapterItem.toInfo?.leftBp else adapterItem.fromInfo?.leftBp)
+                    NumberTool.convert(
+                        when (txType) {
+                            txPlus -> adapterItem.toInfo?.leftBp
+                            txMinus -> adapterItem.fromInfo?.leftBp
+                            else -> null
+                        }
+                    )
                 //보너스
                 if (BONUS == adapterItem.type)
                     return Item(
@@ -46,8 +79,16 @@ class TransactionManager {
                         R.string.history_transfer,
                         amount,
                         remain,
-                        if (isReceiver) R.string.history_transfer_to else R.string.history_transfer_from,
-                        if (isReceiver) adapterItem.fromInfo!!.name else adapterItem.toInfo!!.name
+                        when (txType) {
+                            txPlus -> R.string.history_transfer_to
+                            txMinus -> R.string.history_transfer_from
+                            else -> 0
+                        },
+                        when (txType) {
+                            txPlus -> adapterItem.fromInfo!!.name
+                            txMinus -> adapterItem.toInfo!!.name
+                            else -> null
+                        }
                     )
                 //비회원 송금
                 else if (FUSER_TRANSFER == adapterItem.type)
@@ -55,8 +96,16 @@ class TransactionManager {
                         R.string.history_fuser_transfer,
                         amount,
                         remain,
-                        if (isReceiver) R.string.history_transfer_to else R.string.history_transfer_from,
-                        if (isReceiver) adapterItem.fromInfo!!.name else adapterItem.toInfo!!.name
+                        when (txType) {
+                            txPlus -> R.string.history_transfer_to
+                            txMinus -> R.string.history_transfer_from
+                            else -> 0
+                        },
+                        when (txType) {
+                            txPlus -> adapterItem.fromInfo!!.name
+                            txMinus -> adapterItem.toInfo!!.name
+                            else -> null
+                        }
                     )
                 //비회원 송금 취소
                 else if (FUSER_BP_ROLLBACK == adapterItem.type)
@@ -64,8 +113,16 @@ class TransactionManager {
                         R.string.history_fuser_transfer_rollback,
                         amount,
                         remain,
-                        if (isReceiver) R.string.history_transfer_to else R.string.history_transfer_from,
-                        if (isReceiver) adapterItem.fromInfo!!.name else adapterItem.toInfo!!.name
+                        when (txType) {
+                            txPlus -> R.string.history_transfer_to
+                            txMinus -> R.string.history_transfer_from
+                            else -> 0
+                        },
+                        when (txType) {
+                            txPlus -> adapterItem.fromInfo!!.name
+                            txMinus -> adapterItem.toInfo!!.name
+                            else -> null
+                        }
                     )
                 //결제
                 else if (PAYMENT == adapterItem.type)
@@ -73,7 +130,11 @@ class TransactionManager {
                         R.string.history_payment,
                         amount,
                         remain,
-                        if (isReceiver) R.string.history_pay_refunded else R.string.history_pay_complete,
+                        when (txType) {
+                            txPlus -> R.string.history_pay_refunded
+                            txMinus -> R.string.history_pay_complete
+                            else -> 0
+                        },
                         adapterItem.paymentInfo!!.storeName!!
                     )
                 //충전
@@ -92,8 +153,16 @@ class TransactionManager {
                         R.string.history_payroll,
                         amount,
                         remain,
-                        if (isReceiver) R.string.history_payroll_to else R.string.history_payroll_from,
-                        if (isReceiver) adapterItem.fromInfo!!.name else adapterItem.toInfo!!.name
+                        when (txType) {
+                            txPlus -> R.string.history_payroll_to
+                            txMinus -> R.string.history_payroll_from
+                            else -> 0
+                        },
+                        when (txType) {
+                            txPlus -> adapterItem.fromInfo!!.name
+                            txMinus -> adapterItem.toInfo!!.name
+                            else -> null
+                        }
                     )
                 else if (REWARD == adapterItem.type)
                 //리워드
@@ -145,8 +214,13 @@ class TransactionManager {
 
         fun getItem(userId: String, adapterItem: DBEPTransaction): Item {
             try {
-                val isReceiver = userId == adapterItem.to
-                val amount = (if (isReceiver) "+" else "-") + NumberTool.convert(adapterItem.tokenAmount)
+                val txType = getTxType(userId, adapterItem)
+                val amount = when (txType) {
+                    txPlus -> "+" + NumberTool.convert(adapterItem.tokenAmount)
+                    txMinus -> "-" + NumberTool.convert(adapterItem.tokenAmount)
+                    else -> ""
+                }
+
                 val remain = NumberTool.convert(adapterItem.leftToken)
 
                 //환전
@@ -164,19 +238,27 @@ class TransactionManager {
                         R.string.history_transfer,
                         amount,
                         remain,
-                        if (isReceiver) R.string.history_transfer_to else R.string.history_transfer_from,
-                        if (isReceiver) {
-                            if(!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
-                                adapterItem.fromInfo.name
-                            else
-                                adapterItem.fromInfo.address
-                        } else{
-
-                            if(!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
-                                adapterItem.toInfo.name
-                            else
-                                adapterItem.toInfo.address
+                        when (txType) {
+                            txPlus -> R.string.history_transfer_to
+                            txMinus -> R.string.history_transfer_from
+                            else -> 0
+                        },
+                        when (txType) {
+                            txPlus -> {
+                                if (!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
+                                    adapterItem.fromInfo.name
+                                else
+                                    adapterItem.fromInfo.address
+                            }
+                            txMinus -> {
+                                if (!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
+                                    adapterItem.toInfo.name
+                                else
+                                    adapterItem.toInfo.address
+                            }
+                            else -> ""
                         }
+
                     )
                 //유저송금
                 else if (USER_TRANSFER == adapterItem.type)
@@ -184,8 +266,16 @@ class TransactionManager {
                         R.string.history_transfer,
                         amount,
                         remain,
-                        if (isReceiver) R.string.history_transfer_to else R.string.history_transfer_from,
-                        if (isReceiver) adapterItem.fromInfo.name else adapterItem.toInfo.name
+                        when (txType) {
+                            txPlus -> R.string.history_transfer_to
+                            txMinus -> R.string.history_transfer_from
+                            else -> 0
+                        },
+                        when (txType) {
+                            txPlus -> adapterItem.fromInfo.name
+                            txMinus -> adapterItem.toInfo.name
+                            else -> ""
+                        }
                     )
                 //결제
                 else if (PAYMENT == adapterItem.type)
@@ -193,7 +283,11 @@ class TransactionManager {
                         R.string.history_payment,
                         amount,
                         remain,
-                        if (isReceiver) R.string.history_pay_refunded else R.string.history_pay_complete,
+                        when (txType) {
+                            txPlus -> R.string.history_pay_refunded
+                            txMinus -> R.string.history_pay_complete
+                            else -> 0
+                        },
                         adapterItem.storeName
                     )
             } catch (e: Exception) {
@@ -204,7 +298,7 @@ class TransactionManager {
 
     }
 
-    data class Item(var category: Int, var used: String, var remain: String, var title: Int, var message: String?) {
+    data class Item(var category: Int, var used: String, var remain: String?, var title: Int, var message: String?) {
         val category_background_id: Int = R.drawable.background_category_blue
 
         init {
