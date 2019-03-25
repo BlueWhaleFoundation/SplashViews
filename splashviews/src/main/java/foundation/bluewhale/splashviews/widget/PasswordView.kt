@@ -202,7 +202,7 @@ class PasswordView : ConstraintLayout {
             lineList[i].setBackgroundColor(pwUnderlineColor)
         }
 
-        print(if (list != null) list!!.lastIndex else  -1)
+        print(if (list != null) list!!.lastIndex else -1)
     }
 
     fun setVisibilityOfForgotButton(show: Boolean) {
@@ -215,16 +215,15 @@ class PasswordView : ConstraintLayout {
     private fun addNumber(num: Int) {
         if (list == null)
             list = ArrayList()
-        if (list!!.size < 6)
+        if (list!!.size < 6) {
             list!!.add(num)
 
-        if (list!!.size > 0) {
-            print(list!!.lastIndex)
-            pwdList[list!!.lastIndex].startAnimation(pwdAnim[list!!.lastIndex])
-            lineList[list!!.lastIndex].startAnimation(pwdLineAnim[list!!.lastIndex])
-        }
+            if (list!!.size > 0) {
+                print(list!!.lastIndex)
+                pwdList[list!!.lastIndex].startAnimation(pwdAnim[list!!.lastIndex])
+                lineList[list!!.lastIndex].startAnimation(pwdLineAnim[list!!.lastIndex])
+            }
 
-        if (list!!.size == 6) {
             if (callback_completed != null)
                 callback_completed!!.onNext(0)
         }
@@ -235,7 +234,7 @@ class PasswordView : ConstraintLayout {
             list!!.clear()
         }
 
-        print(if (list != null) list!!.lastIndex else  -1)
+        print(if (list != null) list!!.lastIndex else -1)
     }
 
     private fun deleteOne() {
@@ -243,7 +242,7 @@ class PasswordView : ConstraintLayout {
             list!!.removeAt(list!!.lastIndex)
         }
 
-        print(if (list != null) list!!.lastIndex else  -1)
+        print(if (list != null) list!!.lastIndex else -1)
     }
 
     fun removePassword() {
@@ -280,7 +279,6 @@ class PasswordView : ConstraintLayout {
 
     interface PasswordListener {
         fun onPasswordForgotClicked()
-
         fun onCompleted(password: String)
     }
 
