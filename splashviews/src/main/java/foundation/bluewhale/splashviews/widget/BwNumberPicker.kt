@@ -1,12 +1,12 @@
 package foundation.bluewhale.splashviews.widget
 
 import android.content.Context
-import androidx.constraintlayout.widget.ConstraintLayout
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewTreeObserver
 import android.widget.FrameLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import foundation.bluewhale.splashviews.R
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.widget_number_picker.view.*
@@ -20,10 +20,7 @@ class BwNumberPicker : FrameLayout {
         initView(context)
     }
 
-    val numberObserver: PublishSubject<Int>
-    init{
-        numberObserver = PublishSubject.create()
-    }
+    val numberObserver: PublishSubject<Int> = PublishSubject.create()
 
     var count: Int = 1
     fun initView(context: Context) {
