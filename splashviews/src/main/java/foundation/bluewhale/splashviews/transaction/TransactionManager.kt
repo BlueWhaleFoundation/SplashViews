@@ -1,5 +1,6 @@
 package foundation.bluewhale.splashviews.transaction
 
+import com.google.common.base.Strings
 import foundation.bluewhale.splash.network.result.receiveData.DBEPTransaction
 import foundation.bluewhale.splash.network.result.receiveData.DTransaction
 import foundation.bluewhale.splashviews.R
@@ -164,7 +165,18 @@ class TransactionManager {
                         amount,
                         remain,
                         if (isReceiver) R.string.history_transfer_to else R.string.history_transfer_from,
-                        if (isReceiver) adapterItem.fromInfo.address else adapterItem.toInfo.address
+                        if (isReceiver) {
+                            if(!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
+                                adapterItem.fromInfo.name
+                            else
+                                adapterItem.fromInfo.address
+                        } else{
+
+                            if(!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
+                                adapterItem.toInfo.name
+                            else
+                                adapterItem.toInfo.address
+                        }
                     )
                 //유저송금
                 else if (USER_TRANSFER == adapterItem.type)
