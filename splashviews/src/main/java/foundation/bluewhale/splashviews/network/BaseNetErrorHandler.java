@@ -107,9 +107,6 @@ public class BaseNetErrorHandler {
             case "USER.SAME_PASSWORD":
                 return R.string.ERROR_USER_SAME_PASSWORD;
 
-            case "TOKEN.NOT_ENOUGH_MONEY":
-                return R.string.ERROR_TOKEN_NOT_ENOUGH_MONEY;
-
             case "TOKEN.NOT_ENOUGH_TOKEN":
                 return R.string.ERROR_TOKEN_NOT_ENOUGH_TOKEN;
 
