@@ -57,13 +57,11 @@ class TransactionManager {
                 }
                 val remain =
                 //NumberTool.convert(if (isReceiver) adapterItem.toInfo?.leftBp else adapterItem.fromInfo?.leftBp)
-                    NumberTool.convert(
-                        when (txType) {
-                            txPlus -> adapterItem.toInfo?.leftBp
-                            txMinus -> adapterItem.fromInfo?.leftBp
-                            else -> null
-                        }
-                    )
+                    when (txType) {
+                        txPlus -> NumberTool.convert(adapterItem.toInfo?.leftBp)
+                        txMinus -> NumberTool.convert(adapterItem.fromInfo?.leftBp)
+                        else -> null
+                    }
                 //보너스
                 if (BONUS == adapterItem.type)
                     return Item(
