@@ -30,18 +30,18 @@ class TransactionManager {
         const val txPlus = 2
 
         fun getTxType(userId: String, adapterItem: DTransaction): Int {
-            return if (userId == adapterItem.from)
+            return if (userId.equals(adapterItem.from))
                 txMinus
-            else if (userId == adapterItem.to)
+            else if (userId.equals(adapterItem.to))
                 txPlus
             else
                 txNone
         }
 
         fun getTxType(userId: String, adapterItem: DBEPTransaction): Int {
-            return if (userId == adapterItem.from)
+            return if (userId.equals(adapterItem.from))
                 txMinus
-            else if (userId == adapterItem.to)
+            else if (userId.equals(adapterItem.to))
                 txPlus
             else
                 txNone

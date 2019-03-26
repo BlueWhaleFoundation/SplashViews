@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 137
-        versionName "2.0.66"
+        versionCode 138
+        versionName "2.0.67"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
