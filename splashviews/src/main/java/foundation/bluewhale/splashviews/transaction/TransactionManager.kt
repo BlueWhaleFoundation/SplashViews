@@ -30,18 +30,18 @@ class TransactionManager {
         const val txPlus = 2
 
         fun getTxType(userId: String, adapterItem: DTransaction): Int {
-            return if (userId.equals(adapterItem.from))
+            return if (userId == adapterItem.from)
                 txMinus
-            else if (userId.equals(adapterItem.to))
+            else if (userId == adapterItem.to)
                 txPlus
             else
                 txNone
         }
 
         fun getTxType(userId: String, adapterItem: DBEPTransaction): Int {
-            return if (userId.equals(adapterItem.from))
+            return if (userId == adapterItem.from)
                 txMinus
-            else if (userId.equals(adapterItem.to))
+            else if (userId == adapterItem.to)
                 txPlus
             else
                 txNone
@@ -216,7 +216,7 @@ class TransactionManager {
                 val amount = when (txType) {
                     txPlus -> "+" + NumberTool.convert(adapterItem.tokenAmount)
                     txMinus -> "-" + NumberTool.convert(adapterItem.tokenAmount)
-                    else -> ""
+                    else -> NumberTool.convert(adapterItem.tokenAmount)
                 }
 
                 val remain = NumberTool.convert(adapterItem.leftToken)
