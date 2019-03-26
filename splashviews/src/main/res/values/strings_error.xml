@@ -68,7 +68,7 @@
     <string name="ERROR_NICE_USED_TOKEN">본인인증에 실패했습니다 다시 시도해 주세요</string>
     <string name="ERROR_NICE_INVALID_TOKEN">본인인증에 실패했습니다 다시 시도해 주세요</string>
 
-
+    <string name="ERROR_PRODUCT_REGISTERED_BARCODE">바코드 중복. 이미 등록한 상품의 바코드입니다. 확인후 다시 시도해 주세요.</string>
 
     <string name="error_invalid_password_locked">비밀번호 %1$d회 실패로 계정이 잠겼습니다\n%2$s후에 사용가능합니다</string>
     <string name="error_invalid_password_normal">비밀번호가 %1$d회 틀렸습니다\n(%2$d/5)</string>

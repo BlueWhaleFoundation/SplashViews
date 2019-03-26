@@ -135,6 +135,10 @@ public class BaseNetErrorHandler {
             case "NICE.INVALID_TOKEN":
                 return R.string.ERROR_NICE_INVALID_TOKEN;
 
+            case "PRODUCT.REGISTERED_BARCODE":
+                return R.string.ERROR_PRODUCT_REGISTERED_BARCODE;
+
+
             case "INTERNAL_SERVER_ERROR":
                 return R.string.error_unhandled_message;
 
