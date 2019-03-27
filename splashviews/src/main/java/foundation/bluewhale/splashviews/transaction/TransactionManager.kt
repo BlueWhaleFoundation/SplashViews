@@ -5,6 +5,7 @@ import foundation.bluewhale.splash.network.result.receiveData.DBEPTransaction
 import foundation.bluewhale.splash.network.result.receiveData.DTransaction
 import foundation.bluewhale.splashviews.R
 import foundation.bluewhale.splashviews.util.NumberTool
+import foundation.bluewhale.splashviews.util.TextCoverTool
 
 class TransactionManager {
     companion object {
@@ -62,18 +63,17 @@ class TransactionManager {
                         txMinus -> NumberTool.convert(adapterItem.fromInfo?.leftBp)
                         else -> null
                     }
-                //보너스
-                if (BONUS == adapterItem.type)
-                    return Item(
+                when {
+                    //보너스
+                    BONUS == adapterItem.type -> return Item(
                         R.string.history_bonus,
                         amount,
                         remain,
                         R.string.history_bonus,
                         adapterItem.bonusInfo!!.storeName!!
                     )
-                //송금
-                else if (TRANSFER == adapterItem.type)
-                    return Item(
+                    //송금
+                    TRANSFER == adapterItem.type -> return Item(
                         R.string.history_transfer,
                         amount,
                         remain,
@@ -88,9 +88,8 @@ class TransactionManager {
                             else -> null
                         }
                     )
-                //비회원 송금
-                else if (FUSER_TRANSFER == adapterItem.type)
-                    return Item(
+                    //비회원 송금
+                    FUSER_TRANSFER == adapterItem.type -> return Item(
                         R.string.history_fuser_transfer,
                         amount,
                         remain,
@@ -105,9 +104,8 @@ class TransactionManager {
                             else -> null
                         }
                     )
-                //비회원 송금 취소
-                else if (FUSER_BP_ROLLBACK == adapterItem.type)
-                    return Item(
+                    //비회원 송금 취소
+                    FUSER_BP_ROLLBACK == adapterItem.type -> return Item(
                         R.string.history_fuser_transfer_rollback,
                         amount,
                         remain,
@@ -122,9 +120,8 @@ class TransactionManager {
                             else -> null
                         }
                     )
-                //결제
-                else if (PAYMENT == adapterItem.type)
-                    return Item(
+                    //결제
+                    PAYMENT == adapterItem.type -> return Item(
                         R.string.history_payment,
                         amount,
                         remain,
@@ -135,19 +132,16 @@ class TransactionManager {
                         },
                         adapterItem.paymentInfo!!.storeName!!
                     )
-                //충전
-                else if (CHARGE == adapterItem.type)
-                //return new Item(string.history_charge, amount, remain, string.history_charge_complete, adapterItem.getMethod());
-                    return Item(
+                    //충전
+                    CHARGE == adapterItem.type -> return Item(
                         R.string.history_charge,
                         amount,
                         remain,
                         R.string.history_charge_complete,
                         adapterItem.fromInfo!!.name!!
                     )
-                //급여
-                else if (PAYROLL == adapterItem.type)
-                    return Item(
+                    //급여
+                    PAYROLL == adapterItem.type -> return Item(
                         R.string.history_payroll,
                         amount,
                         remain,
@@ -162,46 +156,46 @@ class TransactionManager {
                             else -> null
                         }
                     )
-                else if (REWARD == adapterItem.type)
-                //리워드
-                    return Item(
+                    //리워드
+                    REWARD == adapterItem.type -> return Item(
                         R.string.history_bonus,
                         amount,
                         remain,
                         R.string.history_bonus,
                         adapterItem.bonusInfo!!.storeName!!
                     )
-                //출금
-                else if (WITHDRAW == adapterItem.type) {
-                    val message: String?
-                    if (adapterItem.withdrawInfo != null)
-                        message =
-                            String.format(
-                                "%s %s",
-                                adapterItem.withdrawInfo.bankName,
-                                adapterItem.withdrawInfo.bankAccount
-                            )
-                    else
-                        message = adapterItem.fromInfo!!.name
-                    return Item(R.string.history_withdraw, amount, remain, R.string.history_withdraw, message!!)
-                }
-                //환전
-                else if (EXCHANGE == adapterItem.type)
-                    return Item(
+                    //출금
+                    WITHDRAW == adapterItem.type -> {
+                        val message: String?
+                        if (adapterItem.withdrawInfo != null)
+                            message =
+                                String.format(
+                                    "%s %s",
+                                    adapterItem.withdrawInfo.bankName,
+                                    adapterItem.withdrawInfo.bankAccount
+                                )
+                        else
+                            message = adapterItem.fromInfo!!.name
+                        return Item(R.string.history_withdraw, amount, remain, R.string.history_withdraw, message!!)
+                    }
+                    //환전
+                    EXCHANGE == adapterItem.type -> return Item(
                         R.string.history_exchange,
                         amount,
                         remain,
                         R.string.history_exchange_complete,
                         adapterItem.toInfo!!.name!!
                     )
-                else if (EXCHANGE_AND_PAY == adapterItem.type)
-                    return Item(
+                    EXCHANGE_AND_PAY == adapterItem.type -> return Item(
                         R.string.history_pay_from_bep_tobp,
                         amount,
                         remain,
                         R.string.history_pay_complete,
                         adapterItem.fromInfo!!.name!!
                     )
+
+                    //DEFAULT
+                }
 
                 //DEFAULT
             } catch (e: Exception) {
@@ -221,18 +215,17 @@ class TransactionManager {
 
                 val remain = NumberTool.convert(adapterItem.leftToken)
 
-                //환전
-                if (EXCHANGE == adapterItem.type)
-                    return Item(
+                when {
+                    //환전
+                    EXCHANGE == adapterItem.type -> return Item(
                         R.string.history_exchange,
                         amount,
                         remain,
                         R.string.history_exchange_complete,
                         adapterItem.toInfo.name
                     )
-                //지갑송금
-                else if (WALLET_TRANSFER == adapterItem.type)
-                    return Item(
+                    //지갑송금
+                    WALLET_TRANSFER == adapterItem.type -> return Item(
                         R.string.history_transfer,
                         amount,
                         remain,
@@ -246,21 +239,20 @@ class TransactionManager {
                                 if (!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
                                     adapterItem.fromInfo.name
                                 else
-                                    adapterItem.fromInfo.address
+                                    TextCoverTool.getCoveredText(adapterItem.fromInfo.address)
                             }
                             txMinus -> {
                                 if (!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
                                     adapterItem.toInfo.name
                                 else
-                                    adapterItem.toInfo.address
+                                    TextCoverTool.getCoveredText(adapterItem.fromInfo.address)
                             }
                             else -> ""
                         }
 
                     )
-                //유저송금
-                else if (USER_TRANSFER == adapterItem.type)
-                    return Item(
+                    //유저송금
+                    USER_TRANSFER == adapterItem.type -> return Item(
                         R.string.history_transfer,
                         amount,
                         remain,
@@ -275,9 +267,8 @@ class TransactionManager {
                             else -> ""
                         }
                     )
-                //결제
-                else if (PAYMENT == adapterItem.type)
-                    return Item(
+                    //결제
+                    PAYMENT == adapterItem.type -> return Item(
                         R.string.history_payment,
                         amount,
                         remain,
@@ -288,6 +279,7 @@ class TransactionManager {
                         },
                         adapterItem.storeName
                     )
+                }
             } catch (e: Exception) {
             }
 

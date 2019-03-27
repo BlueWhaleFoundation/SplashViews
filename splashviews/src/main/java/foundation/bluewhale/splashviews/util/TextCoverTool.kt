@@ -5,9 +5,10 @@ class TextCoverTool {
         fun getCoveredText(text: String): String {
             val cover = "****"
             return when {
-                text.length <= 6 -> text
-                text.length <= 9 -> text.replaceRange(3, text.length - 3, cover.substring(0, text.length - 6))
-                else -> text.replaceRange(3, text.length - 3, cover)
+                text.length <= 3 -> text
+                text.length <= 9 -> text.replaceRange(text.length / 2 - 1, text.length / 2, cover.substring(0, 1))
+                text.length <= 12 -> text.replaceRange(4, text.length - 4, cover.substring(0, text.length - 8))
+                else -> text.replaceRange(4, text.length - 4, cover)
             }
         }
     }
