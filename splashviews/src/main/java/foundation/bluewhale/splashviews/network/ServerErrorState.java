@@ -69,4 +69,8 @@ public class ServerErrorState {
                 || "TICKET.ALREADY_REFUNDED_OR_UESD".equals(errorMessage)
                 || "ORDER.EXPIRED_ORDER".equals(errorMessage);
     }
+
+    public boolean notHaveQRCode(){
+        return "QRCODE.NO_QRCODE".equals(errorMessage);
+    }
 }
