@@ -15,7 +15,7 @@
     <string name="ERROR_PAYMENT_NO_PAYMENT">결제 정보가 존재하지 않습니다</string>
     <string name="ERROR_PAYMENT_NO_BUSINESS">해당 업체가 존재하지 않습니다</string>
     <string name="ERROR_PAYMENT_NO_SELLER">해당 판매자가 존재하지 않습니다</string>
-    <string name="ERROR_PAYMENT_NO_RATING">보너스가 소진되었습니다</string>
+    <string name="ERROR_PAYMENT_NO_RATING">보너스를 제공하지 않는 업체입니다</string>
 
     <string name="ERROR_TRANSFER_NO_SENDER">송금자가 존재하지 않습니다</string>
     <string name="ERROR_TRANSFER_NO_TO_USER">수신자가 존재하지 않습니다</string>
