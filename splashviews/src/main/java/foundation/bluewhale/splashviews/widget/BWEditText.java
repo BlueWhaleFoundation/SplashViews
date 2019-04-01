@@ -58,12 +58,12 @@ public class BWEditText extends RelativeLayout {
         public static final int stroke = 1;
     }
 
-    private static final int TEXT = 1;
-    private static final int NUMBER = 2;
-    private static final int PHONE = 3;
-    private static final int POINT = 4;
-    private static final int EMAIL = 32;
-    private static final int NUMBER_PASSWORD = -2;
+    public static final int TEXT = 1;
+    public static final int NUMBER = 2;
+    public static final int PHONE = 3;
+    public static final int POINT = 4;
+    public static final int EMAIL = 32;
+    public static final int NUMBER_PASSWORD = -2;
 
     int getViewSize(String size) {
         if (size != null) {
