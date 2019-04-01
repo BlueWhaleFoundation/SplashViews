@@ -7,9 +7,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import com.google.android.material.textfield.TextInputEditText;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.ColorUtils;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.*;
 import android.text.method.PasswordTransformationMethod;
@@ -20,6 +17,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
+import com.google.android.material.textfield.TextInputEditText;
 import foundation.bluewhale.splashviews.R;
 import foundation.bluewhale.splashviews.util.NumberTool;
 import foundation.bluewhale.splashviews.util.ViewTool;
@@ -181,28 +181,7 @@ public class BWEditText extends RelativeLayout {
         et_text = view.findViewById(R.id.et_text);
         //et_text.setInputType(InputType.TYPE_CLASS_NUMBER);
         //et_text.setInputType(inputType == InputType.TYPE_CLASS_PHONE ? InputType.TYPE_CLASS_NUMBER : inputType);
-        switch (inputType) {
-            case TEXT:
-                et_text.setInputType(InputType.TYPE_CLASS_TEXT);
-                break;
-            case PHONE:
-                et_text.setInputType(InputType.TYPE_CLASS_PHONE);
-                break;
-            case NUMBER:
-            case POINT:
-                et_text.setInputType(InputType.TYPE_CLASS_NUMBER);
-                break;
-            case NUMBER_PASSWORD:
-                et_text.setInputType(InputType.TYPE_CLASS_NUMBER);
-                et_text.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                break;
-            case EMAIL:
-                et_text.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-                break;
-            default:
-                et_text.setInputType(InputType.TYPE_NULL);
-                break;
-        }
+        setInputType(inputType);
 
         if (textColor != 0)
             et_text.setTextColor(textColor);
@@ -290,19 +269,39 @@ public class BWEditText extends RelativeLayout {
         if (maxLength > 0)
             et_text.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
-        switch (inputType) {
-            case PHONE:
-                et_text.addTextChangedListener(getPhoneNumberFormattingTextWatcher());
-                break;
-        }
-        et_text.addTextChangedListener(getTextWatcher());
-
         Log.e("RegisterInfo", "Widget.view.name: " + et_text.getText().toString());
 
         setHelperViews(false);
     }
 
-    void clearInput(){
+    public void setInputType(int inputType) {
+        switch (inputType) {
+            case TEXT:
+                et_text.setInputType(InputType.TYPE_CLASS_TEXT);
+                break;
+            case PHONE:
+                et_text.setInputType(InputType.TYPE_CLASS_PHONE);
+                et_text.addTextChangedListener(getPhoneNumberFormattingTextWatcher());
+                break;
+            case NUMBER:
+            case POINT:
+                et_text.setInputType(InputType.TYPE_CLASS_NUMBER);
+                break;
+            case NUMBER_PASSWORD:
+                et_text.setInputType(InputType.TYPE_CLASS_NUMBER);
+                et_text.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                break;
+            case EMAIL:
+                et_text.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                break;
+            default:
+                et_text.setInputType(InputType.TYPE_NULL);
+                break;
+        }
+        et_text.addTextChangedListener(getTextWatcher());
+    }
+
+    void clearInput() {
         if (et_text != null && et_text.getText() != null && et_text.getText().toString().length() > 0)
             et_text.setText("");
     }
