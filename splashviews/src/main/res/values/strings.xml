@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SplashViews</string>
     <string name="keypad_delete">Delete</string>
+    <string name="password">비밀번호</string>
     <string name="password_fp_hint">지문 로그인을 위해\n지문 센서에 손가락을 올려주세요</string>
     <string name="input_password">비밀번호 6자리를 입력하세요</string>
     <string name="login_forgot">비밀번호를 잊으셨나요?</string>
@@ -14,37 +15,5 @@
     <string name="button_cancel">취소</string>
     <string name="button_next">다음</string>
 
-    <!-- TransactionList -->
-    <string name="history_danal">DANAL 결제</string>
-    <string name="history_bonus">보너스 </string>
-    <string name="history_transfer">송금 </string>
-    <string name="history_fuser_transfer">송금 </string>
-    <string name="history_fuser_transfer_rollback">송금 취소 </string>
-    <string name="history_transfer_to">받음 </string>
-    <string name="history_transfer_from">보냄 </string>
-    <string name="history_exchange">환전 </string>
-    <string name="history_pay_from_bep_tobp">BWX로 결제 </string>
-    <string name="history_payment">결제 </string>
-    <string name="history_refunded">환불 </string>
-    <string name="history_pay_complete">결제 완료 </string>
-    <string name="history_pay_refunded">환불 완료 </string>
-    <string name="history_charge">충전 </string>
-    <string name="history_charge_complete">충전 완료 </string>
-    <string name="history_charge_refund">환전 완료 </string>
-    <string name="history_exchange_complete">환전 완료 </string>
-    <string name="history_payroll">급여 </string>
-    <string name="history_payroll_to">수입 </string>
-    <string name="history_payroll_from">지출 </string>
-    <string name="history_withdraw">계좌 송금 </string>
-    <string name="history_default">\t</string>
-
-    <string name="history_pay_cancel">결제 취소 </string>
-    <string name="history_pay_pending">결제 대기 </string>
-    <string name="history_pay_wait_refunded">환불 대기 </string>
-    <string name="history_category_gift">P 선물</string>
-    <string name="history_category_charge">P 충전</string>
-    <string name="history_category_refund">P 환전</string>
-
-    <string name="history_server_msg">서버 메시지</string>
-    <string name="history_error_msg">거래 내용을 불러올 수 없습니다</string>
+    <string name="unit_usd">USD</string>
 </resources>

@@ -22,6 +22,11 @@ class EditFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         email.et_text.onFocusChangeListener = OnFocusChangeListener { _, gainFocus ->
             if (gainFocus) {
                 email.setShowClearButton(true)
@@ -29,11 +34,5 @@ class EditFragment : BaseFragment() {
                 email.setShowClearButton(false)
             }
         }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
     }
 }

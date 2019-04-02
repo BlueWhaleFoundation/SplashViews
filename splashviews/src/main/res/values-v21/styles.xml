@@ -1,5 +1,5 @@
 <resources>
-    <style name="CameraTheme" parent="AppTheme">
+    <style name="CameraTheme" parent="LibTheme">
         <item name="android:windowNoTitle">true</item>
         <!--<item name="android:windowTranslucentStatus">true</item>-->
         <item name="android:windowTranslucentNavigation">true</item>

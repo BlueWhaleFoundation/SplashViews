@@ -1,6 +1,7 @@
 package foundation.bluewhale.splashviews.demo
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -12,7 +13,6 @@ import android.os.Looper
 import android.util.Log
 import android.util.Pair
 import android.view.*
-import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +34,15 @@ import java.io.IOException
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class QRActivity: AppCompatActivity(){
+class QRTestActivity: AppCompatActivity(){
+    companion object {
+        const val RESULT_TEXT = "RESULT_TEXT"
+        const val RESULT_RESTART_CAMERA = "RESULT_RESTART_CAMERA"
+        fun launch(activity: Activity, requestCode:Int){
+            val i = Intent(activity, QRTestActivity::class.java)
+            activity?.startActivityForResult(i, requestCode)
+        }
+    }
     var handler: CaptureActivityHandler? = null
     var cameraManager: CameraManager? = null
     var hasSurface: Boolean = false
@@ -175,10 +183,10 @@ class QRActivity: AppCompatActivity(){
             private fun relocateGuideViews(pair: Pair<Int, Int>) {
                 Log.e(activityName, "first:" + pair.first + ", second: " + pair.second)
                 run {
-                    val params = imageview.layoutParams as RelativeLayout.LayoutParams
+                    /*val params = imageview.layoutParams as RelativeLayout.LayoutParams
                     //params.width = width
                     params.height = pair.second - pair.first
-                    imageview.layoutParams = params
+                    imageview.layoutParams = params*/
                 }
 
                 /*val amountTop = pair.first - (pair.first - v_title.bottom) / 2 - v_amount.measuredHeight / 2
@@ -293,7 +301,7 @@ class QRActivity: AppCompatActivity(){
         }
     }
 
-    val activityName = "QRActivity"
+    val activityName = "QRTestActivity"
 
     fun initCamera(surfaceHolder: SurfaceHolder?) {
         if (surfaceHolder == null) {
@@ -315,27 +323,9 @@ class QRActivity: AppCompatActivity(){
                             Log.e("===== barcodeFormat", result.barcodeFormat.name)
                             Log.e("===== barcodeText", result.text)
 
-                            var code = result.text
-                            Log.e(activityName, "===== handleDecode text:$code")
-                            if (result.barcodeFormat == BarcodeFormat.QR_CODE) {
-//                                    val link: Uri? = Uri.parse(code)
-//                                    code = link!!.getQueryParameter("code")
-                                code = code.substring(code.lastIndexOf("link/") + 5)
-
-                                Log.e("QRCodeSubstring", code)
-
-                            } else {
-                                //todo : 바코드 처리작업
-                            }
-
-                            imageview.setImageBitmap(barcode)
-
-                            /*_disposables.add(getViewModel().getQRInfo(code, scannerOption, balanceType)
-                                .subscribe({
-
-                                }, {
-                                    it.printStackTrace()
-                                }))*/
+                            Log.e(activityName, "===== handleDecode text:${result.text}")
+                            finishWithResult(result.text)
+                            //imageview.setImageBitmap(barcode)
                         }
 
                         override fun drawViewfinder() {
@@ -355,6 +345,22 @@ class QRActivity: AppCompatActivity(){
 
     }
 
+    fun finishForRestarting(){
+        val i = Intent()
+        i.putExtra(RESULT_RESTART_CAMERA, true)
+        setResult(Activity.RESULT_OK, i)
+        finish()
+    }
+
+    fun finishWithResult(text:String){
+        val i = Intent()
+        i.putExtra(RESULT_TEXT, text)
+        setResult(Activity.RESULT_OK, i)
+        finish()
+    }
+
+
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
@@ -362,7 +368,7 @@ class QRActivity: AppCompatActivity(){
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    //getViewModel().restartActivity(balanceType, scannerOption)
+                    finishForRestarting()
                 } else if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     // user rejected the permission
                     val showRationale = ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[0])

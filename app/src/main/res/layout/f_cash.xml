@@ -40,7 +40,7 @@
             app:cashTextColor="@color/colorWhite"
             app:cashTextFont="dinregular"
             app:cashTextSize="35sp"
-            app:currencyText="원"
+            app:currencyText="@string/unit_usd"
             app:currencyTextColor="@color/colorWhite"
             app:currencyTextFont="notosans_cjkkr_regular"
             app:currencyTextSize="17sp"/>
