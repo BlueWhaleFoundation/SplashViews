@@ -43,7 +43,7 @@ class FeatureListFragment : BaseFragment() {
         val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
 
-        var deco = androidx.recyclerview.widget.DividerItemDecoration(
+        val deco = androidx.recyclerview.widget.DividerItemDecoration(
             activity,
             androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
         )
@@ -108,7 +108,7 @@ class FeatureListFragment : BaseFragment() {
                             }
 
                             override fun onPasswordCompleted(password: String) {
-                                makeToast("onPasswordCompleted(): " + password)
+                                makeToast("onPasswordCompleted(): $password")
                             }
 
                             override fun onKeyPressed(dialog: DialogInterface, keyCode: Int, event: KeyEvent) {

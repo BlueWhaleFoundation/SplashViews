@@ -7,9 +7,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import com.google.android.material.textfield.TextInputEditText;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.ColorUtils;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.*;
 import android.text.method.PasswordTransformationMethod;
@@ -20,12 +17,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
+import com.google.android.material.textfield.TextInputEditText;
 import foundation.bluewhale.splashviews.R;
 import foundation.bluewhale.splashviews.util.NumberTool;
 import foundation.bluewhale.splashviews.util.ViewTool;
 import io.reactivex.disposables.CompositeDisposable;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * Created by hongsungjun on 2017. 5. 26..
@@ -39,7 +40,7 @@ public class BWEditText extends RelativeLayout {
     }
 
     int underlineColor;
-    int underlineColorDiabled;
+    int underlineColorDisabled;
     int textColor, hintTextColor, errorTextColor;
     int textSize, hintTextSize, errorTextSize;
     int width, height;
@@ -89,8 +90,7 @@ public class BWEditText extends RelativeLayout {
 
     public BWEditText(Context context, AttributeSet attrs) throws Exception {
         super(context, attrs);
-
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.BWDefaultView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.BWEditText);
         if (ta != null) {
             String w = attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "layout_width");
             String h = attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "layout_height");
@@ -101,7 +101,7 @@ public class BWEditText extends RelativeLayout {
             //height = ta.getDimensionPixelSize(R.styleable.BWDefaultView_layout_height, LayoutParams.WRAP_CONTENT);
         }
 
-        ta = context.obtainStyledAttributes(attrs, R.styleable.BWEditText);
+//        ta = context.obtainStyledAttributes(attrs, R.styleable.BWEditText);
         if (ta != null) {
             Resources resources = getResources();
             leftIconDrawable = ta.getResourceId(R.styleable.BWEditText_leftIconDrawable, 0);
@@ -115,7 +115,7 @@ public class BWEditText extends RelativeLayout {
 
             underlineType = ta.getInt(R.styleable.BWEditText_underlineType, UnderlineType.underline);
             underlineColor = ta.getColor(R.styleable.BWEditText_underlineColor, ContextCompat.getColor(context, R.color.colorWhite));
-            underlineColorDiabled = ColorUtils.setAlphaComponent(underlineColor, 128);
+            underlineColorDisabled = ColorUtils.setAlphaComponent(underlineColor, 128);
 
             textColor = ta.getColor(R.styleable.BWEditText_intputTextColor, ContextCompat.getColor(context, R.color.colorWhite));
             hintTextColor = ta.getColor(R.styleable.BWEditText_hintTextColor, ContextCompat.getColor(context, R.color.colorWhite80));
@@ -172,7 +172,7 @@ public class BWEditText extends RelativeLayout {
         _disposables = new CompositeDisposable();
 
         LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = li.inflate(R.layout.widget_edit_text, this, false);
+        View view = Objects.requireNonNull(li).inflate(R.layout.widget_edit_text, this, false);
         addView(view);
         v_input = view.findViewById(R.id.v_input);
         v_content = view.findViewById(R.id.v_content);
@@ -181,6 +181,13 @@ public class BWEditText extends RelativeLayout {
         et_text = view.findViewById(R.id.et_text);
         //et_text.setInputType(InputType.TYPE_CLASS_NUMBER);
         //et_text.setInputType(inputType == InputType.TYPE_CLASS_PHONE ? InputType.TYPE_CLASS_NUMBER : inputType);
+
+        v_input.setId(View.generateViewId());
+        v_content.setId(View.generateViewId());
+        iv_left.setId(View.generateViewId());
+        v_underline.setId(View.generateViewId());
+        et_text.setId(View.generateViewId());
+
         switch (inputType) {
             case TEXT:
                 et_text.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -210,7 +217,7 @@ public class BWEditText extends RelativeLayout {
         if (textSize != 0)
             et_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
 
-        if (result != null)
+        if (result != null && !result.isEmpty())
             et_text.setText(result);
 
         ib_button = view.findViewById(R.id.ib_button);
@@ -259,8 +266,8 @@ public class BWEditText extends RelativeLayout {
             LayoutParams params = (LayoutParams) et_text.getLayoutParams();
             params.height = height;
 
-            View v_content = view.findViewById(R.id.v_content);
-            View v_input = view.findViewById(R.id.v_input);
+//            View v_content = view.findViewById(R.id.v_content);
+//            View v_input = view.findViewById(R.id.v_input);
 
             LayoutParams paramsRel = (LayoutParams) v_content.getLayoutParams();
             LinearLayout.LayoutParams paramsLin = (LinearLayout.LayoutParams) v_input.getLayoutParams();
@@ -302,7 +309,7 @@ public class BWEditText extends RelativeLayout {
         setHelperViews(false);
     }
 
-    void clearInput(){
+    void clearInput() {
         if (et_text != null && et_text.getText() != null && et_text.getText().toString().length() > 0)
             et_text.setText("");
     }
@@ -402,7 +409,7 @@ public class BWEditText extends RelativeLayout {
         tv_hint.setVisibility(hasText ? View.GONE : View.VISIBLE);
 
         if (underlineType == UnderlineType.underline) {
-            v_underline.setBackgroundColor(hasText ? underlineColor : underlineColorDiabled);
+            v_underline.setBackgroundColor(hasText ? underlineColor : underlineColorDisabled);
             v_input.setPadding(0, 0, 0, 0);
             v_content.setBackground(null);
         } else {
@@ -411,7 +418,7 @@ public class BWEditText extends RelativeLayout {
             GradientDrawable gd = new GradientDrawable();
             gd.setColor(Color.TRANSPARENT);
             //gd.setCornerRadius(10);
-            gd.setStroke(ViewTool.Companion.getPixel(getContext(), 1), hasText ? underlineColor : underlineColorDiabled);
+            gd.setStroke(ViewTool.Companion.getPixel(getContext(), 1), hasText ? underlineColor : underlineColorDisabled);
             v_content.setBackground(gd);
             //gd.setShape(GradientDrawable.OVAL);
         }

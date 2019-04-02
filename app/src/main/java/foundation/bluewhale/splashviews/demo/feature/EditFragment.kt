@@ -14,7 +14,7 @@ class EditFragment : BaseFragment() {
     }
 
     override fun getTAG(): String {
-        return EditFragment::class.java.canonicalName
+        return EditFragment::class.java.canonicalName!!
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,5 +34,9 @@ class EditFragment : BaseFragment() {
                 email.setShowClearButton(false)
             }
         }
+
+        next.setOnClickListener { addFragment(CashFragment()) }
+
+
     }
 }
