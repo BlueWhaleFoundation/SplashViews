@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
-            android:text="BWEditText"
-            />
+            android:text="BWEditText"/>
 
         <foundation.bluewhale.splashviews.widget.BWEditText
             android:id="@+id/email"
@@ -69,6 +68,12 @@
             app:maxLength="10"
             app:hintTextSize="16sp"
             app:inputTextSize="16sp"/>
+
+        <foundation.bluewhale.splashviews.widget.BWTextButton
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="next"/>
 
     </LinearLayout>
 </ScrollView>
