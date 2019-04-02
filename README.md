@@ -1,5 +1,10 @@
 [![](https://jitpack.io/v/BlueWhaleFoundation/SplashViews.svg)](https://jitpack.io/#BlueWhaleFoundation/SplashViews)
 
+Demo App
+---
+<img src="doc/img/SplashViews.jpg"  width="400" height="655" />
+
+
 Get Started
 ---
 
