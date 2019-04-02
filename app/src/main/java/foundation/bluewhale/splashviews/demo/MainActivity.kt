@@ -1,6 +1,8 @@
 package foundation.bluewhale.splashviews.demo
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getFragmentcount(): Int {
-        return if (rFragmentManager != null) rFragmentManager.backStackEntryCount else 0
+        return rFragmentManager.backStackEntryCount
     }
 
     fun replaceFragment(baseFragment: BaseFragment) {
@@ -85,7 +87,8 @@ class MainActivity : AppCompatActivity() {
             ft.setTransition(androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
             if (removingChildFragments
-                && backStackCount > 0) {
+                && backStackCount > 0
+            ) {
                 rFragmentManager.popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
             }
 
@@ -101,8 +104,8 @@ class MainActivity : AppCompatActivity() {
                 ft.setCustomAnimations(0, 0, 0, 0)
             }
 
-            ft.addToBackStack(baseFragment!!.getTAG())
-            ft.replace(R.id.fragment_contain, baseFragment!!, baseFragment!!.getTAG())
+            ft.addToBackStack(baseFragment.getTAG())
+            ft.replace(R.id.fragment_contain, baseFragment, baseFragment.getTAG())
             ft.commitAllowingStateLoss()
 
             rFragment = baseFragment
@@ -110,6 +113,29 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
+    }
+
+    override fun onBackPressed() {
+        hideKeyboard()
+        try {
+            val fragmentStackSize = rFragmentManager.backStackEntryCount
+            if (fragmentStackSize <= 1) {
+                finish()
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        super.onBackPressed()
+    }
+
+
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (rFragment != null)
+            rFragment!!.onActivityResult(requestCode, resultCode, data)
 
     }
 }

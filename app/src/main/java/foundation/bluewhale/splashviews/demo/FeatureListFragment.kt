@@ -1,5 +1,6 @@
 package foundation.bluewhale.splashviews.demo
 
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -9,13 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
+import foundation.bluewhale.splashviews.demo.QRTestActivity.Companion.RESULT_RESTART_CAMERA
+import foundation.bluewhale.splashviews.demo.QRTestActivity.Companion.RESULT_TEXT
 import foundation.bluewhale.splashviews.demo.feature.BaseFragment
 import foundation.bluewhale.splashviews.demo.feature.CashFragment
+import foundation.bluewhale.splashviews.demo.feature.ViewsFragment
 import foundation.bluewhale.splashviews.demo.feature.EditFragment
 import foundation.bluewhale.splashviews.dialog.DoubleButtonDialog
 import foundation.bluewhale.splashviews.dialog.PasswordValidationDialog
-import foundation.bluewhale.splashviews.model.PasswordViewColors
 import kotlinx.android.synthetic.main.f_list.*
 
 class FeatureListFragment : BaseFragment() {
@@ -59,19 +61,29 @@ class FeatureListFragment : BaseFragment() {
         recyclerView.adapter = adapter
     }
 
-    val indexCash = 0
-    val indexEdit = 1
-    val indexDoubleBtnDialog = 2
-    val qrscanner = 3
-    val indexPasswordDialog = 4
+    val indexViews = 0
+    val indexCash = 1
+    val indexEdit = 2
+    val indexDoubleBtnDialog = 3
+    val qrscanner = 4
+    val indexPasswordDialog = 5
     fun makeList(): ArrayList<FeatureListAdapter.Companion.ListData> {
         val list = ArrayList<FeatureListAdapter.Companion.ListData>()
+        list.add(FeatureListAdapter.Companion.ListData(indexViews, "ViewsFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexCash, "CashFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexEdit, "EditFragment"))
         list.add(FeatureListAdapter.Companion.ListData(indexDoubleBtnDialog, "DoubleBtnDialog"))
         list.add(FeatureListAdapter.Companion.ListData(qrscanner, "QRScannerActivity"))
         list.add(FeatureListAdapter.Companion.ListData(indexPasswordDialog, "PasswordDialog"))
+
         return list
+    }
+
+    val requestCodeForQRActivity = 3840
+    fun startQrActivity() {
+        activity?.also {
+            QRTestActivity.launch(it, requestCodeForQRActivity)
+        }
     }
 
     fun loadFragment(data: FeatureListAdapter.Companion.ListData?) {
@@ -80,15 +92,15 @@ class FeatureListFragment : BaseFragment() {
                 indexCash -> addFragment(CashFragment())
                 indexEdit -> addFragment(EditFragment())
                 indexDoubleBtnDialog -> DoubleButtonDialog.make(context, "hihihi")
-                qrscanner-> {
-                    val i = Intent(activity, QRActivity::class.java)
-                    activity?.startActivity(i)
+                qrscanner -> {
+                    startQrActivity()
                 }
+                indexViews -> addFragment(ViewsFragment())
                 indexPasswordDialog -> {
                     val d = PasswordValidationDialog.make(
                         context!!,
                         true,
-                        "비밀번호",
+                        getString(R.string.password),
                         false,
                         object : PasswordValidationDialog.StatusChangeListener {
                             override fun onPasswordForgotClicked() {
@@ -105,21 +117,21 @@ class FeatureListFragment : BaseFragment() {
 
 
                         })
-                    d.setCancelListener(object:PasswordValidationDialog.CancelListener{
+                    d.setCancelListener(object : PasswordValidationDialog.CancelListener {
                         override fun onCancel() {
                             makeToast("onCancel(): ")
                         }
 
                     })
-                    d.show(childFragmentManager, "비밀번호")
-                    d.setPasswordViewColors(
+                    d.show(childFragmentManager, "Password")
+                    /*d.setPasswordViewColors(
                         PasswordViewColors(
                             ContextCompat.getColor(context!!, R.color.colorBlueGreen)
                             , ContextCompat.getColor(context!!, R.color.colorBlueGreen)
                             , ContextCompat.getColor(context!!, R.color.colorBlueGreen)
                             , ContextCompat.getColor(context!!, R.color.colorBlueGreen)
                         )
-                    )
+                    )*/
                 }
             }
         }
@@ -127,5 +139,26 @@ class FeatureListFragment : BaseFragment() {
 
     fun makeToast(text: String) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+    }
+
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == requestCodeForQRActivity && resultCode == Activity.RESULT_OK) {
+            data?.also {
+                val isRestarting = it.getBooleanExtra(RESULT_RESTART_CAMERA, false)
+                if (isRestarting) {
+                    startQrActivity()
+                } else {
+                    Toast
+                        .makeText(
+                            context
+                            , "Scanned! :\n ${it.getStringExtra(RESULT_TEXT)}"
+                            , Toast.LENGTH_LONG
+                        )
+                        .show()
+                }
+            }
+
+        }
     }
 }

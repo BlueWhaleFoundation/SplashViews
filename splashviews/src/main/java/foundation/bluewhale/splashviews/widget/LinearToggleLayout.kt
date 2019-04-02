@@ -29,7 +29,10 @@ class LinearToggleLayout : LinearLayout {
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         val ta = context.obtainStyledAttributes(attrs, R.styleable.LinearToggleLayout)
         if (ta != null) {
-            text = ta.getString(R.styleable.LinearToggleLayout_toggleText)
+            ta.getString(R.styleable.LinearToggleLayout_toggleText)?.also {
+                text = it
+            }
+
             textSize = ta.getDimensionPixelSize(R.styleable.LinearToggleLayout_toggleTextSize, resources.getDimensionPixelSize(R.dimen.f_normal))
             textColor = ta.getColor(R.styleable.LinearToggleLayout_toggleTextColor, ContextCompat.getColor(context, R.color.colorText))
 

@@ -4,12 +4,6 @@
              android:id="@+id/v_root"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="#000000">
-    <ImageView
-        android:id="@+id/imageview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:background="@color/buttonShadowLight"
-        android:layout_centerInParent="true"/>
+    android:background="#000000">
+
 </RelativeLayout>
