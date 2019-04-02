@@ -11,7 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:padding="10dp"
         android:orientation="vertical">
 
@@ -37,8 +36,9 @@
             app:inputType="email"/>
 
         <foundation.bluewhale.splashviews.widget.BWEditText
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             app:leftIconDrawable="@drawable/search_wh"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -52,8 +52,9 @@
             app:inputType="email"/>
 
         <foundation.bluewhale.splashviews.widget.BWEditText
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
             app:inputType="phone"
             app:hintText=""
             app:maxLength="10"
@@ -61,8 +62,9 @@
             app:inputTextSize="16sp"/>
 
         <foundation.bluewhale.splashviews.widget.BWEditText
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             app:inputType="point"
             app:hintText=""
             app:maxLength="10"
@@ -71,6 +73,7 @@
 
         <foundation.bluewhale.splashviews.widget.BWTextButton
             android:id="@+id/next"
+            android:layout_marginTop="300dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="next"/>
