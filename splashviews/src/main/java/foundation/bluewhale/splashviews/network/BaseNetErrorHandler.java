@@ -138,6 +138,8 @@ public class BaseNetErrorHandler {
             case "PRODUCT.REGISTERED_BARCODE":
                 return R.string.ERROR_PRODUCT_REGISTERED_BARCODE;
 
+            case "FEATURE_ON_PROGRESS":
+                return R.string.ERROR_FEATURE_ON_PROGRESS;
 
             case "INTERNAL_SERVER_ERROR":
                 return R.string.error_unhandled_message;
