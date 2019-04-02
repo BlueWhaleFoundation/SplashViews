@@ -32,7 +32,7 @@ import java.util.Objects;
  * Created by hongsungjun on 2017. 5. 26..
  */
 
-public class BWEditText extends RelativeLayout {
+public class BWEditText extends LinearLayout {
 
     public BWEditText(Context context) {
         super(context);
@@ -263,13 +263,13 @@ public class BWEditText extends RelativeLayout {
             tv_error.setTextSize(TypedValue.COMPLEX_UNIT_PX, errorTextSize);
 
         if (width != 0 && height != 0) {
-            LayoutParams params = (LayoutParams) et_text.getLayoutParams();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) et_text.getLayoutParams();
             params.height = height;
 
 //            View v_content = view.findViewById(R.id.v_content);
 //            View v_input = view.findViewById(R.id.v_input);
 
-            LayoutParams paramsRel = (LayoutParams) v_content.getLayoutParams();
+            LinearLayout.LayoutParams paramsRel = (LinearLayout.LayoutParams) v_content.getLayoutParams();
             LinearLayout.LayoutParams paramsLin = (LinearLayout.LayoutParams) v_input.getLayoutParams();
             if (width == ViewGroup.LayoutParams.MATCH_PARENT) {
 
@@ -291,6 +291,11 @@ public class BWEditText extends RelativeLayout {
             v_content.setLayoutParams(paramsRel);
             v_input.setLayoutParams(paramsLin);
             et_text.setLayoutParams(params);
+
+            LinearLayout.LayoutParams paramsUnderLine = (LinearLayout.LayoutParams) v_underline.getLayoutParams();
+            paramsUnderLine.width = paramsRel.width;
+
+            v_underline.setLayoutParams(paramsUnderLine);
             //tv_hint.setLayoutParams(params);
         }
 
