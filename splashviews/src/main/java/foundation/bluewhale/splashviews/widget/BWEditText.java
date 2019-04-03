@@ -336,7 +336,6 @@ public class BWEditText extends LinearLayout {
                 mPhoneNumberFormattingTextWatcher = new PhoneNumberFormattingTextWatcher("KR");
             else
                 mPhoneNumberFormattingTextWatcher = new PhoneNumberFormattingTextWatcher();
-
         }
 
         return mPhoneNumberFormattingTextWatcher;
