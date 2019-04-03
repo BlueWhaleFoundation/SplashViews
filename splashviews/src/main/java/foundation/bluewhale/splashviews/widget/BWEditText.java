@@ -182,10 +182,10 @@ public class BWEditText extends LinearLayout {
         //et_text.setInputType(InputType.TYPE_CLASS_NUMBER);
         //et_text.setInputType(inputType == InputType.TYPE_CLASS_PHONE ? InputType.TYPE_CLASS_NUMBER : inputType);
 
-        v_input.setId(View.generateViewId());
-        v_content.setId(View.generateViewId());
-        iv_left.setId(View.generateViewId());
-        v_underline.setId(View.generateViewId());
+//        v_input.setId(View.generateViewId());
+//        v_content.setId(View.generateViewId());
+//        iv_left.setId(View.generateViewId());
+//        v_underline.setId(View.generateViewId());
         et_text.setId(View.generateViewId());
 
         switch (inputType) {
@@ -296,7 +296,12 @@ public class BWEditText extends LinearLayout {
             paramsUnderLine.width = paramsRel.width;
 
             v_underline.setLayoutParams(paramsUnderLine);
-            //tv_hint.setLayoutParams(params);
+
+
+            RelativeLayout.LayoutParams paramHint = (RelativeLayout.LayoutParams) tv_hint.getLayoutParams();
+            paramHint.addRule(RelativeLayout.ALIGN_START, R.id.et_text);
+            paramHint.addRule(RelativeLayout.ALIGN_END, R.id.et_text);
+            tv_hint.setLayoutParams(paramHint);
         }
 
         if (maxLength > 0)
@@ -309,7 +314,7 @@ public class BWEditText extends LinearLayout {
         }
         et_text.addTextChangedListener(getTextWatcher());
 
-        Log.e("RegisterInfo", "Widget.view.name: " + et_text.getText().toString());
+        Log.e("RegisterInfo", "Widget.view.name: " + Objects.requireNonNull(et_text.getText()).toString());
 
         setHelperViews(false);
     }
