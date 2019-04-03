@@ -35,6 +35,13 @@ class EditFragment : BaseFragment() {
             }
         }
 
+        bwet_chargeAmount.setOnTextChangeListener {
+            if(it.length > 10)
+                bwet_chargeAmount.setError("10자 이내로 입력")
+            else
+                bwet_chargeAmount.setError("")
+        }
+
         next.setOnClickListener { addFragment(CashFragment()) }
 
 
