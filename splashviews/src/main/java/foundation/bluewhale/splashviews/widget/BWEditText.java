@@ -125,6 +125,7 @@ public class BWEditText extends RelativeLayout {
             hintText = ta.getString(R.styleable.BWEditText_hintText);
             if(hintText == null) hintText = "";
             errorText = ta.getString(R.styleable.BWEditText_errorText);
+            if(errorText == null) errorText = "";
 
             maxLength = ta.getInt(R.styleable.BWEditText_maxLength, -1);
             if (maxLength > 20) {
@@ -235,8 +236,6 @@ public class BWEditText extends RelativeLayout {
 
         button_clear.setOnClickListener(v -> clearInput());
 
-        v_content.setOnClickListener(v -> et_text.requestFocus());
-
         tv_hint = view.findViewById(R.id.tv_hint);
         if (!TextUtils.isEmpty(hintText))
             tv_hint.setText(hintText);
@@ -304,6 +303,10 @@ public class BWEditText extends RelativeLayout {
                 break;
         }
         et_text.addTextChangedListener(getTextWatcher());
+//        v_content.setOnContextClickListener();
+        v_content.setOnClickListener(v -> et_text.requestFocus());
+        setTextView("");
+        setError("");
 
         Log.e("RegisterInfo", "Widget.view.name: " + Objects.requireNonNull(et_text.getText()).toString());
 
@@ -375,20 +378,6 @@ public class BWEditText extends RelativeLayout {
                                 break;
                         }
                     }
-//                    if (width == ViewGroup.LayoutParams.WRAP_CONTENT) {
-//                        RelativeLayout.LayoutParams params_et_text = (RelativeLayout.LayoutParams) et_text.getLayoutParams();
-//                        if(){
-//
-//                        }else{
-//
-//                        }
-//
-//                        et_text.setLayoutParams(params_et_text);
-//                    } else{
-//                        RelativeLayout.LayoutParams params_et_text = (RelativeLayout.LayoutParams) et_text.getLayoutParams();
-//                        params_et_text.width = ViewGroup.LayoutParams.MATCH_PARENT;
-//                        et_text.setLayoutParams(params_et_text);
-//                    }
                 }
 
                 @Override
