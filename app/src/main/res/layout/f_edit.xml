@@ -56,8 +56,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             app:inputType="phone"
-            app:hintText=""
-            app:maxLength="10"
             app:hintTextSize="16sp"
             app:inputTextSize="16sp"/>
 
@@ -73,7 +71,7 @@
 
         <foundation.bluewhale.splashviews.widget.BWEditText
             android:id="@+id/bwet_chargeAmount"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/paddingSide"
             android:layout_marginTop="@dimen/paddingTop"
@@ -83,11 +81,47 @@
             app:hintTextSize="16sp"
             app:inputTextSize="20sp"
             app:inputType="point"
-            app:showClearButton="true" />
+            app:showClearButton="true"/>
+
+        <foundation.bluewhale.splashviews.widget.BWEditText
+            android:id="@+id/bwet_chargeAmount2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddingSide"
+            android:layout_marginTop="@dimen/paddingTop"
+            android:layout_marginRight="@dimen/paddingSide"
+            android:layout_marginBottom="20dp"
+            app:hintTextSize="16sp"
+            app:inputTextSize="20sp"
+            app:inputType="point"
+            app:showClearButton="true"/>
+
+        <foundation.bluewhale.splashviews.widget.BWEditText
+            android:id="@+id/bwet_chargeAmount3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/paddingSide"
+            android:layout_marginTop="@dimen/paddingTop"
+            android:layout_marginRight="@dimen/paddingSide"
+            android:layout_marginBottom="20dp"
+            app:hintText=""
+            app:hintTextSize="16sp"
+            app:inputTextSize="20sp"
+            app:inputType="point"
+            app:showClearButton="true"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="충전하실 금액을 입력하세요"/>
 
         <foundation.bluewhale.splashviews.widget.BWTextButton
             android:id="@+id/next"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="next"/>

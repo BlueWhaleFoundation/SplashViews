@@ -32,7 +32,7 @@ import java.util.Objects;
  * Created by hongsungjun on 2017. 5. 26..
  */
 
-public class BWEditText extends LinearLayout {
+public class BWEditText extends RelativeLayout {
 
     public BWEditText(Context context) {
         super(context);
@@ -97,11 +97,8 @@ public class BWEditText extends LinearLayout {
 
             width = getViewSize(w);
             height = getViewSize(h);
-            //width = ta.getDimensionPixelSize(R.styleable.BWDefaultView_layout_width, LayoutParams.WRAP_CONTENT);
-            //height = ta.getDimensionPixelSize(R.styleable.BWDefaultView_layout_height, LayoutParams.WRAP_CONTENT);
         }
 
-//        ta = context.obtainStyledAttributes(attrs, R.styleable.BWEditText);
         if (ta != null) {
             Resources resources = getResources();
             leftIconDrawable = ta.getResourceId(R.styleable.BWEditText_leftIconDrawable, 0);
@@ -126,6 +123,7 @@ public class BWEditText extends LinearLayout {
             errorTextSize = ta.getDimensionPixelSize(R.styleable.BWEditText_errorTextSize, resources.getDimensionPixelSize(R.dimen.f_error));
 
             hintText = ta.getString(R.styleable.BWEditText_hintText);
+            if(hintText == null) hintText = "";
             errorText = ta.getString(R.styleable.BWEditText_errorText);
 
             maxLength = ta.getInt(R.styleable.BWEditText_maxLength, -1);
@@ -237,6 +235,8 @@ public class BWEditText extends LinearLayout {
 
         button_clear.setOnClickListener(v -> clearInput());
 
+        v_content.setOnClickListener(v -> et_text.requestFocus());
+
         tv_hint = view.findViewById(R.id.tv_hint);
         if (!TextUtils.isEmpty(hintText))
             tv_hint.setText(hintText);
@@ -263,45 +263,36 @@ public class BWEditText extends LinearLayout {
             tv_error.setTextSize(TypedValue.COMPLEX_UNIT_PX, errorTextSize);
 
         if (width != 0 && height != 0) {
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) et_text.getLayoutParams();
-            params.height = height;
+            RelativeLayout.LayoutParams params_v_content = (RelativeLayout.LayoutParams) v_content.getLayoutParams();
+            LinearLayout.LayoutParams params_v_input = (LinearLayout.LayoutParams) v_input.getLayoutParams();
+            RelativeLayout.LayoutParams params_et_text = (RelativeLayout.LayoutParams) et_text.getLayoutParams();
+            RelativeLayout.LayoutParams params_tv_hint = (RelativeLayout.LayoutParams) tv_hint.getLayoutParams();
 
-//            View v_content = view.findViewById(R.id.v_content);
-//            View v_input = view.findViewById(R.id.v_input);
-
-            LinearLayout.LayoutParams paramsRel = (LinearLayout.LayoutParams) v_content.getLayoutParams();
-            LinearLayout.LayoutParams paramsLin = (LinearLayout.LayoutParams) v_input.getLayoutParams();
             if (width == ViewGroup.LayoutParams.MATCH_PARENT) {
-
-                paramsRel.width = ViewGroup.LayoutParams.MATCH_PARENT;
-
-                paramsLin.width = 0;
-                paramsLin.weight = 1;
-
-//                RelativeLayout.LayoutParams paramsInput = (RelativeLayout.LayoutParams) et_text.getLayoutParams();
-//                paramsInput.width = ViewGroup.LayoutParams.MATCH_PARENT;
-//                et_text.setLayoutParams(paramsInput);
-                params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                params_v_content.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                params_v_input.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                params_tv_hint.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                params_et_text.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            } else if (width == ViewGroup.LayoutParams.WRAP_CONTENT) {
+                params_v_content.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                params_v_input.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                params_tv_hint.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                params_et_text.width = ViewGroup.LayoutParams.WRAP_CONTENT;
             } else {
-                params.width = width;
+                params_v_content.width = width;
+                params_v_input.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                params_tv_hint.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                params_et_text.width = ViewGroup.LayoutParams.MATCH_PARENT;
             }
 
-            paramsRel.height = height;
-            paramsLin.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            v_content.setLayoutParams(paramsRel);
-            v_input.setLayoutParams(paramsLin);
-            et_text.setLayoutParams(params);
+            params_v_content.height = height;
+            params_v_input.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            params_et_text.height = height;
 
-            LinearLayout.LayoutParams paramsUnderLine = (LinearLayout.LayoutParams) v_underline.getLayoutParams();
-            paramsUnderLine.width = paramsRel.width;
-
-            v_underline.setLayoutParams(paramsUnderLine);
-
-
-            RelativeLayout.LayoutParams paramHint = (RelativeLayout.LayoutParams) tv_hint.getLayoutParams();
-            paramHint.addRule(RelativeLayout.ALIGN_START, R.id.et_text);
-            paramHint.addRule(RelativeLayout.ALIGN_END, R.id.et_text);
-            tv_hint.setLayoutParams(paramHint);
+            v_content.setLayoutParams(params_v_content);
+            v_input.setLayoutParams(params_v_input);
+            et_text.setLayoutParams(params_et_text);
+            tv_hint.setLayoutParams(params_tv_hint);
         }
 
         if (maxLength > 0)
@@ -366,7 +357,7 @@ public class BWEditText extends LinearLayout {
                                     result = "";
                                     original = "";
                                 } else
-                                    result = NumberTool.convert(BigDecimal.valueOf(Double.parseDouble(original)));
+                                    result = NumberTool.convert(new BigDecimal(original));
 
                                 if (before < count)
                                     selection = start + count + (result.length() - s.length());
@@ -384,6 +375,20 @@ public class BWEditText extends LinearLayout {
                                 break;
                         }
                     }
+//                    if (width == ViewGroup.LayoutParams.WRAP_CONTENT) {
+//                        RelativeLayout.LayoutParams params_et_text = (RelativeLayout.LayoutParams) et_text.getLayoutParams();
+//                        if(){
+//
+//                        }else{
+//
+//                        }
+//
+//                        et_text.setLayoutParams(params_et_text);
+//                    } else{
+//                        RelativeLayout.LayoutParams params_et_text = (RelativeLayout.LayoutParams) et_text.getLayoutParams();
+//                        params_et_text.width = ViewGroup.LayoutParams.MATCH_PARENT;
+//                        et_text.setLayoutParams(params_et_text);
+//                    }
                 }
 
                 @Override
@@ -415,7 +420,7 @@ public class BWEditText extends LinearLayout {
         else
             button_clear.setVisibility(View.GONE);
 
-        tv_hint.setVisibility(hasText ? View.GONE : View.VISIBLE);
+        tv_hint.setVisibility(hasText ? View.INVISIBLE : View.VISIBLE);
 
         if (underlineType == UnderlineType.underline) {
             v_underline.setBackgroundColor(hasText ? underlineColor : underlineColorDisabled);
