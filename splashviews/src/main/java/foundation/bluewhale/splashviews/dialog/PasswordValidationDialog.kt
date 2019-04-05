@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
+import androidx.fragment.app.FragmentManager
 import com.jakewharton.rxbinding2.view.RxView
 import foundation.bluewhale.splashviews.R
 import foundation.bluewhale.splashviews.fingerprint.FingerPrintSaver
@@ -25,7 +26,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.dialog_password_validation.*
 import java.util.concurrent.TimeUnit
-import androidx.fragment.app.FragmentManager
 
 
 class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
@@ -34,6 +34,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
             context: Context,
             isLightStatusBarIcon: Boolean,
             title: String,
+            isUseFingerPrint: Boolean,
             cancelable: Boolean,
             statusChangeListener: StatusChangeListener
         ): PasswordValidationDialog {
@@ -43,6 +44,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
 
             val bundle = Bundle()
 
+            bundle.putBoolean("isUseFingerPrint",isUseFingerPrint)
             bundle.putString("title", title)
             bundle.putBoolean("isLightStatusBarIcon", isLightStatusBarIcon)
             d.arguments = bundle
@@ -53,6 +55,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
         fun make(
             context: Context,
             title: String,
+            isUseFingerPrint: Boolean,
             cancelable: Boolean,
             statusChangeListener: StatusChangeListener
         ): PasswordValidationDialog {
@@ -60,6 +63,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
                 context
                 , false
                 , title
+                , isUseFingerPrint
                 , cancelable
                 , statusChangeListener
             )
@@ -141,7 +145,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
         retainInstance = true
         setStyle(androidx.fragment.app.DialogFragment.STYLE_NO_TITLE, R.style.LibTheme_NoActionBar)
 
-        mStage = if (FingerprintUiHelper.isSecureAuthAvailable(context) && FingerPrintSaver.isUseFingerPrint(context))
+        mStage = if (FingerprintUiHelper.isSecureAuthAvailable(context) && FingerPrintSaver.isUseFingerPrint(context) && arguments!!.getBoolean("isUseFingerPrint"))
             FingerprintDialogStage.FINGERPRINT
         else
             FingerprintDialogStage.PASSWORD
@@ -153,7 +157,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val argument = getArguments()
+        val argument = arguments
         var isLightStatusBarIcon = false
         if (argument != null && argument.getBoolean("isLightStatusBarIcon"))
             isLightStatusBarIcon = true
@@ -357,8 +361,8 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
         )
     }
 
-    fun shuffleKeyArray(){
-        if(passwordView!= null)
+    fun shuffleKeyArray() {
+        if (passwordView != null)
             passwordView.shuffleArray()
     }
 
