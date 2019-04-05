@@ -25,6 +25,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.dialog_password_validation.*
 import java.util.concurrent.TimeUnit
+import androidx.fragment.app.FragmentManager
+
 
 class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
     companion object {
@@ -62,6 +64,17 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
                 , statusChangeListener
             )
         }
+    }
+
+    override fun show(manager: FragmentManager, tag: String) {
+        try {
+            val ft = manager.beginTransaction()
+            ft.add(this, tag)
+            ft.commitAllowingStateLoss()
+        } catch (e: IllegalStateException) {
+            Log.d("ABSDIALOGFRAG", "Exception", e)
+        }
+
     }
 
     enum class FingerprintDialogStage {
