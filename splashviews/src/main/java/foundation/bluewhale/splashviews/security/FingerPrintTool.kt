@@ -112,7 +112,10 @@ class FingerPrintTool(context: Context) {
     }
 
     fun setIVByte(IVString: String?) {
-        this.IVByte = Base64.decode(IVString, Base64.DEFAULT)
+        IVString?.also {
+            this.IVByte = Base64.decode(it, Base64.DEFAULT)
+        }
+
     }
 
     @Throws(Exception::class)
