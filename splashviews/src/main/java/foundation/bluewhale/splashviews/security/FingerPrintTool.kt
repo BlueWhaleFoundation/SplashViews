@@ -49,7 +49,7 @@ class FingerPrintTool(context: Context) {
     }
 
     fun decrypt(encryptedTxt: String): String? {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val cipher = getCipher()
             cipher?.also {
                 it.init(Cipher.DECRYPT_MODE, getKey(), GCMParameterSpec(128, IVByte!!))
@@ -67,7 +67,7 @@ class FingerPrintTool(context: Context) {
 
     @Throws(Exception::class)
     fun getCipher(): Cipher? {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val cipher = Cipher.getInstance("AES/GCM/NoPadding")
             //cipher.init(Cipher.ENCRYPT_MODE, getKey())
             return cipher

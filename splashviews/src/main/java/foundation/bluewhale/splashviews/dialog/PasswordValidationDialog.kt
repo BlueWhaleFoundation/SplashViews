@@ -141,7 +141,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
         retainInstance = true
         setStyle(androidx.fragment.app.DialogFragment.STYLE_NO_TITLE, R.style.LibTheme_NoActionBar)
 
-        mStage = if (FingerprintUiHelper.isSecureAuthAvailable(context) && FingerPrintSaver.isUseFingerPrint(context))
+        mStage = if (FingerprintUiHelper.isSecureAuthAvailable(context) /*&& FingerPrintSaver.isUseFingerPrint(context)*/)
             FingerprintDialogStage.FINGERPRINT
         else
             FingerprintDialogStage.PASSWORD
@@ -257,8 +257,6 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
             setPasswordMode()
         }
 
-        fingerprintTool = FingerPrintTool(context!!)
-
         initFingerPrintUIHelper()
     }
 
@@ -309,6 +307,7 @@ class PasswordValidationDialog() : androidx.fragment.app.DialogFragment() {
     }
 
     fun initFingerPrintUIHelper() {
+        fingerprintTool = FingerPrintTool(context!!)
         mFingerprintUiHelper = FingerprintUiHelper(
             context,
             passwordViewColors,
