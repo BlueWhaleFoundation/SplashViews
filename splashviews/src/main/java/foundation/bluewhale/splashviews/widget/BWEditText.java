@@ -123,9 +123,9 @@ public class BWEditText extends RelativeLayout {
             errorTextSize = ta.getDimensionPixelSize(R.styleable.BWEditText_errorTextSize, resources.getDimensionPixelSize(R.dimen.f_error));
 
             hintText = ta.getString(R.styleable.BWEditText_hintText);
-            if(hintText == null) hintText = "";
+            if (hintText == null) hintText = "";
             errorText = ta.getString(R.styleable.BWEditText_errorText);
-            if(errorText == null) errorText = "";
+            if (errorText == null) errorText = "";
 
             maxLength = ta.getInt(R.styleable.BWEditText_maxLength, -1);
             if (maxLength > 20) {
@@ -248,19 +248,19 @@ public class BWEditText extends RelativeLayout {
 
 
         tv_error = view.findViewById(R.id.tv_error);
-        if (errorGoneOnCreate || TextUtils.isEmpty(errorText))
+        if (errorGoneOnCreate)
             tv_error.setVisibility(View.GONE);
-        //tv_error.setVisibility(View.INVISIBLE);
+        else {
+            if (!TextUtils.isEmpty(errorText))
+                tv_error.setText(errorText);
 
-        if (!TextUtils.isEmpty(errorText))
-            tv_error.setText(errorText);
+            if (errorTextColor != 0)
+                tv_error.setTextColor(errorTextColor);
 
-        if (errorTextColor != 0)
-            tv_error.setTextColor(errorTextColor);
-
-        if (errorTextSize != 0)
-            tv_error.setTextSize(TypedValue.COMPLEX_UNIT_PX, errorTextSize);
-
+            if (errorTextSize != 0)
+                tv_error.setTextSize(TypedValue.COMPLEX_UNIT_PX, errorTextSize);
+            setError("");
+        }
         if (width != 0 && height != 0) {
             RelativeLayout.LayoutParams params_v_content = (RelativeLayout.LayoutParams) v_content.getLayoutParams();
             LinearLayout.LayoutParams params_v_input = (LinearLayout.LayoutParams) v_input.getLayoutParams();
@@ -306,7 +306,6 @@ public class BWEditText extends RelativeLayout {
 //        v_content.setOnContextClickListener();
         v_content.setOnClickListener(v -> et_text.requestFocus());
         setTextView("");
-        setError("");
 
         Log.e("RegisterInfo", "Widget.view.name: " + Objects.requireNonNull(et_text.getText()).toString());
 
@@ -444,10 +443,9 @@ public class BWEditText extends RelativeLayout {
     public void setError(int textRes) {
         if (textRes == 0)
             tv_error.setText("");
-        else {
+        else
             tv_error.setText(textRes);
-            tv_error.setVisibility(View.VISIBLE);
-        }
+        tv_error.setVisibility(View.VISIBLE);
     }
 
     public void setError(String textStr) {
