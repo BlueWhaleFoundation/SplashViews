@@ -124,8 +124,8 @@ class TransactionManager {
                         amount,
                         remain,
                         when (txType) {
-                            txPlus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
-                            txMinus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
+                            txPlus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
+                            txMinus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
                             else -> 0
                         },
                         adapterItem.paymentInfo!!.storeName!!
@@ -187,8 +187,8 @@ class TransactionManager {
                         amount,
                         remain,
                         when (txType) {
-                            txPlus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
-                            txMinus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
+                            txPlus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
+                            txMinus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
                             else -> 0
                         },
                         adapterItem.fromInfo!!.name!!
@@ -273,8 +273,8 @@ class TransactionManager {
                         amount,
                         remain,
                         when (txType) {
-                            txPlus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
-                            txMinus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
+                            txPlus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
+                            txMinus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
                             else -> 0
                         },
                         adapterItem.storeName
