@@ -62,7 +62,8 @@
     <string name="ERROR_EXCHANGE_LIMIT_EXCEED">환전 한도액 초과 (10만원)</string>
     <string name="ERROR_EXCHANGE_BWX_NOT_MULTIPLE_OF_1000">BWX는 1000의 배수로 입력되어야 합니다</string>
 
-    <string name="ERROR_NO_QR_CODE">사용할 수 없는 QR 코드 입니다</string>
+    <string name="ERROR_NO_QR_CODE">사용할 수 없는 QR 코드입니다</string>
+    <string name="ERROR_NO_PRODUCT">등록되지 않은 상품입니다</string>
 
     <string name="ERROR_NICE_AUTH_FAILED">본인인증에 실패했습니다 입력한 정보를 확인해 주세요</string>
     <string name="ERROR_NICE_USED_TOKEN">본인인증에 실패했습니다 다시 시도해 주세요</string>
