@@ -128,7 +128,7 @@ public class BaseNetErrorHandler {
             case "QRCODE.NO_QRCODE":
                 return R.string.ERROR_NO_QR_CODE;
 
-            case "QRCODE.PRODUCT.NO_PRODUCT":
+            case "PRODUCT.NO_PRODUCT":
                 return R.string.ERROR_NO_PRODUCT;
 
             case "NICE.AUTH_FAILED":
