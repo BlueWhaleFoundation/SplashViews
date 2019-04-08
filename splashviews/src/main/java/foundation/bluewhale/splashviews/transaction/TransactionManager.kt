@@ -9,52 +9,50 @@ import foundation.bluewhale.splashviews.util.TextCoverTool
 
 class TransactionManager {
     companion object {
-        val TRANSFER = "TRANSFER"
-        val FUSER_TRANSFER = "FUSER_TRANSFER"
-        val FUSER_BP_ROLLBACK = "FUSER_BP_ROLLBACK"
-        val BONUS = "BONUS"
-        val PAYMENT = "PAYMENT"
-        val CHARGE = "CHARGE"
-        val PAYROLL = "PAYROLL"
-        val REWARD = "REWARD"
-        val WITHDRAW = "WITHDRAW"
-        val EXCHANGE = "EXCHANGE"
-        val EXCHANGE_AND_PAY = "EXCHANGE_AND_PAY"
+        private const val TRANSFER = "TRANSFER"
+        private const val FUSER_TRANSFER = "FUSER_TRANSFER"
+        private const val FUSER_BP_ROLLBACK = "FUSER_BP_ROLLBACK"
+        private const val BONUS = "BONUS"
+        private const val PAYMENT = "PAYMENT"
+        private const val CHARGE = "CHARGE"
+        private const val PAYROLL = "PAYROLL"
+        private const val REWARD = "REWARD"
+        private const val WITHDRAW = "WITHDRAW"
+        private const val EXCHANGE = "EXCHANGE"
+        private const val EXCHANGE_AND_PAY = "EXCHANGE_AND_PAY"
 
-        val WALLET_TRANSFER = "WALLET_TRANSFER"
-        val USER_TRANSFER = "USER_TRANSFER"
+        private const val WALLET_TRANSFER = "WALLET_TRANSFER"
+        private const val USER_TRANSFER = "USER_TRANSFER"
 
         val DEFAULT = "DEFAULT"
 
-        const val txNone = 0
-        const val txMinus = 1
-        const val txPlus = 2
+        private const val txNone = 0
+        private const val txMinus = 1
+        private const val txPlus = 2
 
         fun getTxType(userId: String, adapterItem: DTransaction): Int {
-            return if (userId == adapterItem.from)
-                txMinus
-            else if (userId == adapterItem.to)
-                txPlus
-            else
-                txNone
+            return when (userId) {
+                adapterItem.from -> txMinus
+                adapterItem.to -> txPlus
+                else -> txNone
+            }
         }
 
         fun getTxType(userId: String, adapterItem: DBEPTransaction): Int {
-            return if (userId == adapterItem.from)
-                txMinus
-            else if (userId == adapterItem.to)
-                txPlus
-            else
-                txNone
+            return when (userId) {
+                adapterItem.from -> txMinus
+                adapterItem.to -> txPlus
+                else -> txNone
+            }
         }
 
-        fun getItem(userId: String, adapterItem: DTransaction): Item {
+        fun getItem(userId: String, adapterItem: DTransaction, isBiz: Boolean): Item {
             try {
                 val txType = getTxType(userId, adapterItem)
                 val amount = when (txType) {
                     txPlus -> "+" + NumberTool.convert(adapterItem.amount)
                     txMinus -> "-" + NumberTool.convert(adapterItem.amount)
-                    else -> ""
+                    else -> "" + NumberTool.convert(adapterItem.amount)
                 }
                 val remain =
                 //NumberTool.convert(if (isReceiver) adapterItem.toInfo?.leftBp else adapterItem.fromInfo?.leftBp)
@@ -126,8 +124,8 @@ class TransactionManager {
                         amount,
                         remain,
                         when (txType) {
-                            txPlus -> R.string.history_pay_refunded
-                            txMinus -> R.string.history_pay_complete
+                            txPlus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
+                            txMinus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
                             else -> 0
                         },
                         adapterItem.paymentInfo!!.storeName!!
@@ -166,16 +164,14 @@ class TransactionManager {
                     )
                     //출금
                     WITHDRAW == adapterItem.type -> {
-                        val message: String?
-                        if (adapterItem.withdrawInfo != null)
-                            message =
-                                String.format(
-                                    "%s %s",
-                                    adapterItem.withdrawInfo.bankName,
-                                    adapterItem.withdrawInfo.bankAccount
-                                )
+                        val message: String? = if (adapterItem.withdrawInfo != null)
+                            String.format(
+                                "%s %s",
+                                adapterItem.withdrawInfo.bankName,
+                                adapterItem.withdrawInfo.bankAccount
+                            )
                         else
-                            message = adapterItem.fromInfo!!.name
+                            adapterItem.fromInfo!!.name
                         return Item(R.string.history_withdraw, amount, remain, R.string.history_withdraw, message!!)
                     }
                     //환전
@@ -190,7 +186,11 @@ class TransactionManager {
                         R.string.history_pay_from_bep_tobp,
                         amount,
                         remain,
-                        R.string.history_pay_complete,
+                        when (txType) {
+                            txPlus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
+                            txMinus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
+                            else -> 0
+                        },
                         adapterItem.fromInfo!!.name!!
                     )
 
@@ -204,7 +204,7 @@ class TransactionManager {
             return Item(R.string.history_error_msg, "", "", R.string.history_server_msg, "")
         }
 
-        fun getItem(userId: String, adapterItem: DBEPTransaction): Item {
+        fun getItem(userId: String, adapterItem: DBEPTransaction, isBiz: Boolean): Item {
             try {
                 val txType = getTxType(userId, adapterItem)
                 val amount = when (txType) {
@@ -273,8 +273,8 @@ class TransactionManager {
                         amount,
                         remain,
                         when (txType) {
-                            txPlus -> R.string.history_pay_refunded
-                            txMinus -> R.string.history_pay_complete
+                            txPlus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
+                            txMinus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
                             else -> 0
                         },
                         adapterItem.storeName
