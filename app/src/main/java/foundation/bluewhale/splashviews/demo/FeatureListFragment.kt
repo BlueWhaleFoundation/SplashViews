@@ -14,8 +14,8 @@ import foundation.bluewhale.splashviews.demo.QRTestActivity.Companion.RESULT_RES
 import foundation.bluewhale.splashviews.demo.QRTestActivity.Companion.RESULT_TEXT
 import foundation.bluewhale.splashviews.demo.feature.BaseFragment
 import foundation.bluewhale.splashviews.demo.feature.CashFragment
-import foundation.bluewhale.splashviews.demo.feature.ViewsFragment
 import foundation.bluewhale.splashviews.demo.feature.EditFragment
+import foundation.bluewhale.splashviews.demo.feature.ViewsFragment
 import foundation.bluewhale.splashviews.dialog.DoubleButtonDialog
 import foundation.bluewhale.splashviews.dialog.PasswordValidationDialog
 import kotlinx.android.synthetic.main.f_list.*
@@ -101,6 +101,7 @@ class FeatureListFragment : BaseFragment() {
                         context!!,
                         true,
                         getString(R.string.password),
+                        false,
                         false,
                         object : PasswordValidationDialog.StatusChangeListener {
                             override fun onPasswordForgotClicked() {
