@@ -44,7 +44,7 @@
             <enum name="numberPassword" value="-2" />
         </attr>
         <attr name="leftIconDrawable" format="reference" />
-        <attr name="errorGoneOnCreate" format="boolean" />
+        <attr name="errorGone" format="boolean" />
         <attr name="showClearButton" format="boolean" />
         <attr name="clearButtonColor" format="color" />
         <attr name="rightButtonDrawable" format="reference" />
