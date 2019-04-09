@@ -49,7 +49,7 @@ public class BWEditText extends RelativeLayout {
     int inputType;
     int rightButtonDrawable;
     boolean showClearButton;
-    boolean errorGone;
+    boolean errorGoneOnCreate;
     int leftIconDrawable;
     int underlineType;
     int clearButtonColor;
@@ -102,7 +102,7 @@ public class BWEditText extends RelativeLayout {
         if (ta != null) {
             Resources resources = getResources();
             leftIconDrawable = ta.getResourceId(R.styleable.BWEditText_leftIconDrawable, 0);
-            errorGone = ta.getBoolean(R.styleable.BWEditText_errorGone, false);
+            errorGoneOnCreate = ta.getBoolean(R.styleable.BWEditText_errorGoneOnCreate, false);
             showClearButton = ta.getBoolean(R.styleable.BWEditText_showClearButton, false);
 
             int color = ColorUtils.setAlphaComponent(ContextCompat.getColor(context, R.color.colorWhite), 128);
@@ -248,20 +248,20 @@ public class BWEditText extends RelativeLayout {
 
 
         tv_error = view.findViewById(R.id.tv_error);
-        if (errorGone)
+        if (errorGoneOnCreate)
             tv_error.setVisibility(View.GONE);
         else {
             if (!TextUtils.isEmpty(errorText))
                 setError(errorText);
             else
                 setError("");
-
-            if (errorTextColor != 0)
-                tv_error.setTextColor(errorTextColor);
-
-            if (errorTextSize != 0)
-                tv_error.setTextSize(TypedValue.COMPLEX_UNIT_PX, errorTextSize);
         }
+        if (errorTextColor != 0)
+            tv_error.setTextColor(errorTextColor);
+
+        if (errorTextSize != 0)
+            tv_error.setTextSize(TypedValue.COMPLEX_UNIT_PX, errorTextSize);
+
         if (width != 0 && height != 0) {
             RelativeLayout.LayoutParams params_v_content = (RelativeLayout.LayoutParams) v_content.getLayoutParams();
             LinearLayout.LayoutParams params_v_input = (LinearLayout.LayoutParams) v_input.getLayoutParams();
@@ -442,20 +442,16 @@ public class BWEditText extends RelativeLayout {
     }
 
     public void setError(int textRes) {
-        if (!errorGone) {
-            if (textRes == 0)
-                tv_error.setText("");
-            else
-                tv_error.setText(textRes);
-            tv_error.setVisibility(View.VISIBLE);
-        }
+        if (textRes == 0)
+            tv_error.setText("");
+        else
+            tv_error.setText(textRes);
+        tv_error.setVisibility(View.VISIBLE);
     }
 
     public void setError(String textStr) {
-        if (!errorGone) {
-            tv_error.setText(textStr);
-            tv_error.setVisibility(View.VISIBLE);
-        }
+        tv_error.setText(textStr);
+        tv_error.setVisibility(View.VISIBLE);
     }
 
     public interface OnTextChangeListener {
