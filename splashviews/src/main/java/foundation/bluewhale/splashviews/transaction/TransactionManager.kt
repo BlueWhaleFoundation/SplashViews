@@ -20,6 +20,7 @@ class TransactionManager {
         private const val WITHDRAW = "WITHDRAW"
         private const val EXCHANGE = "EXCHANGE"
         private const val EXCHANGE_AND_PAY = "EXCHANGE_AND_PAY"
+        private const val EXCHANGE_FOR_PAY = "EXCHANGE_FOR_PAY"
 
         private const val WALLET_TRANSFER = "WALLET_TRANSFER"
         private const val USER_TRANSFER = "USER_TRANSFER"
@@ -191,7 +192,18 @@ class TransactionManager {
                             txMinus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
                             else -> 0
                         },
-                        adapterItem.fromInfo!!.name!!
+                        if (isBiz) adapterItem.fromInfo!!.name!! else adapterItem.toInfo!!.name!!
+                    )
+                    EXCHANGE_FOR_PAY == adapterItem.type -> return Item(
+                        R.string.history_pay_from_bep_tobp,
+                        amount,
+                        remain,
+                        when (txType) {
+                            txPlus -> if (isBiz) R.string.history_pay_complete else R.string.history_pay_refunded
+                            txMinus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
+                            else -> 0
+                        },
+                        if (isBiz) adapterItem.fromInfo!!.name!! else adapterItem.toInfo!!.name!!
                     )
 
                     //DEFAULT
