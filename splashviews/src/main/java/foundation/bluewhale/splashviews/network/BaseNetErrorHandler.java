@@ -141,6 +141,9 @@ public class BaseNetErrorHandler {
             case "PRODUCT.REGISTERED_BARCODE":
                 return R.string.ERROR_PRODUCT_REGISTERED_BARCODE;
 
+            case "CPDAX.INVALID_REQUEST":
+                return R.string.ERROR_CPDAX_INVALID_REQUEST;
+
             case "FEATURE_ON_PROGRESS":
                 return R.string.ERROR_FEATURE_ON_PROGRESS;
 
