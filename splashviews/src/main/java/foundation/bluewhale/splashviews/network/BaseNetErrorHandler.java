@@ -49,6 +49,9 @@ public class BaseNetErrorHandler {
             case "PAYMENT.NO_SELLER":
                 return R.string.ERROR_PAYMENT_NO_SELLER;
 
+            case "BONUS.ALREADY_BONUS":
+                return R.string.ERROR_ALREADY_BONUS;
+
             case "TRANSFER.NO_SENDER":
                 return R.string.ERROR_TRANSFER_NO_SENDER;
             case "TRANSFER.NO_TO_USER":
