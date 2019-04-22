@@ -10,7 +10,7 @@ public class NumberTool {
         Locale loc = Locale.getDefault();
         NumberFormat nf = NumberFormat.getInstance(loc);
         if(getNumberOfDecimalPlaces(result)>0)
-            nf.setMinimumFractionDigits(2);
+            nf.setMinimumFractionDigits(5);
         return nf.format(result);
     }
 
