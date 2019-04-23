@@ -129,7 +129,7 @@ class TransactionManager {
                             txMinus -> if (isBiz) R.string.history_pay_refunded else R.string.history_pay_complete
                             else -> 0
                         },
-                        adapterItem.paymentInfo!!.storeName!!
+                        adapterItem.paymentInfo!!.itemName
                     )
                     //충전
                     CHARGE == adapterItem.type -> return Item(

@@ -42,6 +42,7 @@ data class DTransaction constructor(
         val thirdPartyId: String?
         , val business: String?
         , val storeName: String?
+        , val itemName: String?
     ) : Parcelable
 
     @Parcelize
