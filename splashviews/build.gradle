@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 162
-        versionName "2.1.16"
+        versionCode 163
+        versionName "2.1.17"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -44,7 +44,7 @@ dependencies {
      * Kotlin
      */
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.google.guava:guava:$rootProject.guavaVersion"
+    //implementation "com.google.guava:guava:$rootProject.guavaVersion"
     /**
      * Android Support Libraries
      */

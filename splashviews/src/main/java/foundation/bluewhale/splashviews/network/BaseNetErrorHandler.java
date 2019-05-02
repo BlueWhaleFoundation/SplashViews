@@ -1,5 +1,6 @@
 package foundation.bluewhale.splashviews.network;
 
+import android.text.TextUtils;
 import foundation.bluewhale.splashviews.R;
 
 public class BaseNetErrorHandler {
@@ -159,7 +160,7 @@ public class BaseNetErrorHandler {
             //Ignore "UNAUTHORIZED_RESOURCE_ACCESS" so that the universial error message will show up
 
             default: {
-                if (!com.google.common.base.Strings.isNullOrEmpty(message) && message.contains("NICE.")) {
+                if (!TextUtils.isEmpty(message) && message.contains("NICE.")) {
                     return getNiceErrorMessage(message);
                 } else {
                     if (isProductionVersion)

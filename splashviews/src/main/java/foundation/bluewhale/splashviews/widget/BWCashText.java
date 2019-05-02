@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -13,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.google.common.base.Strings;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import foundation.bluewhale.splashviews.R;
 import foundation.bluewhale.splashviews.util.NumberTool;
 
@@ -103,7 +101,7 @@ public class BWCashText extends RelativeLayout {
         if (!TextUtils.isEmpty(cashText))
             tv_cash.setText(cashText);
 
-        if (Strings.isNullOrEmpty(currencyText)) {
+        if (TextUtils.isEmpty(currencyText)) {
             currencyText = "";/*DeviceSetting.getCurrency(context).getCurrencyText();*/
         }
 

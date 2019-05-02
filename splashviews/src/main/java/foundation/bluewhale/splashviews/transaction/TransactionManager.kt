@@ -1,6 +1,6 @@
 package foundation.bluewhale.splashviews.transaction
 
-import com.google.common.base.Strings
+import android.text.TextUtils
 import foundation.bluewhale.splash.network.result.receiveData.DBEPTransaction
 import foundation.bluewhale.splash.network.result.receiveData.DTransaction
 import foundation.bluewhale.splashviews.R
@@ -248,13 +248,13 @@ class TransactionManager {
                         },
                         when (txType) {
                             txPlus -> {
-                                if (!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
+                                if (!TextUtils.isEmpty(adapterItem.fromInfo.name))
                                     adapterItem.fromInfo.name
                                 else
                                     TextCoverTool.getCoveredText(adapterItem.fromInfo.address)
                             }
                             txMinus -> {
-                                if (!Strings.isNullOrEmpty(adapterItem.fromInfo.name))
+                                if (!TextUtils.isEmpty(adapterItem.fromInfo.name))
                                     adapterItem.toInfo.name
                                 else
                                     TextCoverTool.getCoveredText(adapterItem.fromInfo.address)
